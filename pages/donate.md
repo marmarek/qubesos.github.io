@@ -64,6 +64,7 @@ overhead.
 - We regret that we cannot implement requested features based on funding. (If
   everybody were to decide, then nothing would get implemented.)
 - Donations to the Qubes project are not tax-deductible.
+- Test change.
 
 [funding]: /funding/
 [Qubes Partners page]: /partners/
