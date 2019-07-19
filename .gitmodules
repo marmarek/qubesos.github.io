@@ -7,3 +7,6 @@
 [submodule "_hcl"]
 	path = _hcl
 	url = https://github.com/maiska/qubes-hcl.git
+[submodule "attachment"]
+	path = attachment
+	url = https://github.com/maiska/qubes-attachment.git
