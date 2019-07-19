@@ -1,12 +1,12 @@
 [submodule "attachment"]
-	path = qubes-attachment
-	url = https://github.com/maiska/qubes-attachment
+	path = attachment
+	url = https://github.com/maiska/qubes-attachment.git
 [submodule "_posts"]
-	path = qubes-posts
-	url = https://github.com/maiska/qubes-posts
+	path = _posts
+	url = https://github.com/maiska/qubes-posts.git
 [submodule "_doc"]
-	path = qubes-doc
-	url = https://github.com/maiska/qubes-doc
+	path = _doc
+	url = https://github.com/maiska/qubes-doc.git
 [submodule "_hcl"]
-	path = qubes-hcl
-	url = https://github.com/maiska/qubes-hcl
+	path = _hcl
+	url = https://github.com/maiska/qubes-hcl.git
