@@ -12,6 +12,28 @@
       {{ site.title }}
     {% endif %}
   </title>
+  
+   {% assign posts = site.posts | where: 'ref', page.ref | sort: 'lang' %}
+   {% if posts.size == 0 %}
+	POSTS is 0
+	{% assign posts=site.pages | where:'ref', page.ref | sort: 'lang' %}
+  	{% if posts.size == 0 %}
+		PAGES is 0
+		{% assign posts=site.doc | where:'ref', page.ref | sort: 'lang' %}
+  		{% if posts.size == 0 %}
+			DOC is 0
+			{% assign posts=site.hcl | where:'ref', page.ref | sort: 'lang' %}
+  			{% if posts.size == 0 %}
+			HCL is 0
+			{% endif %}
+		{% endif %}
+	{% endif %}
+   {% endif %}
+   size: {{posts.size}}, ref: {{page.ref}}
+   {% for post in posts %}
+		<li><a class="" href="{{post.url}}">{{post.lang}}</a></li>
+   {% endfor %}
+
   {% if page.layout == 'doc' or
         page.layout == 'post' or
         page.layout == 'security' or

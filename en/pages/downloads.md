@@ -1,6 +1,8 @@
 ---
 layout: boxless
 title: Download Qubes OS
+lang: en
+ref: 2
 permalink: /downloads/
 redirect_from:
 - /doc/QubesDownloads/

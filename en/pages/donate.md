@@ -2,6 +2,8 @@
 layout: default
 title: Donate to Qubes
 permalink: /donate/
+ref: 1
+lang: en
 redirect_from:
 - /en/donate/
 - /doc/Donations/

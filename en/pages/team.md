@@ -2,6 +2,8 @@
 layout: team
 title: Team
 permalink: /team/
+lang: en
+ref: 6
 redirect_from:
 - /people/
 - /doc/QubesDevelopers/
