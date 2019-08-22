@@ -5,7 +5,7 @@ permalink: /bg/donate/
 ref: 1
 lang: bg
 redirect_from:
-- /en/donate/
+- /bg/donate/
 - /doc/Donations/
 - /wiki/Donations/
 ---
