@@ -3,7 +3,7 @@ layout: doc
 title: DE Upgrading the Fedora 28 Template to Fedora 29
 permalink: /de/doc/template/fedora/upgrade-28-to-29/
 lang: de
-ref: 290
+ref: 289a
 redirect_from:
 - /doc/fedora-template-upgrade-28/
 - /en/doc/fedora-template-upgrade-28/

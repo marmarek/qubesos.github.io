@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Qubes Partners
+title: Qubes Partners 
+lang: en
+ref: 4
 permalink: /partners/
 redirect_from:
  - /en/partners/

@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Terms of Use
+title: Terms of Use 
+lang: en
+ref: 7
 permalink: /terms/
 redirect_from:
 - /en/terms/

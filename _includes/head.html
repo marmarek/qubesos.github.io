@@ -31,7 +31,7 @@
    {% endif %}
    size: {{posts.size}}, ref: {{page.ref}}
    {% for post in posts %}
-		<li><a class="" href="{{post.url}}">{{post.lang}}</a></li>
+		<a class="" href="{{post.url}}">{{post.lang}}</a>
    {% endfor %}
 
   {% if page.layout == 'doc' or
