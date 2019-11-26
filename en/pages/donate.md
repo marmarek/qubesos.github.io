@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Donate to Qubes
-permalink: /donate/
+permalink: donate/
 ref: 1
 lang: en
 redirect_from:

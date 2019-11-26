@@ -5,7 +5,7 @@ lang: de
 ref: 1
 permalink: /de/donate/
 redirect_from:
-- /donate/
+- /de/donate/
 - /doc/Donations/
 - /wiki/Donations/
 ---
