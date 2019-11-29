@@ -1,14 +1,14 @@
 - title: Introduction
-  url: /intro/
+  url: /de/intro/
   icon: fa-flag
   sub-pages:
   - title: What is Qubes OS?
-    url: /intro/
+    url: /de/intro/
   - title: FAQ
-    url: /faq/
+    url: /de/faq/
     icon: fa-question-circle
   - title: Video Tours
-    url: /video-tours/
+    url: /de/video-tours/
     icon: fa-play-circle
   - title: From the Experts
     url: /experts/

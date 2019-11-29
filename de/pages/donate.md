@@ -1,15 +1,17 @@
 ---
 layout: default
-title: DE Donate to Qubes
-lang: de
-ref: 1
+title:  DE Donate to Qubes
 permalink: /de/donate/
+ref: 1
+lang: de 
 redirect_from:
 - /doc/Donations/
 - /wiki/Donations/
 ---
 
-# DE Donate to Qubes – Your Support Counts!
+# DE
+
+# Donate to Qubes – Your Support Counts!
 
 ## Ways to Donate
 We accept monetary donations via Bitcoin and credit card in the following three ways:
