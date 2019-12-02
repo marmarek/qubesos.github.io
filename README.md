@@ -208,6 +208,19 @@ Deprecated Documentation
    - https://github.com/QubesOS/qubes-attachment/tree/3.2-EOL
 
 
+Translation
+-----------
+
+Website and documentation translation is done on Transifex platform. Below is a
+list of common tasks and associated commands. Most of them require
+`transifex-client` package installed and API key set in `~/.transifexrc` (you
+will be asked about it on the first run).
+
+* Update file list (needed after adding/moving/removing files): `./_utils/update_translation_mappings`
+* Uploading updated documentation to transifex: `tx push -s`
+* Download translated files: TODO
+
+
 [qubes]: https://github.com/QubesOS
 [intro]: https://www.qubes-os.org/intro/
 [Documentation Guidelines]: https://www.qubes-os.org/doc/doc-guidelines/
