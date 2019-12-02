@@ -1,0 +1,5 @@
+#!/bin/sh
+
+tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir _doc/en --expression '_doc/<lang>/{filepath}/{filename}{extension}' --execute
+tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir en/pages --expression '<lang>/pages/{filepath}/{filename}{extension}' --execute
+
