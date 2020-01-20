@@ -1,20 +1,76 @@
 categories:
   - slug: software-development
-    name: Secure Software Development
+    name: EN Secure Software Development
+    lang: en
   - slug: trusted-hardware
     name: Towards Trusted Hardware
+    lang: en
   - slug: intel-safeguard
     name: Intel's Safeguard Extensions
+    lang: en
   - slug: intel-txt
     name: Attacks on Intel TXT
+    lang: en
   - slug: software-attacks-devices
     name: Software Attacks Coming Through Devices
+    lang: en
   - slug: application-security
     name: Application-level Security
+    lang: en
   - slug: compartmentalization-isolation
     name: Compartmentalization, Isolation, and Separation
+    lang: en
   - slug: qubes
     name: The Qubes Architecture
+    lang: en
+  - slug: software-development
+    name: Sichere Software Entwicklung
+    lang: de
+  - slug: trusted-hardware
+    name: Towards Trusted Hardware
+    lang: de
+  - slug: intel-safeguard
+    name: Intel's Safeguard Extensions
+    lang: de
+  - slug: intel-txt
+    name: Attacken auf Intel TXT
+    lang: de
+  - slug: software-attacks-devices
+    name: Software Attacks Coming Through Devices
+    lang: de
+  - slug: application-security
+    name: Application-level Security
+    lang: de
+  - slug: compartmentalization-isolation
+    name: Compartmentalization, Isolation, and Separation
+    lang: de
+  - slug: qubes
+    name: Qubes Architektur
+    lang: de
+  - slug: software-development
+    name: Sichere Software Entwicklung
+    lang: bg
+  - slug: trusted-hardware
+    name: Towards Trusted Hardware
+    lang: bg
+  - slug: intel-safeguard
+    name: Intel's Safeguard Extensions
+    lang: bg
+  - slug: intel-txt
+    name: Attacken auf Intel TXT
+    lang: bg
+  - slug: software-attacks-devices
+    name: Software Attacks Coming Through Devices
+    lang: bg
+  - slug: application-security
+    name: Application-level Security
+    lang: bg
+  - slug: compartmentalization-isolation
+    name: Compartmentalization, Isolation, and Separation
+    lang: bg
+  - slug: qubes
+    name: Qubes Architektur
+    lang: bg
 papers:
   - title: "Qubes Air: Generalizing the Qubes Architecture"
     url: https://www.qubes-os.org/news/2018/01/22/qubes-air/

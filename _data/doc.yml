@@ -1,15 +1,63 @@
 - category: Introduction
   folder: introduction
+  lang: en
 
 - category: Project Security
   folder: project-security
+  lang: en
 
 - category: User Documentation
   folder: user
+  lang: en
 
 - category: Developer Documentation
   folder: developer
+  lang: en
 
 - category: External Documentation
   folder: external
+  lang: en
+
+### German
+- category: Einfuehrung
+  folder: introduction
+  lang: de
+
+- category: Sicherheit
+  folder: project-security
+  lang: de
+
+- category: Nutzerdokumentation
+  folder: user
+  lang: de
+
+- category: Entwicklerdokumentation
+  folder: developer
+  lang: de
+
+- category: Externe Dokumentation
+  folder: external
+  lang: de 
+
+### Bulgarian
+- category: Introduction
+  folder: introduction
+  lang: bg
+
+- category: Project Security
+  folder: project-security
+  lang: bg
+
+- category: User Documentation
+  folder: user
+  lang: bg
+
+- category: Developer Documentation
+  folder: developer
+  lang: bg
+
+- category: External Documentation
+  folder: external
+  lang: bg
+
 

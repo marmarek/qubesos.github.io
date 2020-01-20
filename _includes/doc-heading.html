@@ -1,8 +1,14 @@
 {% assign doc_segments = page.relative_path | split: '/' %}
-{% for section in site.data.doc %}
+{% assign docs = site.data.doc | where: 'lang', page.lang %}
+  {% if page.lang contains "en" %}
+  	{% assign lang = "" %}
+  {% else %}
+  	{% assign lang = "/" | append: page.lang %}
+  {% endif %}
+{% for section in docs %}
   {% if doc_segments contains section.folder %}
     <h1 class="more-top add-left outer-heading">
-      <a href="/doc/#{{ section.category | slugify }}" class="heading-link">
+	    <a href="{{lang}}/doc/#{{ section.category | slugify }}" class="heading-link">
         <i class="fa fa-book"></i>
           {{ section.category }}
       </a>

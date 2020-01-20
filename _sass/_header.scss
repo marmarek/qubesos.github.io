@@ -65,6 +65,16 @@
         }
       }
     }
+	.c1
+	{
+	font-family: $base-font-family;
+	font-size: 16px;
+	letter-spacing:0px;
+	left: 0px;
+	right: 0px;
+	padding-left: 0px;
+	padding-right:0px;
+	}
   }
 
   // Toggles responsive menu
@@ -99,7 +109,13 @@
     }
   }
 }
-
+/*nav{float:left}
+nav.language-switcher{
+	float:right
+	}
+	.de:lang(de),
+	.en:lang(en),
+*/
 /* Responsive menu */
 @media (max-width: $screen-xs-max) {
 
