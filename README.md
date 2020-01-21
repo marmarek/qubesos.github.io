@@ -211,15 +211,35 @@ Deprecated Documentation
 Translation
 -----------
 
-Website and documentation translation is done on Transifex platform. Below is a
-list of common tasks and associated commands. Most of them require
+Requirements:
+ - transifex-client
+ - python3 frontmatter package (not packaged in Fedora nor Debian...)
+ - crudini
+
+Website and documentation translation is done on Transifex platform. Each page has two extra tags related to translations:
+ - `lang` - language of the page
+ - `ref` - unique identifier used to correlate the same page across different languages
+
+Below is a list of common tasks and associated commands. Most of them require
 `transifex-client` package installed and API key set in `~/.transifexrc` (you
 will be asked about it on the first run).
 
-* Update file list (needed after adding/moving/removing files): `./_utils/update_translation_mappings`
-* Uploading updated documentation to transifex: `tx push -s`
-* Download translated files: TODO
+* Update `ref` and `lang` tags in source files (needed when new files are added):
 
+        ./_utils/prepare_for_translation.py en pages/ _utils/REF_COUNTER.txt
+        ./_utils/prepare_for_translation.py en news/ _utils/REF_COUNTER.txt
+        ./_utils/prepare_for_translation.py en _doc/ _utils/REF_COUNTER.txt
+
+* Update the file list (needed after adding/moving/removing files): `./_utils/update_translation_mappings`
+* Uploading updated documentation to transifex: `tx push -s`
+* Download translated files:
+
+    1. `tx pull`
+    2. Adjust `lang` tags and links in downloaded files (do for each language):
+
+        ./_utils/postprocess_translation.py de _qubes-translated/de
+
+    3. Commit updated content of qubes-translated repository.
 
 [qubes]: https://github.com/QubesOS
 [intro]: https://www.qubes-os.org/intro/
