@@ -16,8 +16,5 @@
     {% if section.category == "External Documentation" %}
       {% include doc-external-warning.html %}
     {% endif %}
-    {% if page.translated %}
-      {% include doc-translated-warning.html %}
-    {% endif %}
   {% endif %}
 {% endfor %}
