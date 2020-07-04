@@ -35,6 +35,9 @@ collections:
   qubes-translated:
     output: true
 
+exclude:
+  - aux/
+
 allowed_categories:
   - press
   - announcements
