@@ -1,11 +1,13 @@
 ---
+lang: en
 layout: default
-title: Donate to Qubes
 permalink: /donate/
 redirect_from:
 - /en/donate/
 - /doc/Donations/
 - /wiki/Donations/
+ref: 5
+title: Donate to Qubes
 ---
 
 # Donate to Qubes – Your Support Counts!
@@ -125,4 +127,3 @@ Visit our [introduction page to Qubes][intro page] or watch a [video overview of
 [video page]: /video-tours/
 [Center for the Cultivation of Technology]: https://techcultivation.org
 [experts]: /experts/
-
