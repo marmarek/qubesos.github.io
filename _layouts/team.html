@@ -3,6 +3,22 @@
   {% include head.html %}
     <body>
       {% include header.html %}
+      {% if page.lang == nil or page.lang == "en" %}
+        {% assign teamed = site.data.teamtexts %}
+{% else %}
+        {% assign teamed = site.data.translation[page.lang].teamtexts %}
+        {% if teamed == nil or teamed.size == 0 %}
+                {% assign teamed = site.data.teamtexts %}
+        {% endif %}
+{% endif %}
+
+
+{% assign coreteam = teamed | where_exp: "item", "item.htmlsection == 'core-team'" | first %}
+{% assign joined = teamed | where_exp: "item", "item.htmlsection == 'join'" | first %}
+{% assign upperlinks = teamed | where_exp: "item", "item.htmlsection == 'upperlinks'" | first  %}
+{% assign emeritus = teamed | where_exp: "item", "item.htmlsection == 'emeritus'" | first %}
+{% assign community = teamed | where_exp: "item", "item.htmlsection == 'community'" | first %}
+
       <div class="container">
 	{% if page.lang == nil or page.lang == "en" %}
 		{% assign lang = "" %}
@@ -41,6 +57,13 @@
                 {% assign partners_link = "/partners/" %}
         {% endif %}
 
+	{% assign team_link = lang | append: "/team/" %}
+	{% assign teams = site.pages | concat: site.qubes-translated | where:'permalink', team_link %}
+        {% if teams.size == 0 %}
+                {% assign team_link = "/team/" %}
+        {% endif %}
+
+
         {% assign hw_link = lang | append: "/hardware-certification/" %}
 	{% assign hw = site.doc | concat: site.qubes-translated | where:'permalink', hw_link %}
         {% if hw.size == 0 %}
@@ -55,22 +78,122 @@
           </div>
           <div class="col-lg-3 col-md-3 add-left">
             <ul class="list-unstyled">
-              <li><a href="{{ security_link }}"><i class="fa fa-lock fa-fw black-icon"></i> Report a security issue</a></li>
-              <li><a href="{{ doc_rb_link }}"><i class="fa fa-bug fa-fw black-icon"></i> Report a bug</a></li>
-              <li><a href="{{ support_link }}"><i class="fa fa-life-ring fa-fw black-icon"></i> Get help and support</a></li>
-              <li><a href="{{ join_link }}"><i class="fa fa-user-plus fa-fw black-icon"></i> Join the team</a></li>
+		    <li><a href="{{ security_link }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ upperlinks.security }}</a></li>
+		    <li><a href="{{ doc_rb_link }}"><i class="fa fa-bug fa-fw black-icon"></i> {{ upperlinks.bug }}</a></li>
+		    <li><a href="{{ support_link }}"><i class="fa fa-life-ring fa-fw black-icon"></i> {{ upperlinks.help }}</a></li>
+		    <li><a href="{{ join_link }}"><i class="fa fa-user-plus fa-fw black-icon"></i> {{ upperlinks.join }}</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-5 add-left">
             <ul class="list-unstyled">
               <li><i class="fa fa-newspaper-o fa-fw"></i> Press inquiries: <a href="mailto:press@qubes-os.org">press@qubes-os.org</a></li>
               <li><i class="fa fa-briefcase fa-fw"></i> Business inquiries: <a href="mailto:business@qubes-os.org">business@qubes-os.org</a></li>
-              <li><a href="{{ partners_link }}"><i class="fa fa-globe fa-fw black-icon"></i> Become a Qubes Partner</a></li>
-              <li><a href="{{ hw_link }}"><i class="fa fa-laptop fa-fw black-icon"></i> Request hardware certification</a></li>
+	      <li><a href="{{ partners_link }}"><i class="fa fa-globe fa-fw black-icon"></i> {{ upperlinks.partner }}</a></li>
+	      <li><a href="{{ hw_link }}"><i class="fa fa-laptop fa-fw black-icon"></i> {{ upperlinks.cert }}</a></li>
             </ul>
           </div>
         </div>
+
+<div id="team-core" class="white-box page-content more-bottom">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+	  <h2 id="core-team" class="text-center more-bottom"> {{ coreteam.title }}</h2>
+  </div>
+  {% for team in site.data.team %}
+    {% if team.type == "core" %}
+      <div class="row team team-core" id="{{team.name | slugify}}">
+        <div class="col-lg-2 col-md-2 col-sm-5 col-xs-12 text-center">
+          <div class="picture more-bottom">
+            {% if team.picture %}
+	    <a href="{{ team_link }}/#{{team.name | slugify}}"><img src="/attachment/site/{{team.picture}}" title=" {{ coreteam.picture }} {{team.name}}"></a>
+            {% else %}
+            <i class="fa fa-user"></i>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-7 col-xs-12">
+          {% assign name_array = team.name | split:" " %}
+          <h4 class="half-bottom" data-anchor-id="{{team.name | slugify}}">{{team.name}}</h4>
+          <em class="role half-bottom">{{team.role}}</em>
+          {% if team.email %}
+	  <a href="mailto:{{team.email}}" class="link add-right"><i class="fa fa-envelope fa-fw black-icon"></i>{{ coreteam.email }}</a>
+          {% endif %}
+          {% if team.website %}
+	  <a href="{{team.website}}" class="link add-right" target="blank"><i class="fa fa-globe fa-fw black-icon"></i> {{ coreteam.website }}</a>
+          {% endif %}
+          {% if team.github %}
+          <a href="https://github.com/{{team.github}}" class="link add-right" target="blank"><i class="fa fa-github fa-fw black-icon"></i>GitHub</a>
+          {% endif %}
+          {% if team.twitter %}
+          <a href="https://twitter.com/{{team.twitter}}" class="link" target="blank"><i class="fa fa-twitter fa-fw"></i>Twitter</a>
+          {% endif %}
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+          {% if team.fingerprint %}
+          <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
+          {% endif %}
+          {% if team.pgp_key %}
+          <a href="{{team.pgp_key}}"><i class="fa fa-lock fa-fw black-icon"></i>{{name_array[0]}}'s PGP Key</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  <div class="text-center more-bottom">
+	  <a href="{{ join_link}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
+  </div>
+</div>
+<div class="white-box page-content more-bottom">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+	  <h2 id="emeritus" class="text-center more-bottom">{{ emeritus.title }}</h2>
+	  <p>{{ emeritus.text }}</p>
+  </div>
+  {% for team in site.data.team %}
+    {% if team.type == "emeritus" %}
+    {% assign name_array = team.name | split:" " %}
+    <div class="row team">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        {% include team-simple.html %}
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+        {% if team.fingerprint %}
+        <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
+        {% endif %}
+        {% if team.pgp_key %}
+        <a href="{{team.pgp_key}}"><i class="fa fa-lock fa-fw black-icon"></i>{{name_array[0]}}'s PGP Key</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<div class="white-box page-content more-bottom">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+	  <h2 id="community-contributors" class="text-center more-bottom"> {{ community.title }}</h2>
+	  <p> {{ community.text }} <a href="{{ support_link }}"> {{ community.mail }}</a>.</p>
+  </div>
+  {% for team in site.data.team %}
+    {% if team.type == "community" %}
+    {% assign name_array = team.name | split:" " %}
+    <div class="row team">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        {% include team-simple.html %}
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+        {% if team.fingerprint %}
+        <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
+        {% endif %}
+        {% if team.pgp_key %}
+        <a href="{{team.pgp_key}}"><i class="fa fa-lock fa-fw black-icon"></i>{{name_array[0]}}'s PGP Key</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
         {{ content }}
+
+
         {% include footer.html %}
         <script src="/js/anchor.min.js"></script>
         <script>
