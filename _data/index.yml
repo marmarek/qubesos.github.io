@@ -1,0 +1,262 @@
+- topic: Table of Contents
+- title: Introduction
+  category: introduction
+  sub-pages:
+    - url: /intro/
+    - url: /video-tours/
+    - url: /screenshots/
+    - url: /faq/#users
+    - url: /doc/reporting-bugs/
+    - url: /support/
+    - url: /doc/contributing/
+- title: Project Security
+  category: project-security
+  sub-pages:
+    - url: /security/
+    - url: /faq/#general--security
+    - url: /security/pack/
+    - url: /security/bulletins/
+    - url: /security/canaries/
+    - url: /security/xsa/
+    - url: /security/verifying-signatures/
+
+- title: User Documentation
+  category: user
+  sub-pages:
+  - title: Choosing Your Hardware 
+    sub-pages:
+      - url: /doc/system-requirements/
+      - url: /doc/certified-hardware/
+      - url: /hcl/
+      - url: /doc/hardware-testing/
+  - title: Downloading, Installing, and Upgrading Qubes 
+    sub-pages:
+      - url: /downloads/
+      - url: /doc/installation-guide/
+      - url: /doc/upgrade/
+      - url: /doc/version-scheme/
+      - url: /doc/testing/
+      - url: /doc/supported-versions/
+  - title: Common Tasks
+    sub-pages:
+      - url: /getting-started/
+      - url: /doc/copy-paste/
+      - url: /doc/copying-files/
+      - url: /doc/copy-from-dom0/
+      - url: /doc/updating-qubes-os/
+      - url: /doc/software-update-dom0/
+      - url: /doc/software-update-domu/
+      - url: /doc/backup-restore/
+      - url: /doc/volume-backup-revert/
+      - url: /doc/disposablevm/
+      - url: /doc/block-devices/
+      - url: /doc/usb-devices/
+      - url: /doc/pci-devices/
+      - url: /doc/device-handling/
+      - url: /doc/optical-discs/
+      - url: /doc/managing-appvm-shortcuts/
+      - url: /doc/full-screen-mode/ 
+  - title: Managing Operating Systems within Qubes
+    sub-pages:
+      - url: /doc/templates/
+      - url: /doc/templates/fedora/
+      - url: /doc/templates/debian/
+      - url: /doc/templates/minimal/
+      - url: /doc/windows/
+      - url: /doc/standalone-and-hvm/
+  - title: Security in Qubes
+    sub-pages:
+      - url: /doc/firewall/
+      - url: /doc/data-leaks/
+      - url: /doc/vm-sudo/
+      - url: /doc/device-handling-security/
+      - url: /doc/anti-evil-maid/
+      - url: /doc/split-gpg/
+      - url: /doc/u2f-proxy/
+      - url: /doc/yubi-key/
+      - title: Qubes PGP Keys
+        url: https://keys.qubes-os.org/keys/
+  - title: Advanced Configuration
+    sub-pages:
+      - url: /doc/config-files/
+      - url: /doc/secondary-storage/
+      - url: /doc/rpc-policy/ 
+      - url: /doc/usb-qubes/ 
+      - url: /doc/managing-vm-kernel/ 
+      - url: /doc/salt/ 
+      - url: /doc/disposablevm-customization/ 
+      - url: /doc/bind-dirs/ 
+      - url: /doc/gui-configuration-and-troubleshooting/ 
+      - url: /doc/resize-disk-image/ 
+      - url: /doc/uefi-troubleshooting/ 
+      - url: /doc/newer-hardware-troubleshooting/ 
+      - url: /doc/mount-from-other-os/ 
+      - url: /doc/kde/ 
+      - url: /doc/i3/ 
+      - url: /doc/awesome/ 
+  - title: Reference Pages
+    sub-pages:
+      - url: /doc/tools/
+      - url: /doc/glossary/ 
+      - url: /doc/qubes-service/ 
+      - url: /doc/qrexec/
+      - title: Deprecated Documentation
+        url: https://github.com/QubesOS/qubesos.github.io#deprecated-documentation 
+- title: Developer Documentation
+  category: developer
+  sub-pages:
+  - title: General
+    sub-pages:
+      - url: /faq/#developers 
+      - url: /doc/package-contributions/ 
+      - url: /doc/doc-guidelines/ 
+      - title: Community-Developed Feature Tracker
+        url: /qubes-issues/ 
+      - url: /gsoc/ 
+      - url: /gsod/ 
+      - url: /doc/devel-books/ 
+      - url: /doc/style-guide/ 
+      - url: /doc/usability-ux/ 
+  - title: Code
+    sub-pages:
+      - url: /doc/source-code/ 
+      - url: /doc/license/ 
+      - url: /doc/coding-style/ 
+      - url: /doc/code-signing/ 
+  - title: System
+    sub-pages:
+      - url: /doc/architecture/ 
+      - title: Qubes OS Architecture Spec v0.3 [PDF]
+        url: /attachment/wiki/QubesArchitecture/arch-spec-0.3.pdf 
+      - url: /doc/security-critical-code/ 
+      - title: Qubes Core Admin
+        url: https://dev.qubes-os.org/projects/core-admin/en/latest/ 
+      - title: Qubes Core Admin Client
+        url: https://dev.qubes-os.org/projects/core-admin-client/en/latest/ 
+      - title: Qubes Admin API
+        url: /news/2017/06/27/qubes-admin-api/ 
+      - title: Qubes Core Stack
+        url: /news/2017/10/03/core3/ 
+      - url: /doc/gui/ 
+      - url: /doc/networking/ 
+      - url: /doc/template-implementation/ 
+      - url: /doc/storage-pools/ 
+      - url: /doc/audio-virtualization/ 
+  - title: Services
+    sub-pages:
+      - url: /doc/qfilecopy/
+      - title: Deprecated copying
+        url: /doc/qfileexchgd/ 
+      - url: /doc/qmemman/ 
+      - url: /doc/dvm-impl/ 
+      - url: /doc/dom0-secure-updates/ 
+      - url: /doc/qrexec/ 
+      - url: /doc/qrexec-internals/
+      - url: /doc/qrexec-socket-services/ 
+  - title: Debugging
+    sub-pages:
+      - url: /doc/profiling/  
+      - url: /doc/test-bench/ 
+      - url: /doc/automated-tests/ 
+      - url: /doc/vm-interface/ 
+      - url: /doc/windows-debugging/ 
+      - url: /doc/safe-remote-ttys/ 
+      - url: /doc/mount-lvm-image/ 
+  - title: Building
+    sub-pages:
+      - url: /doc/qubes-builder/  
+      - url: /doc/qubes-builder-details/ 
+      - url: /doc/development-workflow/ 
+      - url: /doc/qubes-iso-building/ 
+  - title: Releases
+    sub-pages:
+      - url: /doc/releases/notes/ 
+      - url: /doc/releases/schedules/ 
+      - url: /doc/releases/todo/ 
+
+- title: External Documentation
+  category: external
+  sub-pages:   
+  - title: Qubes Community Documentation
+    url: https://github.com/Qubes-Community/Contents/tree/master/docs 
+  - title: Operating System Guides
+    sub-pages:
+      - url: /doc/templates/ubuntu/
+      - url: /doc/whonix/ 
+      - url: /doc/pentesting/ 
+      - url: /doc/pentesting/blackarch/ 
+      - url: /doc/pentesting/kali/ 
+      - url: /doc/pentesting/ptf/ 
+      - url: /doc/linux-hvm-tips/
+      - url: /doc/netbsd/ 
+  - title: Security Guides
+    sub-pages:
+      - url: /doc/security-guidelines/ 
+      - url: /doc/multifactor-authentication/ 
+      - url: /doc/split-bitcoin/ 
+      - title: Split dm-crypt 
+        url: https://github.com/rustybird/qubes-split-dm-crypt 
+      - title: Split SSH
+        url: https://kushaldas.in/posts/using-split-ssh-in-qubesos-4-0.html 
+      - title: Using OnlyKey with Qubes OS 
+        url: https://docs.crp.to/qubes.html 
+  - title: Privacy Guides
+    sub-pages:
+      - url: /doc/whonix/ 
+      - url: /doc/tails 
+      - url: /doc/anonymizing-your-mac-address/ 
+      - url: /doc/signal/ 
+      - url: /doc/w3m/ 
+  - title: Configuration Guides
+    sub-pages:
+      - url: /doc/tips-and-tricks/ 
+      - url: /doc/vpn/ 
+      - url: /doc/multiboot/ 
+      - url: /doc/change-time-zone/ 
+      - url: /doc/zfs/ 
+      - url: /doc/mutt/ 
+      - url: /doc/postfix/ 
+      - url: /doc/fetchmail/ 
+      - title: Creating Custom NetVMs and ProxyVMs
+        url: https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html 
+      - title: How to make proxy for individual tcp connection from networkless VM
+        url: https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a 
+      - url: /doc/network-bridge-support/ 
+      - url: /doc/disk-trim/ 
+      - url: /doc/network-printer/ 
+      - url: /doc/external-audio/ 
+      - url: /doc/rxvt/ 
+      - title: dding SSD storage cache
+        url: https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com 
+      - url: /doc/multimedia/ 
+
+  - title: Customization Guides
+    sub-pages:
+      - url: /doc/fedora-minimal-template-customization/ 
+      - url: /doc/windows-template-customization/ 
+      - url: /doc/language-localization/ 
+      - url: /doc/dark-theme/ 
+      - url: /doc/removing-templatevm-packages/ 
+  - title: Troubleshooting
+    sub-pages:
+      - url: /doc/out-of-memory/ 
+      - title: Installing on system with new AMD GPU (missing firmware problem)
+        url: https://groups.google.com/group/qubes-devel/browse_thread/thread/e27a57b0eda62f76
+      - url: /doc/install-nvidia-driver/ 
+      - url: /doc/nvidia-troubleshooting/ 
+      - url: /doc/thinkpad-troubleshooting/ 
+      - url: /doc/macbook-troubleshooting/ 
+      - url: /doc/sony-vaio-tinkering/ 
+      - url: /doc/wireless-troubleshooting/ 
+      - url: /doc/remove-vm-manually/ 
+      - url: /doc/intel-igfx-troubleshooting/ 
+  - title: Building Guides
+    sub-pages:
+      - url: /doc/building-non-fedora-template/ 
+      - url: /doc/building-archlinux-template/ 
+      - url: /doc/building-whonix-template/ 
+      - title: How to compile kernels for dom0
+        url: https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion 
+
+
+
