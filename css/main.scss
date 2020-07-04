@@ -141,6 +141,7 @@ article table {
     display: block;
     overflow: auto;
     border-collapse: collapse;
+    white-space: nowrap;
     margin: 0 0 25px;
 }
 article td, article th {
@@ -165,4 +166,44 @@ article tr.center {
         text-align: center;
     }
 }
+
+
+// Custom - Language Dropdown Menu
+.langdropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.langdropdown-items {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    z-index: 1;
+    overflow: auto;
+    right: 0;
+}
+
+.langdropdown:hover .langdropdown-items {
+    display: block;
+}
+
+@media only screen and (max-width: 400px) {
+  .langdropdown {
+    display: grid;
+    position: static;
+    text-align: center;
+  }
+
+  .langdropdown-items {
+    display: block;
+    position: static;
+    text-align: center;
+  }
+
+  .langdropdown:hover .langdropdown-items {
+    display: grid;
+  }
+}
+
+
 
