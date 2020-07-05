@@ -1,7 +1,6 @@
 {% assign doc_segments = page.relative_path | split: '/' %}
 {% if page.lang == nil or page.lang == "en" %}
         {% assign indexed = site.data.index %}
-
 	{% assign lang = "" %}
 {% else %}
 	{% assign lang = "/" | append: page.lang %}
@@ -11,13 +10,13 @@
         {% endif %}
 {% endif %}
 
-{% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
-
 {% assign doc_link = lang | append: "/doc/" %}
 {% assign doc_ind = site.doc | concat: site.qubes-translated | where:'permalink', doc_link %}
 {% if doc_ind.size == 0 %}
 	{% assign doc_link = "/doc/" %}
+        {% assign indexed = site.data.index %}
 {% endif %}
+{% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
 {% for section in ind %}
   {% if doc_segments contains section.category %}
   {% assign s = section.title | slugify %}
