@@ -1,5 +1,6 @@
 - topic: Table of Contents
 - title: Introduction
+  category: introduction
   sub-pages:
     - url: /intro/
     - url: /video-tours/
@@ -9,6 +10,7 @@
     - url: /support/
     - url: /doc/contributing/
 - title: Project Security
+  category: project-security
   sub-pages:
     - url: /security/
     - url: /faq/#general--security
@@ -19,6 +21,7 @@
     - url: /security/verifying-signatures/
 
 - title: User Documentation
+  category: user
   sub-pages:
   - title: Choosing Your Hardware 
     sub-pages:
@@ -100,6 +103,7 @@
       - title: Deprecated Documentation
         url: https://github.com/QubesOS/qubesos.github.io#deprecated-documentation 
 - title: Developer Documentation
+  category: developer
   sub-pages:
   - title: General
     sub-pages:
@@ -171,6 +175,7 @@
       - url: /doc/releases/todo/ 
 
 - title: External Documentation
+  category: external
   sub-pages:   
   - title: Qubes Community Documentation
     url: https://github.com/Qubes-Community/Contents/tree/master/docs 
