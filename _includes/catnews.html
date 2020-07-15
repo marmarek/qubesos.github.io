@@ -1,21 +1,25 @@
----
-lang: en
-layout: news
-permalink: /news/categories/
-ref: 218
-title: News Categories
----
+	{% if page.lang == nil or page.lang == "en" %}
+        	{% assign catnewsdata = site.data.catnews %}
+	{% else %}
+        	{% assign catnewsdata = site.data.translation[page.lang].catnews %}
+        	{% if catnewsdata == nil or catnewsdata.size == 0 %}
+                	{% assign catnewsdata = site.data.catnews %}
+        	{% endif %}
+	{% endif %}
+{% assign maincat = catnewsdata | where_exp: "item", "item.htmlsection == 'main'" | first %}
+{% assign backcat = catnewsdata | where_exp: "item", "item.htmlsection == 'back'" | first %}
+
 
 {% if page.lang == nil or page.lang == "en"%}
-	{% assign lang = "" %}
+        {% assign lang = "" %}
 {% else %}
-	{% assign lang = "/" | append: page.lang %}
+        {% assign lang = "/" | append: page.lang %}
 {% endif %}
 
 {% assign ns_link = lang | append: "/news/" %}
 {% assign ns = site.posts | where:'permalink', ns_link %}
 {% if ns.size == 0 %}
-	{% assign ns_link = "/news/" %}
+        {% assign ns_link = "/news/" %}
 {% endif %}
 {% assign raw_categories = "" %}
   {% for post in site.posts %}
@@ -35,9 +39,9 @@ title: News Categories
     {% endif %}
   {% endfor %}
 
-<h1>News by Category</h1>
+  <h1>{{ maincat.title }}</h1>
 <p>
-  <a href="{{ ns_link }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to main News page</a>
+<a href="{{ ns_link }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>{{ backcat.title }}</a>
 </p>
 {% for category in categories %}
 <a href="#{{ category | slugify }}" class="btn btn-sm btn-primary"><i class="fa fa-tag" aria-hidden="true"></i> {{ category | capitalize }}</a>
@@ -52,3 +56,4 @@ title: News Categories
   {% endfor %}
 </ul>
 {% endfor %}
+

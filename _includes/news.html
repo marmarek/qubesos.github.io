@@ -1,31 +1,34 @@
----
-lang: en
-layout: news
-permalink: /news/
-redirect_from: /en/news/
-ref: 217
-title: News
----
+	{% if page.lang == nil or page.lang == "en" %}
+        	{% assign newsdata = site.data.news %}
+	{% else %}
+        	{% assign newsdata = site.data.translation[page.lang].news %}
+        	{% if newsdata == nil or newsdata.size == 0 %}
+                	{% assign newsdata = site.data.news %}
+        	{% endif %}
+	{% endif %}
+
+
+{% assign downs = newsdata | where_exp: "item", "item.htmlsection == 'download'" | first  %}
+
 
 <ul class="list-unstyled remove-bottom">
 {% if page.lang == nil or page.lang == "en"%}
-	{% assign lang = "" %}
+        {% assign lang = "" %}
 {% else %}
-	{% assign lang = "/" | append: page.lang %}
+        {% assign lang = "/" | append: page.lang %}
 {% endif %}
 
 {% assign team_link = lang | append: "/team/" %}
 {% assign t = site.pages | concat: site.qubes-translated | where:'permalink', team_link %}
 {% if t.size == 0 %}
-	{% assign team_link = "/team/" %}
+        {% assign team_link = "/team/" %}
 {% endif %}
 
 {% assign nsc_link = lang | append: "/news/categories/" %}
 {% assign nsc = site.posts | where:'permalink', nsc_link %}
 {% if nsc.size == 0 %}
-	{% assign nsc_link =  "/news/categories/" %}
+        {% assign nsc_link =  "/news/categories/" %}
 {% endif %}
-
 
 {% for post in site.posts %}
   <li>
@@ -67,9 +70,10 @@ title: News
       </strong>
     </p>
     {% if post.download_url %}
-    	<a href="{{ post.download_url }}" class="btn btn-info btn-sm"><i class="fa fa-download"></i> Download</a>
+    <a href="{{ post.download_url }}" class="btn btn-info btn-sm"><i class="fa fa-download"></i> {{downs.title}}</a>
     {% endif %}
     {% if forloop.index < forloop.length %}<hr>{% endif %}
   </li>
 {% endfor %}
 </ul>
+
