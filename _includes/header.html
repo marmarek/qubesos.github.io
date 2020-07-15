@@ -25,7 +25,7 @@
 		{% else %}
 			{% assign archies = site.data.translation[page.lang].architecture %}
 			{% if archies == nil or archies.size == 0 %}
-                                {% assign archies = archies.data.architecture %}
+                                {% assign archies = site.data.architecture %}
                         {% endif %}
 		{% endif %}
 		{% assign langmenu=true %}

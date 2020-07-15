@@ -2,7 +2,7 @@
 lang: en
 layout: news
 permalink: /news/categories/
-ref: 218
+ref: 219
 title: News Categories
 ---
 
