@@ -171,15 +171,11 @@ def get_error_output_from_htmlproofer(htmlproofer_output):
     errors = {}
     internal_link = []
     u = ''
+    pattern = 'a href='
     for i in range(len(errors_tmp)):
-        if 'a href=' in errors_tmp[i]:
-
-            u1 = errors_tmp[i].count('"')
-            u2 = errors_tmp[i].count('>')
-            p1 = 'a href='
-            i1 = errors_tmp[i].find(p1, 0)
-
-            i2 = errors_tmp[i].find('"', i1 + len(p1))
+        if pattern in errors_tmp[i]:
+            i1 = errors_tmp[i].find(pattern, 0)
+            i2 = errors_tmp[i].find('"', i1 + len(pattern))
             i3 = errors_tmp[i].find('"', i2 +1 )
             
             i_l = errors_tmp[i][i2+1:i3]
