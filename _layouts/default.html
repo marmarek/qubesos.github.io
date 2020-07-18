@@ -28,6 +28,11 @@
         </h1>
         <div class="white-box more-bottom page-content">
         {{ content }}
+	{% assign research = page.url | split: '/' | last | lstrip %}
+         {% if research == "research"  %}
+             {% include research.html %}
+         {% endif %}
+
         </div>
         {% include footer.html %}
         <script src="/js/anchor.min.js"></script>
