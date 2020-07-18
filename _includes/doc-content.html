@@ -31,6 +31,7 @@
 		{% assign doc_rb_link = "/doc/reporting-bugs/" %}
  	{% endif %}
 
+
 	{% assign donate_link = lang | append: "/donate/" %}
 	{% assign donate = site.pages | concat: site.qubes-translated | where:'permalink', donate_link %}
 	{% if donate.size == 0 %}
@@ -43,6 +44,7 @@
 	  	{% assign master_edit =  site.project_repo_path | append: "/qubes-translated/edit/master" | append: page.relative_path | remove_first: '_qubes-translated'  %}
 	  	{% assign master_blob =  site.project_repo_path | append: "/qubes-translated/blob/master" | append: page.relative_path| remove_first: '_qubes-translated'  %}
 	{% endif %}
+
   <div class="row">
     <div class="col-lg-3 col-md-3 text-center">
       <div class="page-source-side remove-bottom">
@@ -98,6 +100,14 @@
     <div class="col-lg-9 col-md-9 col-sm-12 page-content-right">
       <article id="doc-content" class="post-content">
         {{ content }}
+	<!-- Here below the contet will be added an _include containing a table only in case it is the page with the permalink /security/bulletins -->
+	{% assign sec_bull = page.url | split: '/' | last | lstrip %}
+     	 {% if sec_bull == "bulletins"  %}
+             {% include sec-bulletin.html %}
+     	 {% endif %}
+
+
+
       </article>
     <br>
     </div>

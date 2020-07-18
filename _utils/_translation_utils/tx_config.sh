@@ -13,6 +13,7 @@ tx config  mapping -r qubes.data_architecture --source-lang en --type YAML_GENER
 tx config  mapping -r qubes.data_index --source-lang en --type YAML_GENERIC --source-file _data/index.yml --expression '_qubes-translated/<lang>/_data/<lang>/index.yml' --execute
 tx config  mapping -r qubes.data_teamtexts --source-lang en --type YAML_GENERIC --source-file _data/teamtexts.yml --expression '_qubes-translated/<lang>/_data/<lang>/teamtexts.yml' --execute
 tx config  mapping -r qubes.data_home --source-lang en --type YAML_GENERIC --source-file _data/home.yml --expression '_qubes-translated/<lang>/_data/<lang>/home.yml' --execute
+tx config  mapping -r qubes.data_sec_bulletin --source-lang en --type YAML_GENERIC --source-file _data/security_bulletins.yml --expression '_qubes-translated/<lang>/_data/<lang>/security_bulletins.yml' --execute
 tx config  mapping -r qubes.data_news --source-lang en --type YAML_GENERIC --source-file _data/news.yml --expression '_qubes-translated/<lang>/_data/<lang>/news.yml' --execute
 tx config  mapping -r qubes.data_catnews --source-lang en --type YAML_GENERIC --source-file _data/catnews.yml --expression '_qubes-translated/<lang>/_data/<lang>/catnews.yml' --execute
 crudini --del .tx/config qubes._doc_en__doc_README
