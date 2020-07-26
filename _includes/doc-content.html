@@ -1,42 +1,25 @@
+
 <div class="more-bottom white-box page-content">
-	{% if page.lang == nil or page.lang == "en" %}
-		{% assign lang = "" %}
-	{% else %}
-		{% assign lang = "/" | append: page.lang %}
-	{% endif %}
-   <!-- assign respective urls for existing languages-->
-
-        {% assign support_link = lang | append: "/support/" %}
-        {% assign supports = site.doc | concat: site.qubes-translated | where:'permalink', support_link %}
-        {% if supports.size == 0 %}
-                {% assign support_link = "/support/" %}
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign doc_content = site.data.doc %}
+{% else %}
+        {% assign doc_content = site.data.translation[page.lang].doc %}
+        {% if doc_content == nil or doc_content.size == 0 %}
+                {% assign doc_content = site.data.doc %}
         {% endif %}
+{% endif %}
 
-	{% assign doc_link = lang | append: "/doc/" %}
-	{% assign docs = site.doc | concat: site.qubes-translated | where:'permalink', doc_link %}
-	{% if docs.size == 0 %}
-		{% assign doc_link = "/doc/" %}
- 	{% endif %}
-
-	{% assign doc_gd_link = lang | append: "/doc/doc-guidelines/" %}
-	{% assign doc_gd = site.doc | concat: site.qubes-translated | where:'permalink', doc_gd_link %}
-	{% if doc_gd.size == 0 %}
-		{% assign doc_gd_link = "/doc/doc-guidelines/" %}
- 	{% endif %}
+{% assign docs = doc_content | where_exp: "item", "item.htmlsection == 'doc-content'" | first %}
 
 
-	{% assign doc_rb_link =  lang | append: "/doc/reporting-bugs/" %}
-	{% assign d_rb = site.doc | concat: site.qubes-translated | where:'permalink', doc_rb_link %}
-	{% if d_rb.size == 0 %}
-		{% assign doc_rb_link = "/doc/reporting-bugs/" %}
- 	{% endif %}
+{% assign doc = docs.links | where_exp: "item", "item.id == 1" | first %}
+{% assign imprv = docs.links | where_exp: "item", "item.id == 2" | first %}
+{% assign blob = docs.links | where_exp: "item", "item.id == 3" | first %}
+{% assign edit = docs.links | where_exp: "item", "item.id == 4" | first %}
+{% assign bug = docs.links | where_exp: "item", "item.id == 5" | first %}
+{% assign sup = docs.links | where_exp: "item", "item.id == 6" | first %}
+{% assign don = docs.links | where_exp: "item", "item.id == 7" | first %}
 
-
-	{% assign donate_link = lang | append: "/donate/" %}
-	{% assign donate = site.pages | concat: site.qubes-translated | where:'permalink', donate_link %}
-	{% if donate.size == 0 %}
-		{% assign donate_link = "/donate/" %}
- 	{% endif %}
 	{% if lang == "" %}
 	  	{% assign master_edit =  site.project_repo_path | append: "/qubes-doc/edit/master" | append: page.relative_path | remove_first: '_doc'  %}
 	  	{% assign master_blob =  site.project_repo_path | append: "/qubes-doc/blob/master" | append: page.relative_path | remove_first: '_doc'  %}
@@ -48,51 +31,51 @@
   <div class="row">
     <div class="col-lg-3 col-md-3 text-center">
       <div class="page-source-side remove-bottom">
-        <h3 class="remove-bottom">Contents</h3>
+	      <h3 class="remove-bottom">{{ docs.title }}</h3>
       </div>
-      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button">Contents</a>
+      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button"> {{ docs.title }} </a>
       <div id="page-toc" class="collapse in"></div>
       <div class="page-source-side">
-        <a href="{{ doc_link }}"
+        <a href="{{ doc.url }}"
            class="btn btn-primary btn-block"
            title="Go to Documentation">
-          <span class="fa fa-fw fa-book"></span> Documentation
+		<span class="fa fa-fw fa-book"></span> {{ doc.text }}
         </a><br>
-        <a href="{{ doc_gd_link }}"
+        <a href="{{ imprv.url}}"
            class="page-source-link btn btn-default btn-block"
            title="Improve the Docs"
            target="_blank">
-          <span class="fa fa-fw fa-pencil"></span> Improve the Docs
+		<span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
         </a><br>
         <a href="{{ master_blob }}"
            class="page-source-link btn btn-default btn-block"
            title="View page source"
            target="_blank">
-          <span class="fa fa-fw fa-code"></span> View Page Source
+		<span class="fa fa-fw fa-code"></span> {{ blob.text }}
         </a><br>
         <a href="{{ master_edit }}"
            class="page-source-link btn btn-default btn-block"
            title="Edit this page"
            target="_blank">
-          <span class="fa fa-fw fa-code-fork"></span> Edit This Page
+		<span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
         </a><br>
-        <a href="{{ doc_rb_link }}"
+        <a href="{{ bug.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Report a Bug"
            target="_blank">
-          <span class="fa fa-fw fa-bug"></span> Report a Bug
+		<span class="fa fa-fw fa-bug"></span> {{ bug.text }}
         </a><br>
-        <a href="{{ support_link }}"
+        <a href="{{ sup.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Help & Support"
            target="_blank">
-          <span class="fa fa-fw fa-life-ring"></span> Help & Support
+		<span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
         </a><br>
-        <a href="{{ donate_link }}"
+        <a href="{{ don.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Make a Donation"
            target="_blank">
-          <span class="fa fa-fw fa-heart"></span> Make a Donation
+		<span class="fa fa-fw fa-heart"></span> {{ don.text }}
         </a>
       </div>
     </div>
@@ -110,54 +93,51 @@
              {% include sec-canaries.html %}
      	 {% endif %}
 
-
-
-
       </article>
     <br>
     </div>
   </div>
   <div class="page-source-bottom">
-        <a href="{{ doc_link }}"
+        <a href="{{ doc.url}}"
            class="btn btn-primary btn-block"
            title="Go to Documentation">
-          <span class="fa fa-fw fa-book"></span> Documentation
+		<span class="fa fa-fw fa-book"></span> {{ doc.text }}
         </a><br>
-        <a href="{{ doc_gd_link }}"
+        <a href="{{ imprv.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Improve the Docs"
            target="_blank">
-          <span class="fa fa-fw fa-pencil"></span> Improve the Docs
+		<span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
         </a><br>
         <a href="{{ master_blob }}"
            class="page-source-link btn btn-default btn-block"
            title="View page source"
            target="_blank">
-          <span class="fa fa-fw fa-code"></span> View Page Source
+		<span class="fa fa-fw fa-code"></span> {{ blob.text }}
         </a><br>
         <a href="{{ master_edit }}"
            class="page-source-link btn btn-default btn-block"
            title="Edit this page"
            target="_blank">
-          <span class="fa fa-fw fa-code-fork"></span> Edit This Page
+		<span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
         </a><br>
-        <a href="{{ doc_rb_link }}"
+        <a href="{{ bug.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Report a Bug"
            target="_blank">
-          <span class="fa fa-fw fa-bug"></span> Report a Bug
+		<span class="fa fa-fw fa-bug"></span> {{ bug.text }}
         </a><br>
-        <a href="{{ support_link }}"
+        <a href="{{ sup.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Help & Support"
            target="_blank">
-          <span class="fa fa-fw fa-life-ring"></span> Help & Support
+		<span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
         </a><br>
-        <a href="{{ donate_link }}"
+        <a href="{{ don.url }}"
            class="page-source-link btn btn-default btn-block"
            title="Make a Donation"
            target="_blank">
-          <span class="fa fa-fw fa-heart"></span> Make a Donation
+		<span class="fa fa-fw fa-heart"></span> {{ don.text }}
         </a>
   </div>
 </div>

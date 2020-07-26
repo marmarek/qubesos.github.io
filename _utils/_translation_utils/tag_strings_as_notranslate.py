@@ -24,7 +24,7 @@ from collections import deque
 from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
 
 # TODO should we also mark notranslate as also reviewed ? it may need manual labor afterwards though ?
-KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.icon)$', '^(\[\d\])(.url)$', '^(\[\d\])(.icon)$','^(\[\d\])(.category)$', '^(\[\d\])(.tech.)(\[\d\])(.img)$', '^(\[\d\])(.tech.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.article)$', '^(\[\d\])(.attachment)$', '^(\[\d\])(.expert.)(\[\d\])(.tweet)$', '^(\[\d\])(.expert.)(\[\d\])(.avatar)$', '^(\[\d\])(.expert.)(\[\d\])(.img)$', '^(\[\d\])(.htmlsection)$', '^(\[\d\])(.folder)$','redirect_from.\[\d\]']
+KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.icon)$', '^(\[\d\])(.url)$', '^(\[\d\])(.icon)$','^(\[\d\])(.category)$', '^(\[\d\])(.tech.)(\[\d\])(.img)$', '^(\[\d\])(.tech.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.article)$', '^(\[\d\])(.attachment)$', '^(\[\d\])(.expert.)(\[\d\])(.tweet)$', '^(\[\d\])(.expert.)(\[\d\])(.avatar)$', '^(\[\d\])(.expert.)(\[\d\])(.img)$', '^(\[\d\])(.htmlsection)$', '^(\[\d\])(.folder)$','redirect_from.\[\d\]', '^(\[\d\])(.links.)(\[\d\])(.url)$', '^(\[\d\])(.links.)(\[\d\])(.id)$']
 
 KEY_PATTERNS = ['lang', 'layout', 'permalink', 'redirect_from']
 SOURCE_PATTERNS = ['* * * * *', '</a>']

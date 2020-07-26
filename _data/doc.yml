@@ -1,0 +1,22 @@
+- htmlsection: doc-content
+  title: Contents
+  links:
+    - url: /doc/
+      text: Documentation
+      id: 1
+    - url: /doc/doc-guidelines/
+      text: Improve the Docs
+      id: 2
+    - text: View Page Source
+      id: 3
+    - text: Edit This Page
+      id: 4
+    - url: /doc/reporting-bugs/
+      text: Report a Bug
+      id: 5
+    - url: /support/
+      text: Help & Support
+      id: 6
+    - url: /donate/
+      text: Make a Donation 
+      id: 7

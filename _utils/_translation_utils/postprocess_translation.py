@@ -36,7 +36,7 @@ qubes_issues = "/qubes-issues/"
 # constants and such
 # yml keys:
 
-YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet', 'avatar', 'img', 'article', 'quote', 'name', 'occupation', 'author', 'more', 'text', 'video', 'intro', 'version', 'subtitle', 'download', 'security', 'bug', 'help', 'join', 'partner', 'cert', 'picture', 'email', 'website', 'mail']
+YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet', 'avatar', 'img', 'article', 'quote', 'name', 'occupation', 'author', 'more', 'text', 'video', 'intro', 'version', 'subtitle', 'download', 'security', 'bug', 'help', 'join', 'partner', 'cert', 'picture', 'email', 'website', 'mail', 'links', 'id']
 URL_KEY = 'url' 
 # md frontmatterkeys:
 PERMALINK_KEY = 'permalink'
@@ -47,6 +47,7 @@ LAYOUT_KEY = 'layout'
 SLASH = '/'
 MD_URL_SPLIT_PATTERNS = ['/)','/#']
 TRANSLATED_LANGS = ['de']
+EXCLUDE_FILES = ['download.md' ]
 
 
 basicConfig(level=DEBUG)
@@ -355,15 +356,15 @@ def main(translated_dir, lang, yml, mapping, href_filename):
     log_debug('all translated permalinks/redirects', perms)
     
     hrefs = get_all_the_hrefs(args.translateddir)
+
     log_debug('all the hrefs', hrefs)
     write_to_file(href_filename, perms.intersection(hrefs))
-
 
     # for each pair of source and translated file postprocess the translated file 
     for key, item in mapping.items():
         if yml and item.endswith('.yml'):
            process_yml(key, item, lang, perms)
-        if not item.endswith('.yml'):
+        if not item.endswith('.yml') and not item.endswith('downloads.md'):
             process_markdown(key, item, perms, lang)  
 
 
