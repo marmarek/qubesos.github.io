@@ -20,3 +20,13 @@
     - url: /donate/
       text: Make a Donation 
       id: 7
+
+- htmlsection: intro 
+  links:
+    - url: /video-tours/
+      text: Video Tours
+      id: 1
+    - url: /screenshots/
+      text: Screenshots
+      id: 2
+ 

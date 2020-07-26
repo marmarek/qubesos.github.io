@@ -11,6 +11,7 @@ tx config mapping-bulk -p qubes --source-language en --type HTML -f '.html' -d -
 tx config mapping-bulk -p qubes --source-language en --type YAML_GENERIC -f '.yml' -d --source-file-dir aux --expression '_qubes-translated/<lang>/aux/{filepath}/{filename}{extension}' --execute
 tx config  mapping -r qubes.data_architecture --source-lang en --type YAML_GENERIC --source-file _data/architecture.yml --expression '_qubes-translated/<lang>/_data/<lang>/architecture.yml' --execute
 tx config  mapping -r qubes.data_index --source-lang en --type YAML_GENERIC --source-file _data/index.yml --expression '_qubes-translated/<lang>/_data/<lang>/index.yml' --execute
+tx config  mapping -r qubes.data_includes --source-lang en --type YAML_GENERIC --source-file _data/includes.yml --expression '_qubes-translated/<lang>/_data/<lang>/includes.yml' --execute
 tx config  mapping -r qubes.data_teamtexts --source-lang en --type YAML_GENERIC --source-file _data/teamtexts.yml --expression '_qubes-translated/<lang>/_data/<lang>/teamtexts.yml' --execute
 tx config  mapping -r qubes.data_home --source-lang en --type YAML_GENERIC --source-file _data/home.yml --expression '_qubes-translated/<lang>/_data/<lang>/home.yml' --execute
 tx config  mapping -r qubes.data_experts --source-lang en --type YAML_GENERIC --source-file _data/experts.yml --expression '_qubes-translated/<lang>/_data/<lang>/experts.yml' --execute
