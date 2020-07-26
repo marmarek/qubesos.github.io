@@ -30,3 +30,15 @@
       text: Screenshots
       id: 2
  
+
+- htmlsection: post 
+  links:
+    - url: /news/
+      text: News
+      id: 1
+    - url: /news/categories/
+      text: News by Category
+      id: 2
+ 
+- htmlsection: doc-external
+  text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
