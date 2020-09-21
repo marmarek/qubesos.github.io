@@ -88,10 +88,13 @@
      	 {% if sec_bull == "bulletins"  %}
              {% include sec-bulletin.html %}
      	 {% endif %}
-	{% assign sec_ican = page.url | split: '/' | last | lstrip %}
      	 {% if sec_bull == "canaries"  %}
              {% include sec-canaries.html %}
      	 {% endif %}
+     	 {% if sec_bull == "xsa"  %}
+             {% include xsa.html %}
+     	 {% endif %}
+
 
       </article>
     <br>

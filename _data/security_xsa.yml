@@ -1,0 +1,20 @@
+- htmlsection: statistics 
+  title: Statistics 
+  tts1: Total time span
+  tts2: years
+  txp: Total XSAs published
+  txaq: Total XSAs affecting Qubes OS
+  pxaq: Percentage of XSAs affecting Qubes OS
+
+- htmlsection: tracker 
+  title: Tracker
+  column1: Date
+  column2: XSA
+  column3: Is Qubes Affected?
+  yes_short: "Yes"
+  no_short: "No"
+  no_extended: No (unused or withdrawn XSA number)
+  tba: TBA
+
+
+ 
