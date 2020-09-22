@@ -37,44 +37,45 @@
     </div>
     {% endfor %}
   </div>
-  <div class="row footer-nav text-center more-top add-bottom">
-    <div class="footer-logo more-bottom">
-      <a href="/"><img src="/attachment/icons/logo-outline-small.svg" alt="Qubes"><strong>Qubes</strong> OS</a>
-    </div>
-    <p>
-      &#169; <script type="text/javascript">
-               document.write(new Date().getFullYear());
-             </script><noscript>2020</noscript> The Qubes OS Project and others<br>
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign inc = site.data.includes %}
+{% else %}
+        {% assign inc = site.data.translation[page.lang].includes %}
+        {% if inc == nil or inc.size == 0 %}
+                {% assign inc = site.data.includes %}
+        {% endif %}
+{% endif %}
+
+{% assign foot = inc | where_exp: "item", "item.htmlsection == 'footer'" | first %}
+
+
+{% assign web = foot.links | where_exp: "item", "item.id == 1" | first %}
+{% assign tor = foot.links | where_exp: "item", "item.id == 2" | first %}
+{% assign bug = foot.links | where_exp: "item", "item.id == 3" | first %}
+{% assign priv = foot.links | where_exp: "item", "item.id == 4" | first %}
+{% assign terms = foot.links | where_exp: "item", "item.id == 5" | first %}
+{% assign map = foot.links | where_exp: "item", "item.id == 6" | first %}
 	{% if page.lang == nil or page.lang == "en" %}
-                {% assign lang = "" %}
+                {% assign lang = "/" %}
         {% else %}
                 {% assign lang = "/" | append: page.lang %}
         {% endif %}
 
-	{% assign doc_rb_link = lang  | append: "/doc/reporting-bugs/" %}
-        {% assign d_rb = site.doc | concat: site.qubes-translated | where:'permalink', doc_rb_link %}
-        {% if d_rb.size == 0 %}
-                {% assign doc_rb_link =  "/doc/reporting-bugs/" %}
-        {% endif %}
 
-        {% assign priv_link = lang  | append: "/privacy/" %}
-        {% assign priv = site.pages | concat: site.qubes-translated | where:'permalink', priv_link %}
-        {% if priv == 0 %}
-                {% assign priv_link = "/privacy/" %}
-        {% endif %}
-
-        {% assign terms_link = lang  | append: "/terms/" %}
-        {% assign terms = site.doc | concat: site.qubes-translated | where:'permalink', terms_link %}
-        {% if terms.size == 0 %}
-                {% assign terms_link = "/terms/" %}
-        {% endif %}
-
-      <a href="https://github.com/QubesOS/qubesos.github.io">Website Source Code</a> |
-      <a href="http://qubesosfasa4zl44o4tws22di6kepyzfeqv3tg4e3ztknltfxqrymdad.onion">Tor Onion Service</a> |
-      <a href="{{ doc_rb_link }}">Report a Problem</a> |
-      <a href="{{ privacy_link }}">Privacy Policy</a> |
-      <a href="{{ terms_link }}">Terms of Use</a> |
-      <a href="/sitemap.xml">Sitemap</a>
+  <div class="row footer-nav text-center more-top add-bottom">
+    <div class="footer-logo more-bottom">
+	    <a href="{{ lang }}"><img src="/attachment/icons/logo-outline-small.svg" alt="Qubes"><strong>Qubes</strong> OS</a>
+    </div>
+    <p>
+      &#169; <script type="text/javascript">
+               document.write(new Date().getFullYear());
+      </script><noscript>2020</noscript> {{ foot.title }}<br>
+      <a href="{{ web.url }}">{{ web.text }}</a> |
+      <a href="{{ tor.url }}">{{ tor.text }}</a> |
+      <a href="{{ bug.url }}">{{ bug.text }}</a> |
+      <a href="{{ priv.url }}">{{ priv.text }}</a> |
+      <a href="{{ term.url }}">{{ term.text }}</a> |
+      <a href="{{ map.url }}">{{ map.text }}</a>
     </p>
   </div>
 </footer>
