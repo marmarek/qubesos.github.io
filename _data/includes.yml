@@ -68,3 +68,30 @@
       text: Sitemap
       id: 6
 
+- htmlsection: getting-started
+  subsections:
+    - title: Compatible Hardware
+      paragraph: 
+        - text: Ready to install Qubes? Make sure your hardware is compatible, as Qubes cannot run on every type of computer. Also, check out
+          link: /doc/certified-laptops/
+          linkedtext: Qubes-certified Laptops
+      url: /hcl/
+      text: Hardware Compatibility List
+      id: 1
+    - title: Downloads
+      paragraph: 
+        - text: Download an ISO, learn how to verify its authenticity and integrity, and follow our guides to install Qubes. Looking for the source code? You'll find it on 
+          link: https://github.com/QubesOS
+          linkedtext: Github 
+      url: /downloads/ 
+      text: Downloads
+      id: 2
+    - title: Documentation
+      paragraph: 
+        - text: Peruse our extensive library of documentation for users and developers of Qubes. You can even help us 
+          link: /doc/doc-guidelines/
+          linkedtext: improve it!
+      url: /doc/
+      text: Documentation
+      id: 3
+

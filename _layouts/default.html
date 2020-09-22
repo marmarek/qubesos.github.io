@@ -32,6 +32,10 @@
          {% if research == "research"  %}
              {% include research.html %}
          {% endif %}
+	{% assign started = page.url | split: '/' | last | lstrip %}
+         {% if research == "getting-started"  %}
+             {% include getting-started.html %}
+         {% endif %}
 
         </div>
         {% include footer.html %}
