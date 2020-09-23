@@ -1,0 +1,297 @@
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign down = site.data.download %}
+{% else %}
+        {% assign down = site.data.translation[page.lang].download %}
+        {% if down == nil or down.size == 0 %}
+                {% assign down = site.data.download %}
+        {% endif %}
+{% endif %}
+
+{% assign hw = down | where_exp: "item", "item.htmlsection == 'hardware'" | first %}
+{% assign sr = hw.links | where_exp: "item", "item.id == 1" | first %}
+{% assign ch = hw.links | where_exp: "item", "item.id == 2" | first %}
+{% assign hcl = hw.links | where_exp: "item", "item.id == 3" | first %}
+
+{% assign sec = down | where_exp: "item", "item.htmlsection == 'sec'" | first %}
+{% assign ig = sec.links | where_exp: "item", "item.id == 1" | first %}
+{% assign vs = sec.links | where_exp: "item", "item.id == 2" | first %}
+{% assign isc = sec.links | where_exp: "item", "item.id == 3" | first %}
+
+{% assign help = down | where_exp: "item", "item.htmlsection == 'help'" | first %}
+{% assign hs = help.links | where_exp: "item", "item.id == 1" | first %}
+{% assign tg = help.links | where_exp: "item", "item.id == 2" | first %}
+{% assign rb = help.links | where_exp: "item", "item.id == 3" | first %}
+
+
+<div class="white-box more-bottom page-content">
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+	    <h3>{{ hw.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ sr.url }}"><i class="fa fa-server fa-fw black-icon"></i> {{ sr.text }}</a></li>
+	      <li><a href="{{ ch.url }}"><i class="fa fa-floppy-o fa-fw black-icon"></i> {{ ch.text }}</a></li>
+	      <li><a href="{{ hcl.url }}"><i class="fa fa-laptop fa-fw black-icon"></i> {{ hcl.text }}</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-4 col-md-4">
+	    <h3> {{ sec.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ ig.url }}"><i class="fa fa-book fa-fw black-icon"></i> {{ ig.text }}</a></li>
+	      <li><a href="{{ vs.url }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ vs.text }}</a></li>
+	      <li><a href="{{ isc.url }}"><i class="fa fa-lightbulb-o fa-fw black-icon"></i> {{ isc.text }}</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-4 col-md-4">
+	    <h3>{{ help.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ hs.url }}"><i class="fa fa-life-ring fa-fw black-icon"></i> {{ hs.text }}</a></li>
+	      <li><a href="{{ tg.url }}"><i class="fa fa-file-text-o fa-fw black-icon"></i> {{ tg.text }}</a></li>
+	      <li><a href="{{ rb.url }}"><i class="fa fa-bug fa-fw black-icon"></i> {{ rb.text }}</a></li>
+      </ul>
+    </div>
+  </div>
+
+{% assign donation = down | where_exp: "item", "item.htmlsection == 'donation'" | first %}
+  <hr class="more-bottom">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+	    <h3>{{ donation.title }}</h3>
+	    <p> {{ donation.paragraph }}</p>
+	    <a class="btn btn-lg btn-primary" href="{{ donation.url }}">{{ donation.text }}</a>
+    </div>
+  </div>
+</div>
+
+{% assign ls = down | where_exp: "item", "item.htmlsection == 'loop-releases'" | first %}
+{% assign test = ls.releases | where_exp: "item", "item.version == 'testing'" | first %}
+{% assign stable = ls.releases | where_exp: "item", "item.version == 'stable'" | first %}
+{% assign old = ls.releases | where_exp: "item", "item.version == 'old'" | first %}
+{% assign depr = ls.releases | where_exp: "item", "item.version == 'deprecated'" | first %}
+
+<div class="white-box more-bottom page-content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      {% for releasex in site.data.downloads.releases %}
+      {% assign release_name = releasex[0] %}
+      {% assign release = releasex[1] %}
+      {% assign testing = release.testing | default: false %}
+      {% assign latest = release.latest | default: false %}
+      {% assign aging = release.aging | default: false %}
+      {% assign deprecated = release.deprecated | default: false %}
+      <h3 class="more-bottom" id="{{ release_name | slugify }}">{{ release_name }}</h3>
+
+      {% if testing %}
+      <div class="alert alert-info" role="alert">
+      <i class="fa fa-question-circle"></i>{% if testing != true %} {{ testing }}{% else %} 
+      {% for s in testing.snippets %}
+        {% if s.url != nil %}
+                <a href="{{ s.url }}">{{ s.snippet }}</a>
+        {% else %}
+                {{ s.snippet }}
+        {% endif %}
+	{% endfor %}
+	{% endif %}
+      </div>
+      {% endif %}
+      {% if latest %}
+      <div class="alert alert-success" role="alert">
+	      <i class="fa fa-check-circle"></i>{% if latest != true %} {{ latest }}{% else %} {{ stable.snippets[0].snippet }} {% endif %}
+      </div>
+      {% endif %}
+
+      {% if aging %}
+      <div class="alert alert-warning" role="alert">
+	<i class="fa fa-info-circle"></i>{% if aging != true %} {{ aging }}{% else %}
+	{% for s in old.snippets %}
+        {% if s.url != nil %}
+                <a href="{{ s.url }}">{{ s.snippet }}</a>
+        {% else %}
+                {{ s.snippet }}
+        {% endif %}
+	{% endfor %}
+
+	{% endif %}
+      </div>
+      {% endif %}
+
+      {% if deprecated %}
+      <div class="alert alert-danger" role="alert">
+	<i class="fa fa-exclamation-circle"></i>{% if deprecated != true %} {{ deprecated }}{% else %} 
+	{% for s in depr.snippets %}
+       	{% if s.url != nil %}
+               <a href="{{ s.url }}">{{ s.snippet }}</a>
+	{% else %}
+              {{ s.snippet }}
+       	{% endif %}
+	{% endfor %}
+	{% endif %}
+      </div>
+      {% endif %}
+
+{% assign table = down | where_exp: "item", "item.htmlsection == 'table'" | first %}
+      <table class="table">
+        <thead>
+          <tr>
+		  <th>{{ table.columns[0].column }}</th>
+		  <th> {{ table.columns[1].column }}
+			  <a class="fa fa-question-circle" href="{{ table.columns[1].url }}"
+							   title="{{ table.columns[1].hover }}"></a></th>
+            <th>{{ table.columns[2].column }}</th>
+            <th>{{ table.columns[3].column }}</th>
+	    <th>{{ table.columns[4].column }}<a class="pull-right" href="{{ table.columns[4].url }}" title="{{ table.columns[4].hover }}"><i class="fa fa-cloud-download"></i> {{ table.columns[4].text }}</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for source in release.sources %}
+            {% if source.display %}
+            <tr>
+              <td>
+                <a class="btn btn-primary btn-block" href="{{ source.url }}">
+                  <i class="fa fa-download"></i> {{ source.type }}
+                </a>
+              </td>
+              <td>
+                {% for verifier in source.verifiers %}
+                  {% if verifier[0] == "hash" %}
+		  <a title="MD5, SHA-128, SHA-256, and SHA-512 hash values" class="btn btn-default" href="{{ verifier[1] }}">{{ table.cells[0].digest }}</a>
+                  {% elsif verifier[0] == "sig" %}
+		  <a title="Detached PGP signature file" class="btn btn-default" href="{{ verifier[1] }}">{{ table.cells[1].signature }}</a>
+                  {% elsif verifier[0] == "key" %}
+		  <a title="PGP Release Signing Key" class="btn btn-default" href="{{ verifier[1] }}">{{ table.cells[2].pgp }}</a>
+                  {% endif %}
+                {% endfor %}
+              </td>
+              <td>
+                <small><samp>{{ source.filename }}</samp></small>
+              </td>
+              <td>
+                <small><samp>{{ source.size }}</samp></small>
+              </td>
+              <td>
+                <div class="d-inline">
+                  <a href="https://www.{{ source.name }}/">
+                    {% if source.name == "kernel.org" %}
+                    <i class="fa fa-linux fa-fw black-icon"></i>
+                    {% elsif source.name == "qubes-os.org" %}
+                    <i class="fa fa-cubes fa-fw black-icon"></i>
+                    {% else %}
+                    <i class="fa fa-cloud-download fa-fw black-icon"></i>
+                    {% endif %}
+                    <samp>{{ source.name }}</samp>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+{% if page.lang == nil or page.lang == "en"%}
+        {% assign lang = "" %}
+{% else %}
+        {% assign lang = "/" | append: page.lang %}
+{% endif %}
+
+
+        {% for docdata in release.docs %}
+        {% assign doc_name = docdata[0] %}
+        {% assign doc = docdata[1] %}
+          {% if doc_name == "Installation Guide" %}
+	  <a class="btn btn-link" href="{{ lang }}{{ doc.url }}"><i class="fa fa-book black-icon"></i> {{ doc_name }}</a>
+          {% endif %}
+          {% if doc_name == "Release Notes" %}
+	  <a class="btn btn-link" href="{{ lang }}{{ doc.url }}"><i class="fa fa-file-text-o black-icon"></i> {{ doc_name }}</a>
+          {% endif %}
+          {% if doc_name == "Release Schedule" %}
+	  <a class="btn btn-link" href="{{ lang }}{{ doc.url }}"><i class="fa fa-calendar black-icon"></i> {{ doc_name }}</a>
+          {% endif %}
+          {% if doc_name contains "Upgrading" %}
+	  <a class="btn btn-link" href="{{ lang }}{{ doc.url }}"><i class="fa fa-arrow-circle-up black-icon"></i> {{ doc_name }}</a>
+          {% endif %}
+        {% endfor %}
+      <!-- TODO here the strings should be extracted, such as Installation Guide here urls to infile sections are not to be translated-->
+          <a class="btn btn-link" href="#versions"><i class="fa fa-history black-icon"></i> Version Information</a>
+          <a class="btn btn-link" href="#source-code"><i class="fa fa-code black-icon"></i> Source Code</a>
+      <hr class="more-top more-bottom">
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% assign dm = down | where_exp: "item", "item.htmlsection == 'download-mirrors'" | first %}
+
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="white-box more-bottom page-content">
+      <article>
+	      <h3 id="mirrors">{{ dm.title }}</h3>
+        <table>
+          <tr>
+
+	 	<th>{{ dm.table[0].column }}</th>
+		<th>{{ dm.table[1].column }}</th>
+		<th>{{ dm.table[2].column }}</th>
+          </tr>
+        {% for mirror in site.data.mirrors %}
+          <tr id="{{ mirror.organization | slugify }}">
+            <td><a href="{{ mirror.org_url }}">{{ mirror.organization }}</a></td>
+            <td>{{ mirror.location }}</td>
+            <td>{% for url in mirror.urls %}<a href="{{ url.url }}">{{ url.url | truncate: 76 }}</a><br>{% endfor %}</td>
+          </tr>
+        {% endfor %}
+        </table>
+	<a href="{{ dm.links[0].url }}"><i class="fa fa-cloud fa-fw black-icon"></i>{{ dm.links[0].text }}</a>
+      </article>
+    </div>
+  </div>
+</div>
+
+{% assign secinfo = down | where_exp: "item", "item.htmlsection == 'sec-info'" | first %}
+{% assign sc = secinfo.links | where_exp: "item", "item.id == 1" | first %}
+{% assign sp = secinfo.links | where_exp: "item", "item.id == 2" | first %}
+{% assign sg = secinfo.links | where_exp: "item", "item.id == 3" | first %}
+
+{% assign ver = down | where_exp: "item", "item.htmlsection == 'version-info'" | first %}
+{% assign sv = ver.links | where_exp: "item", "item.id == 1" | first %}
+{% assign t = ver.links | where_exp: "item", "item.id == 2" | first %}
+{% assign vs = ver.links | where_exp: "item", "item.id == 3" | first %}
+
+{% assign code = down | where_exp: "item", "item.htmlsection == 'source-code'" | first %}
+{% assign scode = code.links | where_exp: "item", "item.id == 1" | first %}
+{% assign cg = code.links | where_exp: "item", "item.id == 2" | first %}
+{% assign sl = code.links | where_exp: "item", "item.id == 3" | first %}
+
+
+<div class="row">
+  <div class="col-lg-4 col-md-4">
+    <div class="white-box more-bottom page-content">
+	    <h3 id="versions">{{ secinfo.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ sc.url }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ sc.text }}</a></li>
+	      <li><a href="{{ sp.url }}"><i class="fa fa-folder fa-fw black-icon"></i> {{ sp.text }}</a></li>
+	      <li><a href="{{ sg.url }}"><i class="fa fa-tasks fa-fw black-icon"></i> {{ sg.text }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="white-box more-bottom page-content">
+	    <h3 id="versions"> {{ ver.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ sv.url }}"><i class="fa fa-history fa-fw black-icon"></i> {{ sv.text }}</a></li>
+	      <li><a href="{{ t.url }}"><i class="fa fa-clone fa-fw black-icon"></i> {{ t.text }}</a></li>
+	      <li><a href="{{ vs.url }}"><i class="fa fa-code-fork fa-fw black-icon"></i> {{ vs.text }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="white-box more-bottom page-content">
+	    <h3 id="source-code">{{ code.title }}</h3>
+      <ul class="list-unstyled">
+	      <li><a href="{{ scode.url }}"><i class="fa fa-code fa-fw black-icon"></i> {{ scode.text }}</a></li>
+	      <li><a href="{{ cg.url }}"><i class="fa fa-terminal fa-fw black-icon"></i> {{ cg.text }}</a></li>
+	      <li><a href="{{ sl.url }}"><i class="fa fa-file-text-o fa-fw black-icon"></i> {{ sl.text }} </a></li>
+      </ul>
+    </div>
+  </div>
+</div>

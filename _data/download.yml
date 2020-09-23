@@ -1,0 +1,138 @@
+- htmlsection: hardware 
+  title: Choosing Your Hardware 
+  links:
+    - url: /doc/system-requirements/
+      text: System Requirements
+      id: 1
+    - url: /doc/certified-hardware/
+      text: Certified Hardware
+      id: 2
+    - url: /hcl/
+      text: Hardware Compatibility List
+      id: 3
+
+- htmlsection: sec
+  title: Installing Qubes Securely 
+  links:
+    - url: /doc/installation-guide/
+      text: Installation Guide
+      id: 1
+    - url: /security/verifying-signatures/
+      text: How and Why to Verify Signatures
+      id: 2
+    - url: /doc/install-security/
+      text: Installation Security Considerations
+      id: 3
+
+- htmlsection: help
+  title: Help and Support 
+  links:
+    - url: /support/
+      text: Help and Support
+      id: 1
+    - url: /doc/#troubleshooting 
+      text: Troubleshooting Guides
+      id: 2
+    - url: /doc/reporting-bugs/
+      text: Report a Bug
+      id: 3
+
+- htmlsection: sec-info
+  title: Security Information 
+  links:
+    - url: /security/
+      text: Security Center
+      id: 1
+    - url: /security/pack/
+      text: Security Pack
+      id: 2
+    - url: /doc/security-guidelines/
+      text: Security Guidelines
+      id: 3
+
+- htmlsection: version-info
+  title: Version Information 
+  links:
+    - url: /doc/supported-versions/
+      text: Supported Versions 
+      id: 1
+    - url: /doc/templates/
+      text: Templates
+      id: 2
+    - url: /doc/version-scheme/
+      text: Version Scheme
+      id: 3
+
+- htmlsection: source-code
+  title: Source Code
+  links:
+    - url: /doc/source-code/
+      text: Source Code
+      id: 1
+    - url: /doc/coding-style/
+      text: Coding Guidelines
+      id: 2
+    - url: /doc/license/
+      text: Software License
+      id: 3
+
+- htmlsection: download-mirrors
+  title: Download Mirrors
+  table:
+    - column: Organization
+    - column: Location
+    - column: URL
+  links:
+    - url: /downloads/mirrors/#instructions-for-mirror-operators
+      text: How to contribute a download mirror  
+
+- htmlsection: donation 
+  title: Qubes OS is made possible by your donations!
+  paragraph: As a free and open-source software project, we rely on donations from users like you in order to keep running. Your contributions directly support the developers who work hard every day to improve your security. Please consider making a donation today.
+  url: /donate/
+  text: Donate
+
+- htmlsection: loop-releases
+  releases:
+    - version: testing
+      snippets:
+        - snippet: This is a 
+          url: /doc/testing/
+        - snippet: testing release
+        - snippet: Please help us improve it by 
+          url: /doc/reporting-bugs/
+        - snippet: reporting any bugs you encounter.
+        - snippet: For important work, we recommend the latest stable release. 
+    - version: stable
+      snippets: 
+        - snippet: This is the latest stable Qubes OS release. We recommend this release for all new and existing users.
+    - version: old
+      snippets:
+        - snippet: This is an old, 
+          url: /doc/supported-versions/
+        - snippet: supported
+        - snippet: release. For the best Qubes OS experience, we suggest upgrading to the latest stable release.
+    - version: deprecated
+      snippets:
+        - snippet: This is an old, 
+          url: /doc/supported-versions/
+        - snippet: unsupported
+        - snippet: release. We strongly recommend upgrading to a supported release in order to receive the latest security updates.
+
+- htmlsection: table
+  columns:
+    - column: Download
+    - column: Verify
+      url: /security/verifying-signatures/
+      hover: How do I verify my download?
+    - column: File
+    - column: Size
+    - column: Source
+      url: #mirrors
+      hover: View all download mirrors
+      text: All Mirrors
+  cells:
+    - digest: Digests
+    - signature: Signature
+    - pgp: PGP Key
+
