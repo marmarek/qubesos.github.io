@@ -1,0 +1,83 @@
+- htmlsection: intro 
+  title: Introduction
+  paragraph: Learn the basics in this introduction to Qubes OS.  
+  links:
+    - url: /intro/
+      text: What is Qubes OS?
+
+- htmlsection: screenshot
+  title: Screenshots
+  paragraph: See what using Qubes actually looks like with these screenshots of various applications running in Qubes. 
+  links:
+    - url: /screenshots/ 
+      text: See Screenshots
+
+- htmlsection: start
+  title: Getting Started
+  paragraph: Ready to get started with Qubes? Here's what you need to know after installing. 
+  links:
+    - url: /getting-started/ 
+      text: Getting Started
+
+- htmlsection: matthew
+  title: A Video Tour of Qubes 3.1 by Matthew Wilson
+  paragraph: This video by Matthew Wilson provides an overview of Qubes 3.1. You can use the menu links to browse to specific chapters. 
+  links:
+    - text: An Overview of Qubes OS 
+    - text: Web browsing with multiple identities 
+    - text: Isolating files in different Qubes
+    - text: Moving files between Qubes
+    - text: Using the secure clipboard
+    - text: Web browsing securely in a Disposable Qube
+    - text: Handling untrusted files in a Disposable Qube
+    - text: Exploring the Qubes Manager
+    - text: Templates and App Qubes
+    - text: Installing temporary applications
+    - text: Installing persistent applications
+    - text: Managing the applications menu
+    - text: Creating & using a Standalone Qube
+    - text: Editing settings of a Qube 
+    - text: Creating a Qube for added security & privacy
+    - text: Whonix and Tor for privacy & anonymity
+
+- htmlsection: docs
+  title: Docs
+  paragraph: Dive into the Qubes documentation with guides, tips, and troubleshooting help.
+  links:
+    - url: /doc/ 
+      text: Documentation
+
+- htmlsection: downloads
+  title: Downloads
+  paragraph: Download an ISO, verify your download, and install Qubes.
+  links:
+    - url: /downloads/
+      text: Downloads
+
+- htmlsection: sec
+  title: Security
+  paragraph: Get PGP keys, security bulletins, and canaries. Learn more about our security practices.
+  links:
+    - url: /security/
+      text: Security Center
+
+- htmlsection:  paf
+  title: French Video Series by Paf LeGeek (6 Parts)
+  paragraph: This French series by Paf LeGeek provides a guide to Qubes OS across six videos. You can use the menu links to browse to specific videos in the series.
+
+- htmlsection: micah
+  title: Micah Lee presents "Qubes OS&#58; The Operating System That Can Protect You Even If You Get Hacked"
+  links:
+    - url: https://micahflee.com/
+      text: Micah Lee
+    - url: advocate
+      text: advocate
+    - url: https://www.hope.net/schedule.html#-qubes-os-the-operating-system-that-can-protect-you-even-if-you-get-hacked-
+      text: Qubes OS&#58; The Operating System That Can Protect You Even If You Get Hacked
+    - url: https://www.hope.net/index.html
+      text: Circle of HOPE
+  snippets:
+    - snippet: a long-time Qubes  
+    - snippet: presented
+    - snippet: at the
+    - snippet: conference, which took place July 20-22, 2018 in New York City.

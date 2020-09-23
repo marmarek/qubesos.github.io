@@ -1,0 +1,127 @@
+        {% if page.lang == nil or page.lang == "en" %}
+                {% assign vids = site.data.videos %}
+        {% else %}
+                {% assign vids = site.data.translation[page.lang].videos %}
+                {% if vids == nil or vids.size == 0 %}
+                        {% assign vids = site.data.videos %}
+                {% endif %}
+        {% endif %}
+
+
+{% assign micah = vids | where_exp: "item", "item.htmlsection == 'micah'" | first %}
+{% assign intro = vids | where_exp: "item", "item.htmlsection == 'intro'" | first %}
+{% assign screen = vids | where_exp: "item", "item.htmlsection == 'screenshot'" | first %}
+{% assign start = vids | where_exp: "item", "item.htmlsection == 'start'" | first %}
+{% assign matthew = vids | where_exp: "item", "item.htmlsection == 'matthew'" | first %}
+
+<div id="tour">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+	    <h2 class="add-bottom"> {{ micah.title }}</h2>
+	    <p><a href="{{ micah.links[0].url }}">Micah Lee</a>, {{ micah.snippets[0].snippet }} <a href="{{ micah.links[1].url }}">{{ micah.links[1].text }}</a>, {{ micah.snippets[1].snippet }} <a href="{{ micah.links[2].url }}">{{ micah.links[2].text }}</a> {{ micah.snippets[2].snippet }} <a href="{{ micah.links[3].url }}">{{ micah.links[3].text }}</a> {{ micah.snippets[3].snippet }}</p>
+      <iframe id="ls_embed_1533360087" src="https://livestream.com/accounts/9197973/events/8286152/videos/178431606/player?width=960&height=540&enableInfo=true&defaultDrawer=feed&autoPlay=false&mute=false" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen> </iframe>
+    </div>
+  </div>
+<hr class="more-top more-bottom">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ intro.title }}</h3>
+	    <p>{{ intro.paragraph }}</p><br>
+	    <a href="{{ intro.links[0].url }}" class="btn btn-primary">
+	      <i class="fa fa-flag"></i> {{ intro.links[0].text }}
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ screen.title }}</h3>
+	    <p>{{ screen.paragraph }}</p>
+	    <a href="{{ screen.links[0].url }}" class="btn btn-primary">
+		    <i class="fa fa-picture-o"></i> {{ screen.links[0].text }}
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ start.title }}</h3>
+	    <p>{{ start.paragraph }}</p>
+	    <a href="{{ start.links[0].url }}" class="btn btn-primary">
+		    <i class="fa fa-cubes"></i> {{ start.links[0].text }}
+      </a>
+    </div>
+  </div>
+<hr class="more-top more-bottom">
+  <div class="row">
+    <div class="col-lg-8 col-md-12 col-xs-12">
+	    <h2 class="add-bottom">{{ matthew.title }}</h2>
+      <div id="player0"></div>
+      <p>{{ matthew.paragraph }}</p>
+    </div>
+    <div class="col-lg-4 col-md-12 col-xs-12">
+      <h2 class="add-bottom">&nbsp;</h2>
+      <ul id="player0-menu" class="list-unstyled remove-bottom">
+	      <li><a href="00:00" class="player0-seek">{{ matthew.links[0].text }}</a></li>
+        <li><a href="01:47" class="player0-seek">{{ matthew.links[1].text }}</a></li>
+        <li><a href="05:26" class="player0-seek">{{ matthew.links[2].text }}</a></li>
+        <li><a href="07:28" class="player0-seek">{{ matthew.links[3].text }}</a></li>
+        <li><a href="09:21" class="player0-seek">{{ matthew.links[4].text }}</a></li>
+        <li><a href="11:13" class="player0-seek">{{ matthew.links[5].text }}</a></li>
+        <li><a href="13:51" class="player0-seek">{{ matthew.links[6].text }}</a></li>
+        <li><a href="16:50" class="player0-seek">{{ matthew.links[7].text }}</a></li>
+        <li><a href="18:54" class="player0-seek">{{ matthew.links[8].text }}</a></li>
+        <li><a href="20:04" class="player0-seek">{{ matthew.links[9].text }}</a></li>
+        <li><a href="21:57" class="player0-seek">{{ matthew.links[10].text }}</a></li>
+        <li><a href="24:20" class="player0-seek">{{ matthew.links[11].text }}</a></li>
+        <li><a href="25:09" class="player0-seek">{{ matthew.links[12].text }}</a></li>
+        <li><a href="26:38" class="player0-seek">{{ matthew.links[13].text }}</a></li>
+        <li><a href="28:40" class="player0-seek">{{ matthew.links[14].text }}</a></li>
+        <li><a href="29:42" class="player0-seek">{{ matthew.links[15].text }}</a></li>
+      </ul>
+    </div>
+  </div>
+
+{% assign docs = vids | where_exp: "item", "item.htmlsection == 'docs'" | first %}
+{% assign sec = vids | where_exp: "item", "item.htmlsection == 'sec'" | first %}
+{% assign down = vids | where_exp: "item", "item.htmlsection == 'downloads'" | first %}
+{% assign paf = vids | where_exp: "item", "item.htmlsection == 'paf'" | first %}
+
+<hr class="more-top more-bottom">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ docs.title }}</h3>
+	    <p>{{ docs.paragraph }}</p>
+	    <a href="{{ docs.links[0].url }}" class="btn btn-primary">
+		    <i class="fa fa-book"></i> {{ docs.links[0].text }}
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ down.title }}</h3>
+	    <p>{{ down.paragraph }}</p>
+	    <a href="{{ down.links[0].url }}" class="btn btn-primary">
+		    <i class="fa fa-download"></i> {{ down.links[0].text }}
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ sec.title }}</h3>
+	    <p>{{ sec.paragraph }}</p>
+	    <a href="{{ sec.links[0].url }}" class="btn btn-primary">
+		    <i class="fa fa-lock"></i> {{ sec.links[0].text }}
+      </a>
+    </div>
+  </div>
+<hr class="more-top more-bottom">
+  <div class="row">
+    <div class="col-lg-8 col-md-12 col-xs-12">
+	    <h2 class="add-bottom">{{ paf.title }}</h2>
+	    <div id="player1"></div>
+	    <p>{{ paf.paragraph }}</p>
+    </div>
+    <div class="col-lg-4 col-md-12 col-xs-12">
+      <h2 class="add-bottom">&nbsp;</h2>
+      <ul id="player1-menu" class="list-unstyled remove-bottom">
+        <li><a href="q7mCeYCrQ24" class="player1-play">Partie 1: Présentation du projet Qubes OS</a></li>
+        <li><a href="a8YIVqaP8Lk" class="player1-play">Partie 2: ProxyVM VPN et Tor</a></li>
+        <li><a href="RcUUAGdAFHo" class="player1-play">Partie 3: Installer Qubes OS</a></li>
+        <li><a href="Zu9ab7E-Mqk" class="player1-play">Partie 4: Installer Windows 7</a></li>
+        <li><a href="HgIKtopFZxU" class="player1-play">Partie 5: Créer un coffre fort numérique</a></li>
+        <li><a href="Yr-oRWtCZGI" class="player1-play">Partie 6: ProxyVM VPN avec kill switch</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

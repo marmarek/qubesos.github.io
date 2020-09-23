@@ -36,6 +36,11 @@
          {% if research == "getting-started"  %}
              {% include getting-started.html %}
          {% endif %}
+	{% assign vids = page.url | split: '/' | last | lstrip %}
+         {% if research == "video-tours"  %}
+             {% include video-tours.html %}
+         {% endif %}
+
 
         </div>
         {% include footer.html %}
