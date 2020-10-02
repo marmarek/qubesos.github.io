@@ -1,0 +1,213 @@
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign intro = site.data.intro %}
+{% else %}
+        {% assign intro = site.data.translation[page.lang].intro %}
+        {% if intro == nil or intro.size == 0 %}
+                {% assign intro = site.data.intro %}
+        {% endif %}
+{% endif %}
+
+{% assign what = intro | where_exp: "item", "item.htmlsection == 'what'" | first %}
+{% assign why = intro | where_exp: "item", "item.htmlsection == 'why'" | first %}
+
+<h2 id="what-is-qubes-os"> {{ what.title }}</h2>
+
+{% assign  paragraphs = what.paragraphs %}
+  <div class="row">
+      <div class="col-lg-3 col-md-3 text-left">
+{% for p in paragraphs %}
+<p>
+   {% if p.paragraph.first %}
+   	{% for s in p.paragraph[0].snippets %}
+   	{% if s.url != nil %}
+        	<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+        	{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+
+   {% else %}
+   	{{ p.paragraph }}
+   {% endif %}
+</p>
+{% endfor %}
+
+{% assign  list = what.list %}
+          <ul>
+		  {% for i in list %}
+		 <li><b>{{ i.item[0].bold }}</b> : 
+				{% for s in i.item[0].snippets %}
+   			{% if s.url != nil %}
+        			<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   			{% else %}
+        			{{ s.snippet }}
+   			{% endif %}
+   			{% endfor %}
+		</li>
+		  {% endfor %}
+          </ul>
+      </div>
+      <div class="col-lg-9 col-md-9">
+	      <h3 class="text-center add-bottom"> {{ what.caption }}</h3>
+        <img src="/attachment/site/qubesosdiagram.png" class="center-block">
+      </div>
+  </div>
+
+<div class="alert alert-info" role="alert">
+    <i class="fa fa-question-circle"></i>
+    {% for n in what.note %}
+    <b> {{ n.bold }} </b>
+	{% for s in n.snippets %}
+   	{% if s.url != nil %}
+   		<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+       		{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+    {% endfor %}
+</div>
+
+<h2>{{ what.section[0].title }}</h2>
+
+{% assign r_1 = what.section | where_exp: "item", "item.item == 1" %}
+{% assign r_2 = what.section | where_exp: "item", "item.item == 2" %}
+{% assign r_3 = what.section | where_exp: "item", "item.item == 3" %}
+
+  <div class="row more-bottom">
+    {% for i in r_1 %}
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ i.title }}</h3>
+	<p>
+   	{% for s in i.snippets %}
+   	{% if s.url != nil %}
+        	<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+        	{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+	</p>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <hr class="add-top more-bottom">
+  <div class="row more-bottom">
+    {% for i in r_2 %}
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ i.title }}</h3>
+	<p>
+   	{% for s in i.snippets %}
+   	{% if s.url != nil %}
+        	<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+        	{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+	</p>
+    </div>
+   {% endfor %}
+  </div>
+
+  <hr class="add-top more-bottom">
+  <div class="row more-bottom">
+    {% for i in r_3 %}
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ i.title }}</h3>
+        <p>
+   	{% for s in i.snippets %}
+   	{% if s.url != nil %}
+        	<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+        	{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+	</p>
+    </div>
+   	{% endfor %}
+  </div>
+
+{% assign note = what.section | where_exp: "item", "item.note == 'note'" %}
+<div class="alert alert-info" role="alert">
+    <i class="fa fa-question-circle"></i>
+    {% for n in note %}
+    <b> {{ n.bold }} </b>
+	{% for s in n.snippets %}
+   	{% if s.url != nil %}
+   		<a href="{{ s.url }}">{{ s.snippet }}</a>       
+   	{% else %}
+       		{{ s.snippet }}
+   	{% endif %}
+   	{% endfor %}
+    {% endfor %}
+</div>
+
+
+<h2 id="why-qubes-os-"> {{ why.title }}</h2>
+
+{% assign s_1 = why.subsections | where_exp: "item", "item.section == 1" | first %}
+{% assign s_2 = why.subsections | where_exp: "item", "item.section == 2" | first %}
+{% assign s_3 = why.subsections | where_exp: "item", "item.section == 3" | first %}
+
+<h3>{{ s_1.title }}</h3>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 text-left">
+	{% for p in s_1.paragraphs %}
+		<p> {{ p.paragraph }} </p>
+	{% endfor %}
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <img src="/attachment/wiki/GettingStarted/r2b1-qubes-manager-2.png" height="300" class="center-block">
+      </div>
+  </div>
+
+<h3>{{ s_2.title }}</h3>
+ <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <img src="/attachment/icons/128x128/apps/qubes-logo-icon.png" height="128" class="center-block">
+      </div>
+      <div class="col-lg-9 col-md-9 text-left">
+	{% for p in s_2.paragraphs %}
+		<p> {{ p.paragraph }} </p>
+	{% endfor %}
+      </div>
+  </div>
+
+<h3>{{ s_3.title }}</h3>
+ <div class="row">
+    <div class="col-lg-12 col-md-12 text-left">
+ 	{% for p in s_3.paragraphs %}
+		<p> {{ p.paragraph }} </p>
+	{% endfor %}       
+    </div>
+ </div>
+
+ <p><img src="/attachment/wiki/GettingStarted/snapshot12.png" alt="snapshot12.png"/></p>
+
+{% assign s_4 = why.subsections[3]  %}
+
+<hr class="add-top more-bottom">
+  <div class="row more-bottom">
+    <div class="col-lg-4 col-md-4 col-xs-12">
+	    <h3>{{ s_4.section[0].title }}</h3>
+	    <p>{{ s_4.section[0].paragraph }} </p>
+      <a href="{{ s_4.section[0].url }}" class="btn btn-primary">
+        <i class="fa fa-play-circle"></i> {{ s_4.section[0].snippet }}
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <h3>{{ s_4.section[1].title }}</h3>
+      <p>{{ s_4.section[1].paragraph }}</p>
+      <a href="{{ s_4.section[1].url }}" class="btn btn-primary">
+        <i class="fa fa-picture-o"></i>{{ s_4.section[1].snippet }} 
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <h3>{{ s_4.section[2].title }}</h3>
+      <p>{{ s_4.section[2].paragraph }}</p>
+      <a href="{{ s_4.section[2].url }}" class="btn btn-primary">
+        <i class="fa fa-cubes"></i>{{ s_4.section[2].snippet }}
+      </a>
+    </div>
+  </div>
+
