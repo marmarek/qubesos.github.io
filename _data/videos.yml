@@ -67,17 +67,17 @@
 
 - htmlsection: micah
   title: Micah Lee presents "Qubes OS&#58; The Operating System That Can Protect You Even If You Get Hacked"
-  links:
-    - url: https://micahflee.com/
-      text: Micah Lee
-    - url: advocate
-      text: advocate
-    - url: https://www.hope.net/schedule.html#-qubes-os-the-operating-system-that-can-protect-you-even-if-you-get-hacked-
-      text: Qubes OS&#58; The Operating System That Can Protect You Even If You Get Hacked
-    - url: https://www.hope.net/index.html
-      text: Circle of HOPE
-  snippets:
-    - snippet: a long-time Qubes  
-    - snippet: presented
-    - snippet: at the
-    - snippet: conference, which took place July 20-22, 2018 in New York City.
+  paragraph: 
+    - snippets:
+      - snippet: Micah Lee 
+        url: https://micahflee.com/
+      - snippet: ", a long-time Qubes " 
+      - snippet: advocate, 
+        url: advocate
+      - snippet: presented
+      - snippet: Qubes OS&#58; The Operating System That Can Protect You Even If You Get Hacked
+        url: https://www.hope.net/schedule.html#-qubes-os-the-operating-system-that-can-protect-you-even-if-you-get-hacked-
+      - snippet: at the
+      - snippet : Circle of HOPE
+        url: https://www.hope.net/index.html
+      - snippet: conference, which took place July 20-22, 2018 in New York City.

@@ -14,11 +14,36 @@
 {% assign start = vids | where_exp: "item", "item.htmlsection == 'start'" | first %}
 {% assign matthew = vids | where_exp: "item", "item.htmlsection == 'matthew'" | first %}
 
+{% for p in paragraphs %}
+<p>
+   {% if p.paragraph.first %}
+        {% for s in p.paragraph[0].snippets %}
+        {% if s.url != nil %}
+                <a href="{{ s.url }}">{{ s.snippet }}</a>
+        {% else %}
+                {{ s.snippet }}
+        {% endif %}
+        {% endfor %}
+
+   {% else %}
+        {{ p.paragraph }}
+   {% endif %}
+</p>
+{% endfor %}
+
 <div id="tour">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-xs-12">
 	    <h2 class="add-bottom"> {{ micah.title }}</h2>
-	    <p><a href="{{ micah.links[0].url }}">Micah Lee</a>, {{ micah.snippets[0].snippet }} <a href="{{ micah.links[1].url }}">{{ micah.links[1].text }}</a>, {{ micah.snippets[1].snippet }} <a href="{{ micah.links[2].url }}">{{ micah.links[2].text }}</a> {{ micah.snippets[2].snippet }} <a href="{{ micah.links[3].url }}">{{ micah.links[3].text }}</a> {{ micah.snippets[3].snippet }}</p>
+<p>
+        {% for s in micah.paragraph[0].snippets %}
+        {% if s.url != nil %}
+                <a href="{{ s.url }}">{{ s.snippet }}</a>
+        {% else %}
+                {{ s.snippet }}
+        {% endif %}
+        {% endfor %}
+</p>
       <iframe id="ls_embed_1533360087" src="https://livestream.com/accounts/9197973/events/8286152/videos/178431606/player?width=960&height=540&enableInfo=true&defaultDrawer=feed&autoPlay=false&mute=false" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen> </iframe>
     </div>
   </div>
