@@ -1,4 +1,4 @@
-- htmlsection: doc-content
+- section: doc-content
   title: Contents
   links:
     - url: /doc/
@@ -21,7 +21,7 @@
       text: Make a Donation 
       id: 7
 
-- htmlsection: intro 
+- section: intro 
   links:
     - url: /video-tours/
       text: Video Tours
@@ -31,7 +31,7 @@
       id: 2
  
 
-- htmlsection: post 
+- section: post 
   links:
     - url: /news/
       text: News
@@ -40,13 +40,13 @@
       text: News by Category
       id: 2
  
-- htmlsection: doc-external
+- section: doc-external
   text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
  
-- htmlsection: doc-translated
+- section: doc-translated
   text: This page is an unverified translation. The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
 
-- htmlsection: footer
+- section: footer
   title: The Qubes OS Project and others
   links:
     - url: https://github.com/QubesOS/qubesos.github.io
@@ -68,30 +68,81 @@
       text: Sitemap
       id: 6
 
-- htmlsection: getting-started
+- section: getting-started
   subsections:
     - title: Compatible Hardware
-      paragraph: 
-        - text: Ready to install Qubes? Make sure your hardware is compatible, as Qubes cannot run on every type of computer. Also, check out
-          link: /doc/certified-laptops/
-          linkedtext: Qubes-certified Laptops
+      snippets: 
+        - snippet: Ready to install Qubes? Make sure your hardware is compatible, as Qubes cannot run on every type of computer. Also, check out
+        - snippet: Qubes-certified Laptops
+          url: /doc/certified-laptops/
       url: /hcl/
       text: Hardware Compatibility List
-      id: 1
     - title: Downloads
-      paragraph: 
-        - text: Download an ISO, learn how to verify its authenticity and integrity, and follow our guides to install Qubes. Looking for the source code? You'll find it on 
-          link: https://github.com/QubesOS
-          linkedtext: Github 
+      snippets: 
+        - snippet: Download an ISO, learn how to verify its authenticity and integrity, and follow our guides to install Qubes. Looking for the source code? You'll find it on 
+        - snippet: Github
+          url: https://github.com/QubesOS
       url: /downloads/ 
       text: Downloads
-      id: 2
     - title: Documentation
-      paragraph: 
-        - text: Peruse our extensive library of documentation for users and developers of Qubes. You can even help us 
-          link: /doc/doc-guidelines/
-          linkedtext: improve it!
+      snippets: 
+        - snippet: Peruse our extensive library of documentation for users and developers of Qubes. You can even help us 
+        - snippet: improve it!
+          url: /doc/doc-guidelines/
       url: /doc/
       text: Documentation
-      id: 3
+
+- section: catnews
+  htmlsections: 
+    - htmlsection: main
+      title: News by Category
+    - htmlsection: back
+      title: Back to main News page
+      url: /news/
+
+- section: news
+  htmlsections:
+    - htmlsection: download
+      title: Download
+    - htmlsection: news
+      title: News
+      url: /news/
+    - htmlsection: newscategory
+      title: News by Category
+      url: /news/categories/
+
+- section: security-xsa
+  htmlsections:
+    - htmlsection: statistics
+      title: Statistics
+      tts1: Total time span
+      tts2: years
+      txp: Total XSAs published
+      txaq: Total XSAs affecting Qubes OS
+      pxaq: Percentage of XSAs affecting Qubes OS
+    - htmlsection: tracker
+      title: Tracker
+      column1: Date
+      column2: XSA
+      column3: Is Qubes Affected?
+      yes_short: "Yes"
+      no_short: "No"
+      no_extended: No (unused or withdrawn XSA number)
+      tba: TBA
+
+- section: security-bulletins
+  htmlsections:
+    - htmlsection: table 
+      columns: 
+        - title: Date 
+        - title: Qubes Security Bulletin
+
+
+- section: security-canaries
+  htmlsections:
+    - htmlsection: table
+      columns:
+        - title: Date
+        - title: Qubes Canary
+
 

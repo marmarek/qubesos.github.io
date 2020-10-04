@@ -46,7 +46,7 @@
         {% endif %}
 {% endif %}
 
-{% assign foot = inc | where_exp: "item", "item.htmlsection == 'footer'" | first %}
+{% assign foot = inc | where_exp: "item", "item.section == 'footer'" | first %}
 
 
 {% assign web = foot.links | where_exp: "item", "item.id == 1" | first %}
@@ -55,11 +55,12 @@
 {% assign priv = foot.links | where_exp: "item", "item.id == 4" | first %}
 {% assign terms = foot.links | where_exp: "item", "item.id == 5" | first %}
 {% assign map = foot.links | where_exp: "item", "item.id == 6" | first %}
-	{% if page.lang == nil or page.lang == "en" %}
-                {% assign lang = "/" %}
-        {% else %}
-                {% assign lang = "/" | append: page.lang %}
-        {% endif %}
+
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign lang = "/" %}
+{% else %}
+        {% assign lang = "/" | append: page.lang %}
+{% endif %}
 
 
   <div class="row footer-nav text-center more-top add-bottom">

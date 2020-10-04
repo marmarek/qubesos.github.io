@@ -9,7 +9,7 @@
         {% endif %}
 {% endif %}
 
-{% assign intros = iincludes | where_exp: "item", "item.htmlsection == 'intro'" | first %}
+{% assign intros = iincludes | where_exp: "item", "item.section == 'intro'" | first %}
 
 
 {% assign vid = intros.links | where_exp: "item", "item.id == 1" | first %}

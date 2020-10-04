@@ -1,15 +1,14 @@
 	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign newsdata = site.data.news %}
+        	{% assign inc = site.data.includes %}
 	{% else %}
-        	{% assign newsdata = site.data.translation[page.lang].news %}
-        	{% if newsdata == nil or newsdata.size == 0 %}
-                	{% assign newsdata = site.data.news %}
+        	{% assign inc = site.data.translation[page.lang].includes %}
+        	{% if inc == nil or inc.size == 0 %}
+                	{% assign inc = site.data.includes %}
         	{% endif %}
 	{% endif %}
 
 
-{% assign downs = newsdata | where_exp: "item", "item.htmlsection == 'download'" | first  %}
-
+{% assign news = inc | where_exp: "item", "item.section == 'news'" | first  %}
 
 <ul class="list-unstyled remove-bottom">
 {% if page.lang == nil or page.lang == "en"%}
@@ -70,7 +69,7 @@
       </strong>
     </p>
     {% if post.download_url %}
-    <a href="{{ post.download_url }}" class="btn btn-info btn-sm"><i class="fa fa-download"></i> {{downs.title}}</a>
+    <a href="{{ post.download_url }}" class="btn btn-info btn-sm"><i class="fa fa-download"></i> {{news.htmlsections[0].title}}</a>
     {% endif %}
     {% if forloop.index < forloop.length %}<hr>{% endif %}
   </li>

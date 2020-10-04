@@ -5,41 +5,24 @@
       {% include header.html %}
       <div class="container">
 	{% if page.lang == nil or page.lang == "en" %}
-		{% assign lang = "" %}
+        	{% assign inc = site.data.includes %}
 	{% else %}
-		{% assign lang = "/" | append: page.lang %}
-	{% endif %}
-	{% assign ns_link = lang | append: "/news/" %}
-	{% assign ns = site.posts | where:'permalink', ns_link %}
-        {% if ns.size == 0 %}
-                {% assign ns_link = "/news/" %}
-        {% endif %}
-
-        {% assign nsc_link = lang | append: "/news/categories/" %}
-	{% assign nsc = site.posts | where:'permalink', nsc_link %}
-        {% if nsc.size == 0 %}
-                {% assign nsc_link = "/news/categories/" %}
-        {% endif %}
-	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign newsdata = site.data.news %}
-	{% else %}
-        	{% assign newsdata = site.data.translation[page.lang].news %}
-        	{% if newsdata == nil or newsdata.size == 0 %}
-                	{% assign newsdata = site.data.news %}
+        	{% assign inc = site.data.translation[page.lang].includes %}
+        	{% if inc == nil or inc.size == 0 %}
+                	{% assign inc = site.data.includes %}
         	{% endif %}
 	{% endif %}
 
 
-{% assign main = newsdata | where_exp: "item", "item.htmlsection == 'news'" | first %}
-{% assign cats = newsdata | where_exp: "item", "item.htmlsection == 'newscategory'" | first %}
+{% assign news = inc | where_exp: "item", "item.section == 'news'" | first %}
 
         <div class="row more-top">
           <div class="col-lg-7 col-md-7">
             <h1 class="add-left outer-heading">
-              <a href="{{ ns_link }}" class="heading-link">
-		      <i class="fa fa-newspaper-o"></i>{{ main.title }}
+		    <a href="{{ news.htmlsections[1].url }}" class="heading-link">
+		      <i class="fa fa-newspaper-o"></i>{{ news.htmlsections[1].title }}
               </a>
-	      <a href="{{ nsc_link }}" class="btn btn-default more-left half-top"><i class="fa fa-tag" aria-hidden="true"></i>{{cats.title}}</a>
+	      <a href="{{ news.htmlsections[2].url }}" class="btn btn-default more-left half-top"><i class="fa fa-tag" aria-hidden="true"></i>{{ news.htmlsections[2].title }}</a>
             </h1>
           </div>
           <div class="col-lg-5 col-md-5 button-heading">
@@ -58,11 +41,13 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
               <article class="post-content">
-		      {% if page.url contains "/news/categories" %}
-			 {% include catnews.html %}
-		      {% elsif page.url contains "/news/" %}
-			 {% include news.html %}
-		      {% endif %}
+		{% assign perm_last_part = page.url | split: '/' | last | lstrip %}
+	         {% if perm_last_part == "news"  %}
+        	     {% include news.html %}
+         	{% endif %}
+         	{% if perm_last_part == "categories"  %}
+             		{% include catnews.html %}
+         	{% endif %}
 
                 {{ content }}
               </article>

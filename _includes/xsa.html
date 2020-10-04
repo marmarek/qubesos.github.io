@@ -1,15 +1,17 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign sec = site.data.security_xsa %}
+        {% assign inc = site.data.includes %}
 {% else %}
-        {% assign sec = site.data.translation[page.lang].security_xsa %}
-        {% if sec == nil or sec.size == 0 %}
-                {% assign sec = site.data.security_xsa %}
+        {% assign inc = site.data.translation[page.lang].includes %}
+        {% if inc == nil or inc.size == 0 %}
+                {% assign inc = site.data.includes %}
         {% endif %}
 {% endif %}
 
 
-{% assign statistics = sec | where_exp: "item", "item.htmlsection == 'statistics'" | first %}
-{% assign tracker = sec | where_exp: "item", "item.htmlsection == 'tracker'" | first %}
+
+{% assign sec = inc | where_exp: "item", "item.section == 'security-xsa'" | first %}
+{% assign statistics = sec.htmlsections[0] %}
+{% assign tracker = sec.htmlsections[1] %}
 
 <h2 id="statistics">{{statistics.title}}</h2>
 

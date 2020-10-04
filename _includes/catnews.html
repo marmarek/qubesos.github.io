@@ -1,26 +1,14 @@
 	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign catnewsdata = site.data.catnews %}
+        	{% assign inc = site.data.includes %}
 	{% else %}
-        	{% assign catnewsdata = site.data.translation[page.lang].catnews %}
-        	{% if catnewsdata == nil or catnewsdata.size == 0 %}
-                	{% assign catnewsdata = site.data.catnews %}
+        	{% assign inc = site.data.translation[page.lang].includes %}
+        	{% if inc == nil or iinc.size == 0 %}
+                	{% assign inc = site.data.includes %}
         	{% endif %}
 	{% endif %}
-{% assign maincat = catnewsdata | where_exp: "item", "item.htmlsection == 'main'" | first %}
-{% assign backcat = catnewsdata | where_exp: "item", "item.htmlsection == 'back'" | first %}
 
+{% assign cat = inc | where_exp: "item", "item.section == 'catnews'" | first %}
 
-{% if page.lang == nil or page.lang == "en"%}
-        {% assign lang = "" %}
-{% else %}
-        {% assign lang = "/" | append: page.lang %}
-{% endif %}
-
-{% assign ns_link = lang | append: "/news/" %}
-{% assign ns = site.posts | where:'permalink', ns_link %}
-{% if ns.size == 0 %}
-        {% assign ns_link = "/news/" %}
-{% endif %}
 {% assign raw_categories = "" %}
   {% for post in site.posts %}
     {% assign category_list = post.categories | join:'|' | append:'|' %}
@@ -39,9 +27,9 @@
     {% endif %}
   {% endfor %}
 
-  <h1>{{ maincat.title }}</h1>
+<h1>{{ cat.htmlsections[0].title }}</h1>
 <p>
-<a href="{{ ns_link }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>{{ backcat.title }}</a>
+<a href="{{ cat.htmlsections[1].url }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>{{ cat.htmlsections[1].title }}</a>
 </p>
 {% for category in categories %}
 <a href="#{{ category | slugify }}" class="btn btn-sm btn-primary"><i class="fa fa-tag" aria-hidden="true"></i> {{ category | capitalize }}</a>

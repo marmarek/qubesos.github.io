@@ -25,7 +25,7 @@
         {% endif %}
 {% endif %}
 
-{% assign news = iincludes | where_exp: "item", "item.htmlsection == 'post'" | first %}
+{% assign news = iincludes | where_exp: "item", "item.section == 'post'" | first %}
 
 
 {% assign n = news.links | where_exp: "item", "item.id == 1" | first %}
