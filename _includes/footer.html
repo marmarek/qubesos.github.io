@@ -36,7 +36,7 @@
   <!-- LANGSWITCH BEGIN -->
   <div class="text-center">
   {% assign langcodes = site.data.l10n.langs %}
-  {% assign defaultlangcode = 'en' %}
+  {% assign officiallangcode = 'en' %}
 
   {% assign urlpathparts = page.url | split: "/" %}
   {% assign currlangcode = urlpathparts[1] %}
@@ -48,7 +48,7 @@
     {% endif %}
   {% endfor %}
   {% if firsturlpathpartislangcode == false %}
-    {% assign currlangcode = defaultlangcode %}
+    {% assign currlangcode = officiallangcode %}
   {% endif %}
 
   {% assign urlpathremainder = page.url %}
@@ -61,7 +61,7 @@
   {% assign langswitch = "" %}
   {% for langcode in langcodes %}
     {% assign targeturl = urlpathremainder %}
-    {% if langcode != defaultlangcode %}
+    {% if langcode != officiallangcode %}
       {% capture targeturl %}/{{ langcode }}{{ targeturl }}{% endcapture %}
     {% endif %}
     {% if langcode == currlangcode %}
