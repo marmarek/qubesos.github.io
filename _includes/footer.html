@@ -33,6 +33,52 @@
     </div>
     {% endfor %}
   </div>
+  <!-- LANGSWITCH BEGIN -->
+  <div class="text-center">
+    <img src="/attachment/icons/icons8-translation-64.png" width="24" height="24" />
+  {% assign langcodes = site.data.l10n.langs %}
+  {% assign officiallangcode = 'en' %}
+
+  {% assign urlpathparts = page.url | split: "/" %}
+  {% assign currlangcode = urlpathparts[1] %}
+  {% assign firsturlpathpartislangcode = false %}
+  {% for langcode in langcodes %}
+    {% if langcode == currlangcode %}
+      {% assign firsturlpathpartislangcode = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if firsturlpathpartislangcode == false %}
+    {% assign currlangcode = officiallangcode %}
+  {% endif %}
+
+  {% assign urlpathremainder = page.url %}
+  {% if firsturlpathpartislangcode %}
+    {% assign prefixtoremove = "/" | append: currlangcode %}
+    {% assign urlpathremainder = urlpathremainder | remove_first: prefixtoremove %}
+    {% assign prefixtoremove = nil %}
+  {% endif %}
+
+  {% assign langswitch = "" %}
+  {% for langcode in langcodes %}
+    {% assign targeturl = urlpathremainder %}
+    {% if langcode != officiallangcode %}
+      {% capture targeturl %}/{{ langcode }}{{ targeturl }}{% endcapture %}
+    {% endif %}
+    {% if langcode == currlangcode %}
+      {% capture langswitch %}{{ langswitch }}<u><strong>{{ langcode }}</strong></u>{% endcapture %}
+    {% else %}
+      {% capture langswitch %}{{ langswitch }}<a href="{{ targeturl }}">{{ langcode }}</a>{% endcapture %}
+    {% endif %}
+    {% if forloop.last == false %}
+      {% assign langswitch = langswitch | append: " &bull; " %}
+    {% endif %}
+    {% assign targeturl = nil %}
+  {% endfor %}
+
+  {{ langswitch }}
+  </div>
+  <!-- LANGSWITCH END -->
   <div class="row footer-nav text-center more-top add-bottom">
       {% if page.lang contains "en" %}
         {% assign lang = "" %}
