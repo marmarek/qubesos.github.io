@@ -19,21 +19,24 @@
 {% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
 {% for section in ind %}
   {% if doc_segments contains section.category %}
-  {% assign s = section.title | slugify %}
+ 	 {% assign s = section.title | slugify %}
     <h1 class="more-top add-left outer-heading">
 	    <a href="{{ doc_link }}#{{ s }}" class="heading-link">
         <i class="fa fa-book"></i>
-          {{ section.category }}
+          {{ section.category | replace: "-", " "}} 
       </a>
     </h1>
-    {% if section.category == "external" %}
-      {% include doc-external-warning.html %}
-    {% endif %}
-    {% if page.translated %}
-      {% include doc-translated-warning.html %}
-    {% endif %}
-{% endif %}
+    	{% if section.category == "external-documentation" %}
+      		{% include doc-external-warning.html %}
+    	{% endif %}
+  {% endif %}
 {% endfor %}
+
+{% unless page.lang == "en" %}
+   	{% include doc-translated-warning.html %}
+{% endunless %}
+ 
+<!-- TODO where did this come from? -->
 {% unless doc_heading %}
 	<h1 class="more-top add-left outer-heading">
 	<a href="{{ doc_link }}" class="heading-link">

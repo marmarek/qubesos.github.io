@@ -9,7 +9,7 @@
         {% endif %}
 {% endif %}
 
-{% assign docs = doc_content | where_exp: "item", "item.htmlsection == 'doc-content'" | first %}
+{% assign docs = doc_content | where_exp: "item", "item.section == 'doc-content'" | first %}
 
 
 {% assign doc = docs.links | where_exp: "item", "item.id == 1" | first %}
@@ -82,19 +82,23 @@
     <div class="toc-button-spacer more-bottom"></div>
     <div class="col-lg-9 col-md-9 col-sm-12 page-content-right">
       <article id="doc-content" class="post-content">
+	
         {{ content }}
-	<!-- Here below the contet will be added an _include containing a table only in case it is the page with the permalink /security/bulletins -->
-	{% assign sec_bull = page.url | split: '/' | last | lstrip %}
-     	 {% if sec_bull == "bulletins"  %}
+
+	 <!-- Here below the content will be added an _include only in the case the current page has a permalink ending with the specific word -->
+	 {% assign perm_last_part = page.url | split: '/' | last | lstrip %}
+     	 {% if perm_last_part == "bulletins"  %}
              {% include sec-bulletin.html %}
      	 {% endif %}
-     	 {% if sec_bull == "canaries"  %}
+     	 {% if perm_last_part == "canaries"  %}
              {% include sec-canaries.html %}
      	 {% endif %}
-     	 {% if sec_bull == "xsa"  %}
+     	 {% if perm_last_part == "xsa"  %}
              {% include xsa.html %}
      	 {% endif %}
-
+	 {% if perm_last_part == "style-guide" %}
+	     {% include style-guide.html %}
+	 {% endif %}
 
       </article>
     <br>
