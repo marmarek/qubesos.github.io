@@ -37,14 +37,17 @@
           <span class="fa fa-fw fa-code-fork"></span> Edit This Page
         </a><br>
         {% if page.lang != nil and page.lang != "" and page.lang != "en" %}
-          {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
-        <a href="https://www.transifex.com/otf/qubes/translate/#{{ page.lang }}/{{ transifexresource }}"
+          {% assign pagelang = page.lang %}
+        {% else %}
+          {% assign pagelang = "" %}
+        {% endif %}
+        {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
+        <a href="https://www.transifex.com/otf/qubes/translate/#{{ pagelang }}/{{ transifexresource }}"
            class="page-source-link btn btn-default btn-block"
            title="Translate this page"
            target="_blank">
           <span class="fa fa-fw fa-language"></span> Translate This Page
         </a><br>
-        {% endif %}
 	<a href="{{ lang }}/doc/reporting-bugs/"
            class="page-source-link btn btn-default btn-block"
            title="Report a Bug"
@@ -98,14 +101,17 @@
           <span class="fa fa-fw fa-code-fork"></span> Edit This Page
         </a><br>
         {% if page.lang != nil and page.lang != "" and page.lang != "en" %}
-          {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
-        <a href="https://www.transifex.com/otf/qubes/translate/#{{ page.lang }}/{{ transifexresource }}"
+          {% assign pagelang = page.lang %}
+        {% else %}
+          {% assign pagelang = "" %}
+        {% endif %}
+        {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
+        <a href="https://www.transifex.com/otf/qubes/translate/#{{ pagelang }}/{{ transifexresource }}"
            class="page-source-link btn btn-default btn-block"
            title="Translate this page"
            target="_blank">
           <span class="fa fa-fw fa-language"></span> Translate This Page
         </a><br>
-        {% endif %}
 	<a href="{{ lang }}/doc/reporting-bugs/"
            class="page-source-link btn btn-default btn-block"
            title="Report a Bug"
