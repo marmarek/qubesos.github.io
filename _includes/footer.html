@@ -49,7 +49,11 @@
     {% endif %}
   {% endfor %}
   {% if firsturlpathpartislangcode == false %}
-    {% assign currlangcode = officiallangcode %}
+    {% if page.lang == nil or page.lang == "" %}
+      {% assign currlangcode = officiallangcode %}
+    {% else %}
+      {% assign currlangcode = page.lang %}
+    {% endif %}
   {% endif %}
 
   {% assign urlpathremainder = page.url %}
