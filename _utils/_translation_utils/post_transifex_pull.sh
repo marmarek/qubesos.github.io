@@ -5,12 +5,14 @@
 # TODO param check
 
 
+
 echo "============================ post processing step 1 ======================================"
 bash _utils/_translation_utils/prepare_tx_config_postprocess.sh .tx/config /tmp/tx-mapping
+echo "============================ press any key to continue ======================================"
 read b
 echo "============================ post processing step 2 ======================================"
-read b
 python _utils/_translation_utils/postprocess_translation.py $1 $2  /tmp/tx-mapping  /tmp/translated_href_urls.txt --yml
+echo "============================ press any key to continue ======================================"
 read b
 echo "============================ post processing step 3 ======================================"
 bash _utils/_translation_utils/postprocess_translation.sh $1 $2 /tmp/translated_href_urls.txt

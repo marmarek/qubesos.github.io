@@ -24,6 +24,15 @@ from collections import deque
 from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
 
 # TODO should we also mark notranslate as also reviewed ? it may need manual labor afterwards though ?
+# TODO try updating context for a string hash
+# Here should also go a comment that this snippet of code should be extended if the data files are to be altered and there are part that have to stay the same
+# This can be done by fetching the strings from the tx api via curl:
+# curl -i -L --user api:XXXXXXXXXXXXXXX -X GET https://www.transifex.com/api/2/project/qubes/resource/no_html_data_hcl/translation/en/strings/ 
+# and searching for the key pattern that should be marked as locked and thus untranslatabel and immutable
+
+# TODO check out faq.md for exmaples where lock strings are not a good idea?
+KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', '^\[(\d)*\](.sub-pages.)\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', '^\[(\d)*\](.sub-pages.)\[(\d)*\](.icon)$', '^(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.icon)$','^(\[(\d)*\])(.category)$', '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.award.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.award.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.media.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.media.)(\[(\d)*\])(.article)$', '^(\[(\d)*\])(.attachment)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.tweet)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.avatar)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.htmlsection)$', '^(\[(\d)*\])(.folder)$','redirect_from.\[(\d)*\]', '^(\[(\d)*\])(.links.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.links.)(\[(\d)*\])(.id)$', '^(\[(\d)*\])(.columns.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.id)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.paragraphs.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.list.)(\[(\d)*\])(.item.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.note.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.htmlsection)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.section.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section)$']
+
 KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.icon)$', '^(\[\d\])(.url)$', '^(\[\d\])(.icon)$','^(\[\d\])(.category)$', '^(\[\d\])(.tech.)(\[\d\])(.img)$', '^(\[\d\])(.tech.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.article)$', '^(\[\d\])(.attachment)$', '^(\[\d\])(.expert.)(\[\d\])(.tweet)$', '^(\[\d\])(.expert.)(\[\d\])(.avatar)$', '^(\[\d\])(.expert.)(\[\d\])(.img)$', '^(\[\d\])(.htmlsection)$', '^(\[\d\])(.folder)$','redirect_from.\[\d\]', '^(\[\d\])(.links.)(\[\d\])(.url)$', '^(\[\d\])(.links.)(\[\d\])(.id)$']
 
 KEY_PATTERNS = ['lang', 'layout', 'permalink', 'redirect_from']
@@ -88,6 +97,7 @@ def check_reg(string, reg):
     reg: regular expression
     return true if it is the case
     '''
+    
     g = match(reg, string)
     return g != None
 
@@ -199,13 +209,13 @@ def create_hash_and_tags_mapping(tx_resources, tx_api_token, debug, perms_and_re
                 if isinstance(item, dict):
                     if any( item[KEY_KEY] == k for k in KEY_PATTERNS ) \
                             or (item[SOURCE_STRING_KEY].startswith('![') and item[SOURCE_STRING_KEY].endswith('.png)')) \
-                            or any( check_reg(item[KEY_KEY], kr) for kr in KEY_REGEX_PATTERNS ) \
+                            or any( check_reg(item[KEY_KEY], kr) for kr in KEY_REGEX_LOCK_PATTERNS ) \
                             or any( item[SOURCE_STRING_KEY] == s for s in SOURCE_PATTERNS ) \
                             or any( item[SOURCE_STRING_KEY] == s for s in perms_and_redirects ) \
                             or any( check_reg(item[SOURCE_STRING_KEY], sr) for sr in  SOURCE_REGEX_PATTERNS ) \
                             or check_for_liquid_expression( item[SOURCE_STRING_KEY] ):
 
-                                hash_and_tags_mapping.update( {item[STRING_HASH_KEY] : res} )
+                                hash_and_tags_mapping.update( {res + '.' + item[STRING_HASH_KEY] : res} )
                                 to_debug = {res + "." + item[STRING_HASH_KEY] : [item[KEY_KEY], item[SOURCE_STRING_KEY]]}
                                 tagged_notranslate.update(to_debug)
                                 if debug:
@@ -227,7 +237,9 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
     debug: if true be verbose
     '''
 
-    for stringhash, filename in hash_and_tag.items():
+    for stringreshash, filename in hash_and_tag.items():
+        res_hash = stringreshash.split('.')
+        stringhash = res_hash[1]
         url = 'https://www.transifex.com/api/2/project/qubes/resource/' + filename + '/source/' + stringhash + '/'
         logger.info('put tag %s via curl' % url)
         buf = BytesIO()
@@ -238,9 +250,12 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
         c.setopt(c.POST, 1)
         c.setopt(c.USERPWD, 'api:' + tx_api_token)
         c.setopt(c.FOLLOWLOCATION, True)
-        c.setopt(c.POSTFIELDS, UPDATE_TAGS)
+
+        #c.setopt(c.POSTFIELDS, UPDATE_TAGS)
+        c.setopt(c.POSTFIELDS, UPDATE_TAGS_LOCKED)
         c.setopt(c.HTTPHEADER, ['Content-Type: application/json',
-                                'Content-Length: ' + str(len(UPDATE_TAGS)) ])
+                                'Content-Length: ' + str(len(UPDATE_TAGS_LOCKED)) ])
+                                #'Content-Length: ' + str(len(UPDATE_TAGS)) ])
 
         try:
             c.perform()
@@ -249,12 +264,12 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
             c.close()
             exit(1)
         if c.getinfo(HTTP_CODE) == 404:
-            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate': %s." % (stringhash, filename))
+            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate'." % (stringhash, filename))
             logger.error("Response: %s", buf.getvalue())
             c.close()
             continue
         if c.getinfo(HTTP_CODE) != 200:
-            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate': %s." % (stringhash, filename))
+            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate'" % (stringhash, filename))
             logger.error("Response: %s", buf.getvalue())
             c.close()
             continue
