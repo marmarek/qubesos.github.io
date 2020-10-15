@@ -63,16 +63,32 @@
     {% assign prefixtoremove = nil %}
   {% endif %}
 
+  {% assign alphalangcodes = site.data.l10n.alphalangs %}
+
   {% assign langswitch = "" %}
   {% for langcode in langcodes %}
+    {% assign isalphalang = false %}
+    {% for alphalangcode in alphalangcodes %}
+      {% if langcode == alphalangcode %}
+        {% assign isalphalang = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if isalphalang %}
+      {% assign leftbracket = "(" %}
+      {% assign rightbracket = ")" %}
+    {% else %}
+      {% assign leftbracket = "" %}
+      {% assign rightbracket = "" %}
+    {% endif %}
     {% assign targeturl = urlpathremainder %}
     {% if langcode != officiallangcode %}
       {% capture targeturl %}/{{ langcode }}{{ targeturl }}{% endcapture %}
     {% endif %}
     {% if langcode == currlangcode %}
-      {% capture langswitch %}{{ langswitch }}<u><strong>{{ langcode }}</strong></u>{% endcapture %}
+      {% capture langswitch %}{{ langswitch }}<u><strong>{{ leftbracket }}{{ langcode }}{{ rightbracket }}</strong></u>{% endcapture %}
     {% else %}
-      {% capture langswitch %}{{ langswitch }}<a href="{{ targeturl }}">{{ langcode }}</a>{% endcapture %}
+      {% capture langswitch %}{{ langswitch }}<a href="{{ targeturl }}">{{ leftbracket }}{{ langcode }}{{ rightbracket }}</a>{% endcapture %}
     {% endif %}
     {% if forloop.last == false %}
       {% assign langswitch = langswitch | append: " &bull; " %}
