@@ -38,10 +38,12 @@
         </a><br>
         {% if page.lang != nil and page.lang != "" and page.lang != "en" %}
           {% assign pagelang = page.lang %}
+          {% assign prefix = "_qubes-translated/" | append pagelang %}
+          {% assign transifexresource = page.relative_path | remove_first: prefix | remove: ".md" | replace: "/", "_" %}
         {% else %}
           {% assign pagelang = "" %}
+          {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
         {% endif %}
-        {% assign transifexresource = page.relative_path | remove: ".md" | replace: "/", "_" %}
         <a href="https://www.transifex.com/otf/qubes/translate/#{{ pagelang }}/{{ transifexresource }}"
            class="page-source-link btn btn-default btn-block"
            title="Translate this page"
