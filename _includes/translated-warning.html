@@ -1,5 +1,8 @@
+{% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where: 'ref', page.ref | where: 'lang', 'en' %}
+{% assign officialpage = posts[0].url %}
 <div class="alert alert-warning" role="alert">
   <i class="fa fa-exclamation-circle"></i>
   This page is an unverified translation.
   The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
+  You may want to visit <a href="{{ officialpage }}">the official version of this page</a>.
 </div>
