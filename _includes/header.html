@@ -8,11 +8,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {% if page.lang == nil or page.lang == "" or page.lang == "en" %}
-        {% assign linktohome = "/" %}
-      {% else %}
-        {% assign linktohome = "/" | append: page.lang %}
-      {% endif %}
+      {% assign officialhomeurl = '/' %}
+      {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where: 'permalink', officialhomeurl %}
+      {% assign officialhomeref = posts[0].ref %}
+      {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where: 'ref', officialhomeref | where: 'lang', page.lang %}
+      {% assign linktohome = posts[0].url %}
       <a class="page-link" href="{{ linktohome }}">
         <img src="/attachment/icons/128x128/apps/qubes-logo-icon.png" width="44" height="44" alt="Qubes OS Project">
         <span><strong>Qubes</strong> OS</span>
