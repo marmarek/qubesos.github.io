@@ -37,33 +37,10 @@
   <div class="text-center" id="footer-lang-switcher">
     <img src="/attachment/icons/icons8-translation-64.png" width="24" height="24" />
   {% assign langcodes = site.data.l10n.langs %}
-  {% assign officiallangcode = 'en' %}
-
-  {% assign urlpathparts = page.url | split: "/" %}
-  {% assign currlangcode = urlpathparts[1] %}
-  {% assign firsturlpathpartislangcode = false %}
-  {% for langcode in langcodes %}
-    {% if langcode == currlangcode %}
-      {% assign firsturlpathpartislangcode = true %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-  {% if firsturlpathpartislangcode == false %}
-    {% if page.lang == nil or page.lang == "" %}
-      {% assign currlangcode = officiallangcode %}
-    {% else %}
-      {% assign currlangcode = page.lang %}
-    {% endif %}
-  {% endif %}
-
-  {% assign urlpathremainder = page.url %}
-  {% if firsturlpathpartislangcode %}
-    {% assign prefixtoremove = "/" | append: currlangcode %}
-    {% assign urlpathremainder = urlpathremainder | remove_first: prefixtoremove %}
-    {% assign prefixtoremove = nil %}
-  {% endif %}
-
   {% assign alphalangcodes = site.data.l10n.alphalangs %}
+  {% assign officiallangcode = 'en' %}
+  {% assign currlangcode = page.lang %}
+  {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where: 'ref', page.ref %}
 
   {% assign langswitch = "" %}
   {% for langcode in langcodes %}
@@ -81,19 +58,18 @@
       {% assign leftbracket = "" %}
       {% assign rightbracket = "" %}
     {% endif %}
-    {% assign targeturl = urlpathremainder %}
-    {% if langcode != officiallangcode %}
-      {% capture targeturl %}/{{ langcode }}{{ targeturl }}{% endcapture %}
+    {% assign langcodeposts = posts | where: 'lang', langcode %}
+    {% if langcodeposts[0] != nil %}
+      {% assign targeturl = langcodeposts[0].url %}
+      {% if langcode == currlangcode %}
+        {% capture langswitch %}{{ langswitch }}<u><strong>{{ leftbracket }}{{ langcode }}{{ rightbracket }}</strong></u>{% endcapture %}
+      {% else %}
+        {% capture langswitch %}{{ langswitch }}<a href="{{ targeturl }}">{{ leftbracket }}{{ langcode }}{{ rightbracket }}</a>{% endcapture %}
+      {% endif %}
+      {% if forloop.last == false %}
+        {% assign langswitch = langswitch | append: " &bull; " %}
+      {% endif %}
     {% endif %}
-    {% if langcode == currlangcode %}
-      {% capture langswitch %}{{ langswitch }}<u><strong>{{ leftbracket }}{{ langcode }}{{ rightbracket }}</strong></u>{% endcapture %}
-    {% else %}
-      {% capture langswitch %}{{ langswitch }}<a href="{{ targeturl }}">{{ leftbracket }}{{ langcode }}{{ rightbracket }}</a>{% endcapture %}
-    {% endif %}
-    {% if forloop.last == false %}
-      {% assign langswitch = langswitch | append: " &bull; " %}
-    {% endif %}
-    {% assign targeturl = nil %}
   {% endfor %}
 
   {{ langswitch }}
