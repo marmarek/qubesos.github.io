@@ -1,27 +1,33 @@
 - htmlsection: main 
   subtitle: A reasonably secure operating system 
-  download: Download &amp; install
+  download:
+  - text: Download &amp; install
+    url: /downloads/
   version: Version 4.0.3
-  intro: What is Qubes OS?
-  video: Watch a Video Tour
+  intro:
+  - text: Was ist Qubes OS?
+    url: /intro/
+  video:
+  - text: Watch a Video Tour
+    url: /video-tours/
 
 - htmlsection: experts
   title: What the experts are saying
   expert:
     - avatar: https://twitter.com/Snowden/status/781493632293605376
-      img: attachment/site/expert-edward-snowden.jpg
+      img: /attachment/site/expert-edward-snowden.jpg
       tweet: https://twitter.com/Snowden/status/781493632293605376
       quote: If you're serious about security, Qubes OS is the best OS available today. It's what I use, and free.
       name: Edward Snowden
       occupation: whistleblower and privacy advocate
     - avatar: https://twitter.com/hashbreaker/status/577206817475850240
-      img: attachment/site/expert-daniel-j-bernstein.jpg
+      img: /attachment/site/expert-daniel-j-bernstein.jpg
       tweet: https://twitter.com/hashbreaker/status/577206817475850240
       quote: "Happy thought of the day: An attacker who merely finds a browser bug can't listen to my microphone except when I've told Qubes to enable it."
       name: Daniel J. Bernstein
       occupation: mathematician, cryptologist, and computer scientist
     - avatar: https://twitter.com/micahflee/status/577998730340622337
-      img: attachment/site/expert-micah-lee.jpg
+      img: /attachment/site/expert-micah-lee.jpg
       tweet: https://twitter.com/micahflee/status/577998730340622337
       quote: When I use Qubes I feel like a god. Software thinks that it's in control, that it can do what it wants? It can't. I'm in control.
       name: Micah Lee
@@ -32,46 +38,47 @@
       quote: I am so much happier and less stressed out after switching to QubesOS. Can wholeheartedly recommend.
       name: Christopher Soghoian
       occupation: privacy researcher, activist, and principal technologist at the ACLU
-  more: More From The Experts
-
+  more: 
+  - text: More From The Experts
+    url: /experts/ 
 - htmlsection: media
   title: Media &amp; Press
   media:
     - article: https://www.vice.com/en_us/article/kbz43x/finally-a-reasonably-secure-operating-system-qubes-r3
-      img: attachment/site/motherboard-logo.png
+      img: /attachment/site/motherboard-logo.png
       quote: The world's most secure operating system assumes you've been owned.
       author: by J.M. Porup
     - article: https://www.economist.com/babbage/2014/03/28/a-digital-fortress
-      img: attachment/site/the-economist-logo.png
+      img: /attachment/site/the-economist-logo.png
       quote: For those willing to put in the effort, Qubes is more secure than almost any other operating system available today.
       author: by J. M. P.
     - article: https://www.wired.com/2014/11/protection-from-hackers/
-      img: attachment/site/wired-magazine-logo.png
+      img: /attachment/site/wired-magazine-logo.png
       quote: So Rutkowska flipped the game, this time in favor of the defenders.
       author: by Andy Greenberg
     - article: https://www.hostingadvice.com/blog/qubes-offers-security-by-compartmentalization/
-      img: attachment/site/hosting-advice-logo.png
+      img: /attachment/site/hosting-advice-logo.png
       quote: Qubes embodies the new frontier of operating systems, where security and usability take the front seat.
       author: by Christine Preusler
 
 - htmlsection: news
   title: News &amp; Announcements
   more: More News &amp; Announcements 
-
+  url: /news/
 - htmlsection: technology
   title: What's Inside of Qubes?
   tech:
-    - img: attachment/site/xen-logo.svg
+    - img: /attachment/site/xen-logo.svg
       title: Secure Compartmentalization
       text: Qubes brings to your personal computer the security of the Xen hypervisor, the same software relied on by many major hosting providers to isolate websites and services from each other.
       more: Learn more
       url: /doc/architecture/
-    - img: attachment/site/OS-logos.svg"
+    - img: /attachment/site/OS-logos.svg"
       title: Operating System Freedom
       text: Can't decide which Linux distribution you prefer? Still need that one Windows program for work? With Qubes, you're not limited to just one OS.
       more: Learn more
       url: /doc/templates/
-    - img: attachment/site/whonix-tor.svg
+    - img: /attachment/site/whonix-tor.svg
       title: Serious Privacy
       text: With Whonix integrated into Qubes, using the Internet anonymously over the Tor network is safe and easy. 
       more: Learn more
@@ -79,24 +86,29 @@
 
 - htmlsection: research
   title: Research
-  more: Read More Research
-
+  more: 
+  - text: Read More Research
+    url: /research/
 - htmlsection: awards
   title: Awards &amp; Grants
   award:
     - url: https://nlnet.nl/
-      img: attachment/site/nlnet.gif
+      img: /attachment/site/nlnet.gif
       text: 2016
     - url: https://www.opentech.fund/project/qubes-os
-      img: attachment/site/OTF-logo.png
+      img: /attachment/site/OTF-logo.png
       text: 2015 and 2016
     - url: https://www.accessnow.org/blog/2014/02/13/endpoint-security-prize-finalists-announced
-      img: attachment/site/access-innovation-prize.jpg
+      img: /attachment/site/access-innovation-prize.jpg
       text: 2014 Finalist for Endpoint Security
     - url: /partners/
-      img: attachment/site/partners-shake.svg
+      img: /attachment/site/partners-shake.svg
       text: We would love for you to fund or partner with us 
 
 - htmlsection: join
   title: Join the Community!
+
+- htmlsection: help
+  text: Help And Support
+  url: /support/
 

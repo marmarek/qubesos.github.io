@@ -17,6 +17,7 @@
 
 {% assign awards = home | where_exp: "item", "item.htmlsection == 'awards'" | first %}
 {% assign join = home | where_exp: "item", "item.htmlsection == 'join'" | first %}
+{% assign help = home | where_exp: "item", "item.htmlsection == 'help'" | first %}
 
       <!-- Featured Content -->
 <div class="home-banner text-center more-bottom">
@@ -33,13 +34,8 @@
     <div class="row more-bottom">
       <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
         <div class="home-big-button">
-        {% assign download_link = lang | append: "/downloads/" %}
-        {% assign download = site.pages | concat: site.qubes-translated | where:'permalink', download_link %}
-        {% if download.size == 0 %}
-                {% assign dowonload_link = "/downloads/" %}
-        {% endif %}
-	<a class="btn btn-lg btn-primary btn-block" href="{{ download_link }}" role="button">
-		  {{ main.download }}<br>
+	<a class="btn btn-lg btn-primary btn-block" href="{{ main.download[0].url }}" role="button">
+		  {{ main.download[0].text }}<br>
 		  <small>{{ main.version }}</small>
           </a>
         </div>
@@ -47,23 +43,12 @@
     </div>
     <div class="clearfix"></div>
     <div class="row more-top">
-	{% assign intro_link = lang | append: "/intro/" %}
-        {% assign intro = site.pages | concat: site.qubes-translated | where:'permalink', intro_link %}
-        {% if intro.size == 0 %}
-                {% assign intro_link = "/intro/" %}
-        {% endif %}
-
       <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2">
-	      <a class="black-link" href="{{ intro_link }}">{{ main.intro }}</a>
+	      <a class="black-link" href="{{ main.intro[0].url }}">{{ main.intro[0].text }}</a>
       </div>
-              {% assign video-tours_link = lang | append: "/video-tours/" %}
-        {% assign video-tours = site.pages | concat: site.qubes-translated | where:'permalink', video-tours_link %}
-        {% if video-tours.size == 0 %}
-                {% assign video-tours_link = "/video-tours/" %}
-        {% endif %}
 
       <div class="col-lg-4 col-md-4">
-	      <a class="black-link" href="{{ video_tours }}"><i class="fa fa-play-circle"></i> {{ main.video }}</a>
+	      <a class="black-link" href="{{ main.video[0].url }}"><i class="fa fa-play-circle"></i> {{ main.video[0].text }}</a>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -99,15 +84,10 @@
 
     {% endfor %}
     </div>
-            {% assign experts_link = lang | append: "/experts/" %}
-        {% assign experts_col = site.pages | concat: site.qubes-translated | where:'permalink', experts_link %}
-        {% if experts_col.size == 0 %}
-                {% assign experts_link = "/experts/" %}
-        {% endif %}
 
     <div class="row featured-quotes add-bottom">
       <div class="col-lg-12 col-md-12 text-center">
-	      <a class="btn btn-small btn-primary" href="{{ experts_link }}">{{ experts.more }}</a>
+	      <a class="btn btn-small btn-primary" href="{{ experts.more[0].url }}">{{ experts.more[0].text }}</a>
       </div>
     </div>
   </div>
@@ -128,7 +108,7 @@
           </a>
       </div>
       {% endfor %}
-      <a href="/news/" class="btn btn-sm btn-primary">{{ media.more }}</a>
+      <a href="{{ news.url }}" class="btn btn-sm btn-primary">{{ news.title }}</a>
     </div>
   </div>
   <div class="col-lg-6 col-md-6 more-bottom">
@@ -147,14 +127,9 @@
           </a>
         </li>
         {% endfor %}
-	{% assign news_link = lang | append: "/news/" %}
-        {% assign news = site.pages | concat: site.qubes-translated | where:'permalink', news_link %}
-        {% if news.size == 0 %}
-                {% assign news_link = "/news/" %}
-        {% endif %}
 
         <li class="list-links-normal">
-		<a href="{{ news_link }}" class="btn btn-sm btn-primary">{{ news.more }}</a>
+		<a href="{{ news.url }}" class="btn btn-sm btn-primary">{{ news.more }}</a>
         </li>
       </ul>
     </div>
@@ -197,14 +172,9 @@
           </a>
         </li>
         {% endfor %}
-	{% assign research_link = lang | append: "/research/" %}
-        {% assign research_col = site.pages | concat: site.qubes-translated | where:'permalink', research_link %}
-        {% if research_col.size == 0 %}
-                {% assign research_link = "/research/" %}
-        {% endif %}
 
         <li class="list-links-normal">
-		<a href="{{ research_link }}" class="btn btn-sm btn-primary">{{ research.more }}</a>
+		<a href="{{ research.more[0].url }}" class="btn btn-sm btn-primary">{{ research.more[0].text }}</a>
         </li>
       </ul>
       </div>
@@ -234,11 +204,6 @@
   </div>
   <div class="white-box more-bottom">
     <div class="row">
-	{% assign support_link = lang | append: "/support/" %}
-        {% assign supports = site.doc | concat: site.qubes-translated | where:'permalink', support_link %}
-        {% if supports.size == 0 %}
-                {% assign support_link = "/support/" %}
-        {% endif %}
 
       <div class="col-lg-12 col-md-12 text-center">
         <a title="GitHub" href="https://github.com/QubesOS" class="fa fa-github fa-5x fa-fw black-icon" aria-hidden="true"></a>
@@ -246,7 +211,7 @@
         <a title="Reddit" href="https://www.reddit.com/r/Qubes/" class="fa fa-reddit fa-5x fa-fw" aria-hidden="true"></a>
         <a title="Facebook" href="https://www.facebook.com/QubesOS" class="fa fa-facebook fa-5x fa-fw" aria-hidden="true"></a>
         <a title="LinkedIn" href="https://www.linkedin.com/company/qubes-os/" class="fa fa-linkedin fa-5x fa-fw" aria-hidden="true"></a>
-	<a title="Help and Support" href="{{ support_link }}" class="fa fa-life-ring fa-5x fa-fw black-icon" aria-hidden="true"></a>
+	<a title="{{ help.text }}" href="{{ help.url }}" class="fa fa-life-ring fa-5x fa-fw black-icon" aria-hidden="true"></a>
       </div>
     </div>
   </div>
