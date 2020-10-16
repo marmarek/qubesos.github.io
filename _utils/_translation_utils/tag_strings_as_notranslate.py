@@ -31,7 +31,31 @@ from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
 # and searching for the key pattern that should be marked as locked and thus untranslatabel and immutable
 
 # TODO check out faq.md for exmaples where lock strings are not a good idea?
-KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', '^\[(\d)*\](.sub-pages.)\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', '^\[(\d)*\](.sub-pages.)\[(\d)*\](.icon)$', '^(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.icon)$','^(\[(\d)*\])(.category)$', '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.award.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.award.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.media.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.media.)(\[(\d)*\])(.article)$', '^(\[(\d)*\])(.attachment)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.tweet)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.avatar)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.htmlsection)$', '^(\[(\d)*\])(.folder)$','redirect_from.\[(\d)*\]', '^(\[(\d)*\])(.links.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.links.)(\[(\d)*\])(.id)$', '^(\[(\d)*\])(.columns.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.id)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.paragraphs.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.list.)(\[(\d)*\])(.item.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.note.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.htmlsection)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.section.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section)$']
+KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', 
+        '^\[(\d)*\](.sub-pages.)\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', 
+        '^\[(\d)*\](.sub-pages.)\[(\d)*\](.icon)$', 
+        '^(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.icon)$','^(\[(\d)*\])(.category)$', 
+        '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.tech.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.award.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.award.)(\[(\d)*\])(.img)$', 
+        '^(\[(\d)*\])(.media.)(\[(\d)*\])(.img)$', '^(\[(\d)*\])(.media.)(\[(\d)*\])(.article)$', 
+        '^(\[(\d)*\])(.attachment)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.tweet)$', 
+        '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.avatar)$', '^(\[(\d)*\])(.expert.)(\[(\d)*\])(.img)$', 
+        '^(\[(\d)*\])(.htmlsection)$', '^(\[(\d)*\])(.folder)$','redirect_from.\[(\d)*\]', 
+        '^(\[(\d)*\])(.links.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.links.)(\[(\d)*\])(.id)$', 
+        '^(\[(\d)*\])(.columns.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.id)$', '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.img)$', 
+        '^(\[(\d)*\])(.partners.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.paragraphs.)(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.list.)(\[(\d)*\])(.item.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.note.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.htmlsections.)(\[(\d)*\])(.htmlsection)$', 
+        '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.section.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^(\[(\d)*\])(.section.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section)$', 
+        '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.r_version)$']
 
 KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.icon)$', '^(\[\d\])(.url)$', '^(\[\d\])(.icon)$','^(\[\d\])(.category)$', '^(\[\d\])(.tech.)(\[\d\])(.img)$', '^(\[\d\])(.tech.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.article)$', '^(\[\d\])(.attachment)$', '^(\[\d\])(.expert.)(\[\d\])(.tweet)$', '^(\[\d\])(.expert.)(\[\d\])(.avatar)$', '^(\[\d\])(.expert.)(\[\d\])(.img)$', '^(\[\d\])(.htmlsection)$', '^(\[\d\])(.folder)$','redirect_from.\[\d\]', '^(\[\d\])(.links.)(\[\d\])(.url)$', '^(\[\d\])(.links.)(\[\d\])(.id)$']
 

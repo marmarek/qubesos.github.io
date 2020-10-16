@@ -78,18 +78,18 @@
           </div>
           <div class="col-lg-3 col-md-3 add-left">
             <ul class="list-unstyled">
-		    <li><a href="{{ security_link }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ upperlinks.security }}</a></li>
-		    <li><a href="{{ doc_rb_link }}"><i class="fa fa-bug fa-fw black-icon"></i> {{ upperlinks.bug }}</a></li>
-		    <li><a href="{{ support_link }}"><i class="fa fa-life-ring fa-fw black-icon"></i> {{ upperlinks.help }}</a></li>
-		    <li><a href="{{ join_link }}"><i class="fa fa-user-plus fa-fw black-icon"></i> {{ upperlinks.join }}</a></li>
+		    <li><a href="{{ upperlinks.security[0].url }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ upperlinks.security[0].text }}</a></li>
+		    <li><a href="{{ upperlinks.bug[0].url }}"><i class="fa fa-bug fa-fw black-icon"></i> {{ upperlinks.bug[0].text }}</a></li>
+		    <li><a href="{{ upperlinks.help[0].url }}"><i class="fa fa-life-ring fa-fw black-icon"></i> {{ upperlinks.help[0].text }}</a></li>
+		    <li><a href="{{ upperlinks.join[0].url }}"><i class="fa fa-user-plus fa-fw black-icon"></i> {{ upperlinks.join[0].text }}</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-5 add-left">
             <ul class="list-unstyled">
               <li><i class="fa fa-newspaper-o fa-fw"></i> Press inquiries: <a href="mailto:press@qubes-os.org">press@qubes-os.org</a></li>
               <li><i class="fa fa-briefcase fa-fw"></i> Business inquiries: <a href="mailto:business@qubes-os.org">business@qubes-os.org</a></li>
-	      <li><a href="{{ partners_link }}"><i class="fa fa-globe fa-fw black-icon"></i> {{ upperlinks.partner }}</a></li>
-	      <li><a href="{{ hw_link }}"><i class="fa fa-laptop fa-fw black-icon"></i> {{ upperlinks.cert }}</a></li>
+	      <li><a href="{{ upperlinks.partner[0].url }}"><i class="fa fa-globe fa-fw black-icon"></i> {{ upperlinks.partner[0].text }}</a></li>
+	      <li><a href="{{ upperlinks.cert[0].url }}"><i class="fa fa-laptop fa-fw black-icon"></i> {{ upperlinks.cert[0].text }}</a></li>
             </ul>
           </div>
         </div>
@@ -139,7 +139,7 @@
     {% endif %}
   {% endfor %}
   <div class="text-center more-bottom">
-	  <a href="{{ join_link}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
+	  <a href="{{ joined.url}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
   </div>
 </div>
 <div class="white-box page-content more-bottom">

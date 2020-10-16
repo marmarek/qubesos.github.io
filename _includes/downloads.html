@@ -63,10 +63,10 @@
 </div>
 
 {% assign ls = down | where_exp: "item", "item.htmlsection == 'loop-releases'" | first %}
-{% assign test = ls.releases | where_exp: "item", "item.version == 'testing'" | first %}
-{% assign stable = ls.releases | where_exp: "item", "item.version == 'stable'" | first %}
-{% assign old = ls.releases | where_exp: "item", "item.version == 'old'" | first %}
-{% assign depr = ls.releases | where_exp: "item", "item.version == 'deprecated'" | first %}
+{% assign test = ls.releases | where_exp: "item", "item.r_version == 'testing'" | first %}
+{% assign stable = ls.releases | where_exp: "item", "item.r_version == 'stable'" | first %}
+{% assign old = ls.releases | where_exp: "item", "item.r_version == 'old'" | first %}
+{% assign depr = ls.releases | where_exp: "item", "item.r_version == 'deprecated'" | first %}
 
 <div class="white-box more-bottom page-content">
   <div class="row">
@@ -102,6 +102,7 @@
       {% if aging %}
       <div class="alert alert-warning" role="alert">
 	<i class="fa fa-info-circle"></i>{% if aging != true %} {{ aging }}{% else %}
+
 	{% for s in old.snippets %}
         {% if s.url != nil %}
                 <a href="{{ s.url }}">{{ s.snippet }}</a>

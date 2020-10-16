@@ -1,10 +1,22 @@
 - htmlsection: upperlinks 
-  security: Report a security issue 
-  bug: Report a bug
-  help: Get help and support
-  join: Join the team
-  partner: Become a Qubes Partner
-  cert: Request hardware certification 
+  security:
+  - text: Report a security issue
+    url: /security/
+  bug:
+  - text: Report a bug
+    url: /doc/reporting-bugs/
+  help:
+  - text: Get help and support
+    url: /support/
+  join:
+  - text: Join the team
+    url: /join/
+  partner:
+  - text: Become a Qubes Partner
+    url: /partners/
+  cert:
+  - text: Request hardware certification
+    url: /hardware-certification/
 
 - htmlsection: core-team 
   title: Core Team
@@ -14,6 +26,7 @@
 
 - htmlsection: join
   title: Join the team!
+  url: /join/
 
 - htmlsection: emeritus
   title: Emeritus
