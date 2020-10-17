@@ -7,6 +7,8 @@
 
 tx config mapping-bulk -p qubes --source-language en  --type GITHUBMARKDOWN -f '.md' -d --source-file-dir _doc/en/_doc/ -i _dev --expression '_qubes-translated/<lang>/_doc/{filepath}/{filename}{extension}'   --execute
 tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir pages --expression '_qubes-translated/<lang>/pages/{filepath}/{filename}{extension}' --execute
+# TODO several main news strings csn be translated at least
+#tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir news --expression '_qubes-translated/<lang>/news/{filepath}/{filename}{extension}' --execute
 tx config  mapping -r qubes.data_architecture --source-lang en --type YAML_GENERIC --source-file _data/architecture.yml --expression '_qubes-translated/<lang>/_data/<lang>/architecture.yml' --execute
 tx config  mapping -r qubes.data_index --source-lang en --type YAML_GENERIC --source-file _data/index.yml --expression '_qubes-translated/<lang>/_data/<lang>/index.yml' --execute
 tx config  mapping -r qubes.data_includes --source-lang en --type YAML_GENERIC --source-file _data/includes.yml --expression '_qubes-translated/<lang>/_data/<lang>/includes.yml' --execute

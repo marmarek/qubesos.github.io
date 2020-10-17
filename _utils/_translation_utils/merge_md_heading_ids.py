@@ -189,29 +189,25 @@ def merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines):
     return result_trl_gfm
 
 
+def write_lines(content, filename):
+    with open(filename,'w') as f:
+        f.write(content)
 
-def main():
-    if len(sys.argv) != 3:
-        sys.exit(1)
+def read_lines(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    return lines
 
-    # read original file
-    orig_gfm_lines = []
-    with open(sys.argv[1], 'r') as file:
-        orig_gfm_lines = file.readlines()
+def process_headers(mapping):
 
-    # read translated file
-    trl_gfm_lines = []
-    with open(sys.argv[2], 'r') as file:
-        trl_gfm_lines = file.readlines()
+    for key, item in mapping.items():
+        if not item.endswith('.yml'):
+            original_lines = read_lines(key)
+            translated_lines = read_lines(item)
+            # merge ids in gfm files
+            print(key)
 
-    # merge ids in gfm files
-    result = merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines)
+            result = merge_ids_in_gfm_files(original_lines, translated_lines)
+            write_lines(result, item)
 
-    # print result
-    print(result, end='')
-
-
-
-if __name__ == '__main__':
-    main()
 

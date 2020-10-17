@@ -55,7 +55,7 @@ KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$',
         '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.section.)(\[(\d)*\])(.url)$', 
         '^(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
         '^(\[(\d)*\])(.section.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section)$', 
-        '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.r_version)$']
+        '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.r_version)$', '^(\[(\d)*\])(.section.)(\[(\d)*\])(.note)$']
 
 KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)\[\d\](.icon)$', '^(\[\d\])(.url)$', '^(\[\d\])(.icon)$','^(\[\d\])(.category)$', '^(\[\d\])(.tech.)(\[\d\])(.img)$', '^(\[\d\])(.tech.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.url)$', '^(\[\d\])(.award.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.img)$', '^(\[\d\])(.media.)(\[\d\])(.article)$', '^(\[\d\])(.attachment)$', '^(\[\d\])(.expert.)(\[\d\])(.tweet)$', '^(\[\d\])(.expert.)(\[\d\])(.avatar)$', '^(\[\d\])(.expert.)(\[\d\])(.img)$', '^(\[\d\])(.htmlsection)$', '^(\[\d\])(.folder)$','redirect_from.\[\d\]', '^(\[\d\])(.links.)(\[\d\])(.url)$', '^(\[\d\])(.links.)(\[\d\])(.id)$']
 

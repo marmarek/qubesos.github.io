@@ -12,7 +12,7 @@
 
 from yaml import safe_load
 from yaml import dump as ydump
-from frontmatter import Post, load, dump
+import frontmatter
 from io import open as iopen
 from os.path import isfile, isdir
 from os import linesep, walk
@@ -22,6 +22,7 @@ from argparse import ArgumentParser
 from json import loads, dumps
 from collections import deque
 from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
+import merge_md_heading_ids as merge
 
 patterns = (
     "](/",
@@ -35,8 +36,14 @@ news = "/news/"
 qubes_issues = "/qubes-issues/"
 # constants and such
 # yml keys:
-
-YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet', 'avatar', 'img', 'article', 'quote', 'name', 'occupation', 'author', 'more', 'text', 'video', 'intro', 'version', 'subtitle', 'download', 'security', 'bug', 'help', 'join', 'partner', 'cert', 'picture', 'email', 'website', 'mail', 'links', 'id']
+# TODO fill in the yaml keys for round up
+YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet', 'avatar', 'img', 
+        'article', 'quote', 'name', 'occupation', 'author', 'more', 'text', 
+        'video', 'intro', 'version', 'subtitle', 'download', 'security', 'bug', 'help', 
+        'join', 'partner', 'cert', 'picture', 'email', 'website', 'mail', 'links', 'id',
+        'paragraph', 'snippet', 'column', 'hover', 'digest', 'signature', 'pgp', 'green', 'red', 'blue', 'trump', 
+        'tts1', 'tts2', 'txp', 'txaq', 'pxaq', 'column1', 'column2', 'column3', 'yes_short', 'no_short', 'no_extended', 'tba',
+        'bold', 'item', 'note', 'section', 'row', 'r_version']
 URL_KEY = 'url' 
 # md frontmatterkeys:
 PERMALINK_KEY = 'permalink'
@@ -47,7 +54,7 @@ LAYOUT_KEY = 'layout'
 SLASH = '/'
 MD_URL_SPLIT_PATTERNS = ['/)','/#']
 TRANSLATED_LANGS = ['de']
-EXCLUDE_FILES = ['download.md' ]
+#EXCLUDE_FILES = ['download.md' ]
 
 
 basicConfig(level=DEBUG)
@@ -94,12 +101,12 @@ def process_markdown(source_file, translated_file, permalinks, lang):
     permalinks:all internal links (permalink and redirect_from) belonging to the files dwonloaded from transifex
     lang: the translation language
     """
-    mdt = Post
+    mdt = frontmatter.Post
     try:
         with iopen(source_file) as s, iopen(translated_file) as t:
-            mds = load(s)
-            mdt = load(t)
-
+            mds = frontmatter.load(s)
+            mdt = frontmatter.load(t)
+            #import pdb; pdb.set_trace()
             if mds.get(PERMALINK_KEY) != None:
                 mdt[PERMALINK_KEY] = SLASH + lang + mds.get(PERMALINK_KEY)
     
@@ -126,7 +133,8 @@ def process_markdown(source_file, translated_file, permalinks, lang):
                 mdt[LAYOUT_KEY] = mds[LAYOUT_KEY]
 
             mdt[LANG_KEY] = lang
-            mdt[TRANSLATED_KEY] = 'yes'
+            # TODO we do not need the translated key anymore
+            #mdt[TRANSLATED_KEY] = 'yes'
             ## for testing purposes only
             #if mdt.get('title') != None:
             #    mdt['title'] = lang.upper() +"!: " + mdt.get('title')
@@ -134,7 +142,9 @@ def process_markdown(source_file, translated_file, permalinks, lang):
         # replace links
         lines = []
         for line in mdt.content.splitlines():
-           
+            # TODO debug
+        #    if source_file.endswith('partners.md'):
+        #        import pdb; pdb.set_trace()
             for pattern in patterns:
                 if pattern in line:
                     tmp = line.split(pattern)
@@ -143,23 +153,29 @@ def process_markdown(source_file, translated_file, permalinks, lang):
                         if '../' in tmp[part]:
                             logger.error('\'..\' found in internal url: %s' % tmp[part])
                             exit(1)
+
+                        # TODO we can translate news you know
                         if not tmp[part].startswith(lang + SLASH) and \
                                 not tmp[part].startswith('news') and \
                                 not tmp[part].startswith('attachment') and \
                                 not tmp[part].startswith('qubes-issues') and \
                                 split_and_check(tmp[part],permalinks):
                             line += pattern + lang + SLASH + tmp[part]
+                        # TODO this is the case with links at the bottom of the file
+                        elif not tmp[part].startswith(SLASH) and \
+                                SLASH + tmp[part] in permalinks:
+                            line += pattern + lang + SLASH + tmp[part]
                         # TODO if a url contains a language but the url belongs to a file that is not translated should i  actually remove the language  -> overengineering?
 #                        elif tmp[part].startswith(lang+SLASH) and not split_and_check(tmp[part][len(lang)+1],permalinks):
  #                           line += pattern + tmp[part][len(lang)+1]    
                         else:
                             line += pattern + tmp[part]
-                    lines.append(line)
+            lines.append(line)
 
         mdt.content = linesep.join(lines) + '\n'
 
         with iopen(translated_file, 'wb') as replaced:
-           dump(mdt, replaced)
+           frontmatter.dump(mdt, replaced)
 
     except FileNotFoundError as e:
         logger.debug('Following file was not updated/downloaded from transifex: %s' % e.filename)
@@ -227,7 +243,11 @@ def replace_url(to_replace, original, lang, permalinks):
                 replace_url(i, j, lang, permalinks)
         elif URL_KEY == k_r and URL_KEY == k_o:
             val = original[k_r]
-            to_replace[URL_KEY]= SLASH + lang + val if (val in permalinks) else val
+            if val is not None and '#' in val:
+                tmp_val = val[0:val.find('#')]
+                to_replace[URL_KEY]= SLASH + lang + val if (tmp_val in permalinks) else val
+            else:
+                to_replace[URL_KEY]= SLASH + lang + val if (val in permalinks) else val
         elif k_r != k_o:
             logger.error("ERROR, ordered of the loaded yml file is not preserved %s" % k_r +':' + k_o)
             exit(1)
@@ -248,7 +268,6 @@ def process_yml(source, translated, lang, permalinks):
         with iopen(source) as fp, iopen(translated) as tp:
             docs_original = safe_load(fp)
             docs = safe_load(tp)
-
             if docs == None:
                 logger.error("Empty translated file %s" %translated)
                 exit(1)
@@ -313,9 +332,9 @@ def get_all_translated_permalinks_and_redirects(translated_dir,lang):
             if filename[0] == '.':
                 continue
             filepath = dirname + SLASH + filename
-            md = Post
+            md = frontmatter.Post
             with iopen(filepath) as fp:
-                md = load(fp)
+                md = frontmatter.load(fp)
                 if md.get(PERMALINK_KEY) != None:
                     perms.add(md.get(PERMALINK_KEY)[len(lang)+1:] if md.get(PERMALINK_KEY).startswith(SLASH+lang +SLASH) else md.get(PERMALINK_KEY))
                 else:
@@ -363,8 +382,9 @@ def main(translated_dir, lang, yml, mapping, href_filename):
     # for each pair of source and translated file postprocess the translated file 
     for key, item in mapping.items():
         if yml and item.endswith('.yml'):
-           process_yml(key, item, lang, perms)
-        if not item.endswith('.yml') and not item.endswith('downloads.md'):
+            process_yml(key, item, lang, perms)
+        #if not item.endswith('.yml') and not item.endswith('downloads.md'):
+        if not item.endswith('.yml'):
             process_markdown(key, item, perms, lang)  
 
 
@@ -406,5 +426,12 @@ if __name__ == '__main__':
 
     log_debug('source/translation file mapping', source_translation_mapping)
 
+    #import pdb;pdb.set_trace()
+    # process markdown headers
+    merge.process_headers(source_translation_mapping)
+
+    #pdb.set_trace()
     main(args.translateddir, args.language, args.yml, source_translation_mapping, args.translated_hrefs_filename)
+    
+
 
