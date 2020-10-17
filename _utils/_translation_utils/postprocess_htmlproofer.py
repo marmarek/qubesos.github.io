@@ -234,7 +234,10 @@ if __name__ == '__main__':
     logger.debug("------------------------------------------------")
     logger.debug("------------------------------------------------")
 
+
+    error_urls = list(sorted({el for val in errors.values() for el in val}))
     log_debug("HTML ERRORS", errors)
+    log_debug("HTML ERRORS", error_urls)
     logger.debug("------------------------------------------------")
     logger.debug("------------------------------------------------")
     logger.debug("------------------------------------------------")
@@ -253,4 +256,4 @@ if __name__ == '__main__':
     for key, item in file_to_internal_links.items():
         process_markdown(key, item)
 
-
+    # TODO traverse all yml data files and cut the translated urls if they are in error_urls

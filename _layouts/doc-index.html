@@ -51,6 +51,7 @@
           </div>
         </div>
 	<div class="white-box more-bottom page-content">
+{% assign indexed_original = site.data.index %}
 {% if page.lang == nil or page.lang == "en" %}
       	{% assign indexed = site.data.index %}
 {% else %}
@@ -60,25 +61,44 @@
         {% endif %}
 {% endif %} 
 
+
 {% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
+{% assign ind_o = indexed_original | where_exp: "item", "item.topic == nil" %}
 {% assign topic = indexed | where_exp: "item", "item.topic != nil" | first %}
+
 <h2 id="table-of-contents">{{ topic.topic }}</h2>
-{% assign count = 1 %}
+
 <ol>
+{% assign count = 1 %}
+{% assign original_count = 0 %}
 {% for item in ind %}
 
-<li><a href="#{{ item.title | downcase | replace: " ", "-" | replace: ",", ""}}">{{ item.title }}</a></li>
-{% assign subtitle = item.sub-pages | where_exp: "it", "it.title !=nil" %}
+<!-- This is needed for creating id's for header that may've been translated -->
+{% assign item_original = ind_o[original_count] %}
+{% assign original_count = original_count | plus: 1 %}
+
+<li>
+<a id="{{ item_original.title | downcase | replace: " ", "-" | replace: ",", ""}}"></a>
+<a href="#{{ item.title | downcase | replace: " ", "-" | replace: ",", ""}}">{{ item.title }}</a>
+</li>
+
+{% assign subtitle = item.sub-pages | where_exp: "it", "it.title != nil" %}
+{% assign subtitle_o = item_original.sub-pages | where_exp: "it", "it.title != nil" %}
+
 {% assign subcount = 1 %}
-	{% for sub in subtitle %} 
+{% assign offf = 0 %}
+
+{% for sub in subtitle %} 
 {% if sub.url == nil %}
+<a id="{{ subtitle_o[offf].title | downcase | replace: " ", "-" | replace: ",", ""}}"></a>
 {{ count }}.{{ subcount }} <a href="#{{ sub.title | downcase | replace: " ", "-" | replace: ",", ""}}">{{ sub.title }}</a><br />
 {% else %}
 {{ count }}.{{ subcount }} <a href="{{ sub.url }}">{{ sub.title }}</a><br />
+<a id="{{ subcount }}-index-id"></a>
 {% endif %}
 
+{% assign offf = offf | plus: 1 %}
 {% assign subcount = subcount | plus: 1 %}
-
 {% endfor %}
 
 {% assign count = count | plus: 1 %}
