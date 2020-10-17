@@ -12,9 +12,9 @@
       {{ site.title }}
     {% endif %}
   </title>
-  {% if page.translated %}
+  {% unless page.lang == "en" %}
   	{% include doc-translated-warning.html %}
-  {% endif %}
+  {% endunless %}
   {% if page.layout == 'doc' or
         page.layout == 'post' or
         page.layout == 'security' or
