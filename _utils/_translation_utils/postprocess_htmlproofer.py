@@ -7,6 +7,7 @@ invoke: python _utils/_translation_utils/postprocess_htmlproofer.py de /tmp/html
 <TRANSLATED_DIRECTORY>[_qubes-translated/de/]: the directory with the downloaded translated files from transifex 
 '''
 from frontmatter import Post, load, dump
+import yaml
 from io import open as iopen
 from re import search
 from sys import exit
@@ -23,6 +24,7 @@ SLASH = '/'
 PERMALINK_KEY = 'permalink'
 REDIRECT_KEY = 'redirect_from'
 TRANSLATED_LANGS = ['de']
+URL_KEY = 'url'
 
 
 basicConfig(level=DEBUG)
@@ -129,6 +131,7 @@ def get_all_translated_permalinks_and_redirects_to_file_mapping(translated_dir, 
     """
     mapping = {}
     perms = []
+    yml_files = []
     for dirname, subdirlist, filelist in walk(translated_dir):
         if dirname[0] == '.':
             continue
@@ -141,6 +144,8 @@ def get_all_translated_permalinks_and_redirects_to_file_mapping(translated_dir, 
                 md = load(fp)
                 if md.get(PERMALINK_KEY) != None:
                     perms.append(md.get(PERMALINK_KEY))
+                elif filepath.endswith('.yml'):
+                    yml_files.append(filepath)
                 else:
                     logger.error('no permalink in frontmatter for file %s' % filename)
                 redirects = md.get(REDIRECT_KEY)
@@ -157,7 +162,7 @@ def get_all_translated_permalinks_and_redirects_to_file_mapping(translated_dir, 
                     logger.debug('no redirect_from in frontmatter for file %s' % filepath)
                 mapping[filepath] = perms
                 perms = [] 
-    return mapping 
+    return mapping, yml_files
 
 
 # TODO simplify
@@ -191,6 +196,50 @@ def get_error_output_from_htmlproofer(htmlproofer_output):
             count = 0
     errors[u] = internal_link
     return errors
+
+def replace_url(to_replace, errorlinks):
+    """
+    recursively remove header from the URL in an yaml file.
+    to_replace: the translated yaml content as a dictionary
+    errorlinks: all internal links that are deadend and need to be cut off before # meaning get rid of the headers
+    """
+    if not isinstance(to_replace,dict):
+        return
+    for (k_r, v_r) in to_replace.items():
+        if isinstance(v_r, list):
+            for i in v_r:
+                replace_url(i, errorlinks)
+        elif URL_KEY == k_r:
+            val = to_replace[k_r]
+            if val is not None and '#' in val:
+                tmp_val = val[0:val.find('#')]
+                to_replace[URL_KEY]= tmp_val if (val in errorlinks) else val
+
+def process_yml(translated, errorlinks):
+    """
+    for every given source-translated yml file pair add the language to the urls if they belong to already translated files,
+    if not retain the original ones
+    translated: translated yml file
+    errorlinks: all internal links that are deadend and need to be cut off before # meaning get rid of the headers
+    """
+    docs = []
+    try:
+        with iopen(translated) as tp:
+            docs = yaml.safe_load(tp)
+            if docs == None:
+                logger.error("Empty translated file %s" %translated)
+                exit(1)
+            for a in docs:
+                replace_url(a, errorlinks)
+    except FileNotFoundError as e:
+        logger.debug('Following file was NOT updated/downloaded from transifex: %s' % e.filename)
+
+    try:
+        if len(docs)>0:
+            with iopen(translated, 'w') as replace:
+                yaml.dump(docs, replace, sort_keys=False)
+    except FileNotFoundError as e:
+        logger.debug('do nothing for file: %s. it is OK.' % e.filename)
 
 if __name__ == '__main__':
     # python _utils/_translation_utils/postprocess_htmlproofer.py de /tmp/html.output _qubes-translated/de/    
@@ -235,16 +284,18 @@ if __name__ == '__main__':
     logger.debug("------------------------------------------------")
 
 
-    error_urls = list(sorted({el for val in errors.values() for el in val}))
+    error_links = list(sorted({el for val in errors.values() for el in val}))
     log_debug("HTML ERRORS", errors)
-    log_debug("HTML ERRORS", error_urls)
+    log_debug("HTML ERRORS", error_links)
     logger.debug("------------------------------------------------")
     logger.debug("------------------------------------------------")
     logger.debug("------------------------------------------------")
 
-    mapping = get_all_translated_permalinks_and_redirects_to_file_mapping(args.translated_dir, args.language)
+    mapping, yml_files = get_all_translated_permalinks_and_redirects_to_file_mapping(args.translated_dir, args.language)
 
-    log_debug('mapping ',mapping)
+
+    log_debug('mapping ', mapping)
+    log_debug('yml files ', yml_files)
 
     file_to_internal_links = {}
     for key, item  in mapping.items():
@@ -256,4 +307,7 @@ if __name__ == '__main__':
     for key, item in file_to_internal_links.items():
         process_markdown(key, item)
 
-    # TODO traverse all yml data files and cut the translated urls if they are in error_urls
+    # traverse all yml data files and cut the translated urls if they are in error_urls
+    for yml in yml_files:
+        process_yml(yml, error_links)
+

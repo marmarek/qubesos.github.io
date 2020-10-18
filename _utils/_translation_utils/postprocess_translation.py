@@ -36,7 +36,6 @@ news = "/news/"
 qubes_issues = "/qubes-issues/"
 # constants and such
 # yml keys:
-# TODO fill in the yaml keys for round up
 YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet', 'avatar', 'img', 
         'article', 'quote', 'name', 'occupation', 'author', 'more', 'text', 
         'video', 'intro', 'version', 'subtitle', 'download', 'security', 'bug', 'help', 
@@ -106,7 +105,6 @@ def process_markdown(source_file, translated_file, permalinks, lang):
         with iopen(source_file) as s, iopen(translated_file) as t:
             mds = frontmatter.load(s)
             mdt = frontmatter.load(t)
-            #import pdb; pdb.set_trace()
             if mds.get(PERMALINK_KEY) != None:
                 mdt[PERMALINK_KEY] = SLASH + lang + mds.get(PERMALINK_KEY)
     
@@ -142,9 +140,6 @@ def process_markdown(source_file, translated_file, permalinks, lang):
         # replace links
         lines = []
         for line in mdt.content.splitlines():
-            # TODO debug
-        #    if source_file.endswith('partners.md'):
-        #        import pdb; pdb.set_trace()
             for pattern in patterns:
                 if pattern in line:
                     tmp = line.split(pattern)
@@ -426,11 +421,9 @@ if __name__ == '__main__':
 
     log_debug('source/translation file mapping', source_translation_mapping)
 
-    #import pdb;pdb.set_trace()
     # process markdown headers
     merge.process_headers(source_translation_mapping)
 
-    #pdb.set_trace()
     main(args.translateddir, args.language, args.yml, source_translation_mapping, args.translated_hrefs_filename)
     
 

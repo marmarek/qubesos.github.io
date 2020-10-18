@@ -21,7 +21,7 @@ echo "================================= build suite ============================
 bundle exec jekyll b
 echo "================================= run htmlproofer ==============================="
 htmlproofer ./_site   --disable-external   --checks-to-ignore ImageCheck   --file-ignore ./_site/video-tours/index.html,./_site/$1/video-tours/index.html --url-ignore "/qubes-issues/" --log-level debug 2&> /tmp/html.output 
-echo "================================== process html proofer errors ================================="
+echo "================================== as a last resort in case of errors process html proofer errors ================================="
 python _utils/_translation_utils/postprocess_htmlproofer.py $1 /tmp/html.output $2
 
 echo "================================= build the site and run htmlproofer ===================================="
