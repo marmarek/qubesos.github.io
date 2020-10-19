@@ -1,8 +1,10 @@
 <footer>
-  <div class="white-box more-bottom">
-  <div class="row footer-search">
+<div class="white-box footer-search more-bottom">
+  <div class="row">
     <div class="col-lg-3 col-md-3 text-center">
-      <h4 class="remove-bottom"><i class="fa fa-search"></i> Search Qubes-OS.org</h4>
+      <h4 class="remove-bottom">
+        <i class="fa fa-search"></i> Search qubes-os.org
+      </h4>
     </div>
     <div class="col-lg-9 col-md-9 text-left">
       <form action="https://duckduckgo.com/" method="get">
@@ -12,11 +14,11 @@
           <span class="input-group-btn">
             <button class="btn btn-primary" type="submit">Go!</button>
           </span>
-        </div><!-- /input-group -->
+        </div>
       </form>
     </div>
   </div>
-  </div>
+</div>
   <div class="row footer-nav">
 	 {% if page.lang == nil or page.lang == "en" %}
                 {% assign archies = site.data.architecture %}
@@ -28,7 +30,14 @@
         {% endif %}
     {% for section in archies %}
     <div class="col-lg-2 col-md-2">
-      <a href="{{section.url}}"><h5 class="text-left add-bottom">{{section.title}} {% if section.title == "Donate" %}<i class="fa fa-heart"></i>{% endif %}</h5></a>
+      <a href="{{section.url}}">
+        <h5 class="text-left add-bottom">
+        {{section.title}} 
+        {% if section.title == "Donate" %}
+          <i class="fa fa-heart"></i>
+        {% endif %}
+        </h5>
+        </a>
       <ul class="list-unstyled">
         {% for sub in section.sub-pages %}
         <li><a href="{{sub.url}}">{{sub.title}}</a></li>
@@ -48,7 +57,6 @@
 
 {% assign foot = inc | where_exp: "item", "item.section == 'footer'" | first %}
 
-
 {% assign web = foot.links | where_exp: "item", "item.id == 1" | first %}
 {% assign tor = foot.links | where_exp: "item", "item.id == 2" | first %}
 {% assign bug = foot.links | where_exp: "item", "item.id == 3" | first %}
@@ -65,17 +73,20 @@
 
   <div class="row footer-nav text-center more-top add-bottom">
     <div class="footer-logo more-bottom">
-	    <a href="{{ lang }}"><img src="/attachment/icons/logo-outline-small.svg" alt="Qubes"><strong>Qubes</strong> OS</a>
+	    <a href="{{ lang }}">
+                <img src="/attachment/icons/logo-outline-small.svg" alt="Qubes">
+            <strong>Qubes</strong> OS</a>
     </div>
     <p>
-      &#169; <script type="text/javascript">
+      &#169; 
+      <script type="text/javascript">
                document.write(new Date().getFullYear());
       </script><noscript>2020</noscript> {{ foot.title }}<br>
       <a href="{{ web.url }}">{{ web.text }}</a> |
       <a href="{{ tor.url }}">{{ tor.text }}</a> |
       <a href="{{ bug.url }}">{{ bug.text }}</a> |
       <a href="{{ priv.url }}">{{ priv.text }}</a> |
-      <a href="{{ term.url }}">{{ term.text }}</a> |
+      <a href="{{ terms.url }}">{{ terms.text }}</a> |
       <a href="{{ map.url }}">{{ map.text }}</a>
     </p>
   </div>
@@ -83,7 +94,7 @@
 
 <script src="/js/jquery-2.2.2.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-{% if page.permalink contains "/video-tours/" %}
+{% if page.permalink == "/video-tours/" %}
 <script src="/js/jquery.tubeplayer.min.js"></script>
 <script>
 $(document).ready(function() {

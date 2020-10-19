@@ -61,7 +61,7 @@
     url: /doc/#introduction
   - title: Project Security
     url: /doc/#project-security
-  - title: Choosing Your Hardware
+  - title: Choosing Hardware
     url: /doc/#choosing-your-hardware
   - title: Installing & Upgrading
     url: /doc/#downloading-installing-and-upgrading-qubes
@@ -71,7 +71,7 @@
     url: /doc/#managing-operating-systems-within-qubes
   - title: Security in Qubes
     url: /doc/#security-in-qubes
-  - title: Advanced Configuration
+  - title: Advanced Config
     url: /doc/#advanced-configuration
   - title: Developer Docs
     url: /doc/#developer-documentation
@@ -86,8 +86,6 @@
     url: /news/categories/#announcements
   - title: Articles
     url: /news/categories/#articles
-  - title: Talks
-    url: /news/categories/#talks
   - title: Research
     icon: fa-file-text
     url: /research/
@@ -96,6 +94,8 @@
     icon: fa-bar-chart
   - title: GitHub
     url: https://github.com/QubesOS
+  - title: Qubes Forum
+    url: https://qubes-os.discourse.group/
   - title: Twitter
     url: https://twitter.com/QubesOS
   - title: Reddit

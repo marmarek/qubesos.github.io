@@ -226,3 +226,11 @@
   title: "Special Register Buffer speculative side channel (XSA-320)"
   date: 2020-06-11
 
+- qsb: "058"
+  title: "Insufficient cache write-back under VT-d (XSA-321)"
+  date: 2020-07-07
+
+- qsb: "059"
+  title: "Multiple Xen issues (XSA-337, XSA-340, XSA-343)"
+  date: 2020-09-22
+  

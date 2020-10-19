@@ -12,21 +12,23 @@
   - text: Join the team
     url: /join/
   partner:
-  - text: Become a Qubes Partner
+  - text: Qubes Partners
     url: /partners/
   cert:
   - text: Request hardware certification
     url: /hardware-certification/
+  biz:
+  - text: Business inquiries
+  press:
+  - text: Press inquiries
+
+
 
 - htmlsection: core-team 
   title: Core Team
   picture: Picture of
   email: Email
   website: Website
-
-- htmlsection: join
-  title: Join the team!
-  url: /join/
 
 - htmlsection: emeritus
   title: Emeritus

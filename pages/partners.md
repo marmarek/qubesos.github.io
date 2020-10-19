@@ -64,3 +64,14 @@ A special thank you to our supporters! Please consider making a [donation] today
 
 [donation]: /donate/
 [contact]: mailto:funding@qubes-os.org
+[Freedom of the Press Foundation]: #freedom-of-the-press-foundation
+[Mullvad]: #mullvad
+[Boris]: #boris
+[zby]: #zby
+[Piston]: #piston
+[Latacora]: #latacora
+[NLnet Foundation]: #nlnet-foundation
+[Open Technology Fund]: #open-technology-fund
+[Invisible Things Lab]: #invisible-things-lab
+[Mozilla]: #mozilla
+[contact]: mailto:funding@qubes-os.org

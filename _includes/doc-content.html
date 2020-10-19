@@ -11,76 +11,19 @@
 
 {% assign docs = doc_content | where_exp: "item", "item.section == 'doc-content'" | first %}
 
-
-{% assign doc = docs.links | where_exp: "item", "item.id == 1" | first %}
-{% assign imprv = docs.links | where_exp: "item", "item.id == 2" | first %}
-{% assign blob = docs.links | where_exp: "item", "item.id == 3" | first %}
-{% assign edit = docs.links | where_exp: "item", "item.id == 4" | first %}
-{% assign bug = docs.links | where_exp: "item", "item.id == 5" | first %}
-{% assign sup = docs.links | where_exp: "item", "item.id == 6" | first %}
-{% assign don = docs.links | where_exp: "item", "item.id == 7" | first %}
-
-	{% if lang == "" %}
-	  	{% assign master_edit =  site.project_repo_path | append: "/qubes-doc/edit/master" | append: page.relative_path | remove_first: '_doc'  %}
-	  	{% assign master_blob =  site.project_repo_path | append: "/qubes-doc/blob/master" | append: page.relative_path | remove_first: '_doc'  %}
-	{% else %}
-	  	{% assign master_edit =  site.project_repo_path | append: "/qubes-translated/edit/master" | append: page.relative_path | remove_first: '_qubes-translated'  %}
-	  	{% assign master_blob =  site.project_repo_path | append: "/qubes-translated/blob/master" | append: page.relative_path| remove_first: '_qubes-translated'  %}
-	{% endif %}
-
   <div class="row">
-    <div class="col-lg-3 col-md-3 text-center">
+    <div class="col-md-3">
       <div class="page-source-side remove-bottom">
-	      <h3 class="remove-bottom">{{ docs.title }}</h3>
+	      <h3 class="remove-bottom">Contents</h3>
       </div>
-      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button"> {{ docs.title }} </a>
+      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button"> Contents </a>
       <div id="page-toc" class="collapse in"></div>
       <div class="page-source-side">
-        <a href="{{ doc.url }}"
-           class="btn btn-primary btn-block"
-           title="Go to Documentation">
-		<span class="fa fa-fw fa-book"></span> {{ doc.text }}
-        </a><br>
-        <a href="{{ imprv.url}}"
-           class="page-source-link btn btn-default btn-block"
-           title="Improve the Docs"
-           target="_blank">
-		<span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
-        </a><br>
-        <a href="{{ master_blob }}"
-           class="page-source-link btn btn-default btn-block"
-           title="View page source"
-           target="_blank">
-		<span class="fa fa-fw fa-code"></span> {{ blob.text }}
-        </a><br>
-        <a href="{{ master_edit }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Edit this page"
-           target="_blank">
-		<span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
-        </a><br>
-        <a href="{{ bug.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Report a Bug"
-           target="_blank">
-		<span class="fa fa-fw fa-bug"></span> {{ bug.text }}
-        </a><br>
-        <a href="{{ sup.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Help & Support"
-           target="_blank">
-		<span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
-        </a><br>
-        <a href="{{ don.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Make a Donation"
-           target="_blank">
-		<span class="fa fa-fw fa-heart"></span> {{ don.text }}
-        </a>
+      {% include doc-widget.html %}
       </div>
     </div>
     <div class="toc-button-spacer more-bottom"></div>
-    <div class="col-lg-9 col-md-9 col-sm-12 page-content-right">
+    <div class="col-xs-12 col-md-9 page-content-right">
       <article id="doc-content" class="post-content">
 	
         {{ content }}
@@ -105,47 +48,7 @@
     </div>
   </div>
   <div class="page-source-bottom">
-        <a href="{{ doc.url}}"
-           class="btn btn-primary btn-block"
-           title="Go to Documentation">
-		<span class="fa fa-fw fa-book"></span> {{ doc.text }}
-        </a><br>
-        <a href="{{ imprv.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Improve the Docs"
-           target="_blank">
-		<span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
-        </a><br>
-        <a href="{{ master_blob }}"
-           class="page-source-link btn btn-default btn-block"
-           title="View page source"
-           target="_blank">
-		<span class="fa fa-fw fa-code"></span> {{ blob.text }}
-        </a><br>
-        <a href="{{ master_edit }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Edit this page"
-           target="_blank">
-		<span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
-        </a><br>
-        <a href="{{ bug.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Report a Bug"
-           target="_blank">
-		<span class="fa fa-fw fa-bug"></span> {{ bug.text }}
-        </a><br>
-        <a href="{{ sup.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Help & Support"
-           target="_blank">
-		<span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
-        </a><br>
-        <a href="{{ don.url }}"
-           class="page-source-link btn btn-default btn-block"
-           title="Make a Donation"
-           target="_blank">
-		<span class="fa fa-fw fa-heart"></span> {{ don.text }}
-        </a>
+  {% include doc-widget.html %}
   </div>
 </div>
 {% include footer.html %}

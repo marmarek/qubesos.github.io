@@ -108,14 +108,19 @@ $on-laptop-wide:   1150px;
         "docs";
 
 // Global small screen fix
-@media (max-width: $screen-sm-min) {
-    .container {
-      padding: 0;
-      margin: 0;
-    }
+@media (max-width: $container-sm) {
 
     body {
-      padding: 5px;
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      > .container {
+        padding: 0 8% !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
     }
 
     .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
@@ -125,7 +130,7 @@ $on-laptop-wide:   1150px;
     }
 }
 
-// Custom - Icon Colors
+// Custom - Icons
 .black-icon         {color: #000000;}
 .fa-twitter         {color: #00aced;}
 .fa-twitter-square  {color: #00aced;}
@@ -135,6 +140,12 @@ $on-laptop-wide:   1150px;
 .fa-facebook-square {color: #3b5998;}
 .fa-stack-exchange  {color: #3399ff;}
 .fa-rss-square      {color: #f26f22;}
+.community-icons {
+  a {
+    padding: 20px;
+    margin: 0 1.9rem;
+  }
+}
 
 // Custom - Article Tables
 article table {
@@ -206,4 +217,31 @@ article tr.center {
 }
 
 
+// Custom - Buttons
+.page-source-side,
+.download-content {
+  .btn {
+    text-align: left;
+  }
+}
 
+// Custom - Sticky external documentation warning
+.alert-sticky {
+  position: sticky;
+  z-index: 1;
+  top: 10px;
+}
+
+// Custom - Nina's "Donate" button colors
+#nav-button-donate {
+  a {
+    color: #3874d8;
+    background-color: #dbe8ff;
+    &:hover,
+    &:focus,
+    &.active {
+      color: #ffffff;
+      background-color: #3874d8;
+    }
+  }
+}

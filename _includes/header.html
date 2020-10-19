@@ -28,11 +28,14 @@
                                 {% assign archies = site.data.architecture %}
                         {% endif %}
 		{% endif %}
-		{% assign langmenu=true %}
+
 	  {% endif %}
           	{% for section in archies %}
-                	<li><a href="{{ section.url }}">{{ section.title }}</a></li>
+                <li id="nav-button-{{ section.title | slugify }}">
+                  <a href="{{ section.url }}">{{ section.title }}</a>
+                 </li>
           	{% endfor %}
+	  {% assign langmenu=false %}
 	  {% if langmenu %}
           	{% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where:'ref', page.ref | sort: 'lang' %}
 		  <li>

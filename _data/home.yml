@@ -1,15 +1,9 @@
 - htmlsection: main 
   subtitle: A reasonably secure operating system 
   download:
-  - text: Download &amp; install
+  - text: Download &amp; Install
     url: /downloads/
   version: Version 4.0.3
-  intro:
-  - text: Was ist Qubes OS?
-    url: /intro/
-  video:
-  - text: Watch a Video Tour
-    url: /video-tours/
 
 - htmlsection: experts
   title: What the experts are saying
@@ -56,10 +50,7 @@
       img: /attachment/site/wired-magazine-logo.png
       quote: So Rutkowska flipped the game, this time in favor of the defenders.
       author: by Andy Greenberg
-    - article: https://www.hostingadvice.com/blog/qubes-offers-security-by-compartmentalization/
-      img: /attachment/site/hosting-advice-logo.png
-      quote: Qubes embodies the new frontier of operating systems, where security and usability take the front seat.
-      author: by Christine Preusler
+  more: More Media &amp; Press
 
 - htmlsection: news
   title: News &amp; Announcements

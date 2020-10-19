@@ -4,57 +4,26 @@
     <body>
       {% include header.html %}
       <div class="container">
-	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign inc = site.data.includes %}
-	{% else %}
-        	{% assign inc = site.data.translation[page.lang].includes %}
-        	{% if inc == nil or inc.size == 0 %}
-                	{% assign inc = site.data.includes %}
-        	{% endif %}
-	{% endif %}
+      {% include news-heading.html %}
 
-
-{% assign news = inc | where_exp: "item", "item.section == 'news'" | first %}
-
-        <div class="row more-top">
-          <div class="col-lg-7 col-md-7">
-            <h1 class="add-left outer-heading">
-		    <a href="{{ news.htmlsections[1].url }}" class="heading-link">
-		      <i class="fa fa-newspaper-o"></i>{{ news.htmlsections[1].title }}
-              </a>
-	      <a href="{{ news.htmlsections[2].url }}" class="btn btn-default more-left half-top"><i class="fa fa-tag" aria-hidden="true"></i>{{ news.htmlsections[2].title }}</a>
-            </h1>
-          </div>
-          <div class="col-lg-5 col-md-5 button-heading">
-            <h1 class="outer-heading">
-              <a title="GitHub" href="https://github.com/QubesOS" class="fa fa-github-square black-icon" aria-hidden="true"></a>
-              <a title="Twitter" href="https://twitter.com/QubesOS" class="fa fa-twitter-square" aria-hidden="true"></a>
-              <a title="Reddit" href="https://www.reddit.com/r/Qubes/" class="fa fa-reddit-square" aria-hidden="true"></a>
-              <a title="Facebook" href="https://www.facebook.com/QubesOS" class="fa fa-facebook-square" aria-hidden="true"></a>
-              <a title="LinkedIn" href="https://www.linkedin.com/company/qubes-os/" class="fa fa-linkedin-square" aria-hidden="true"></a>
-              <a title="Subscribe via RSS" href="/feed.xml" class="fa fa-rss-square more-right" aria-hidden="true"></a>
-              <a title="Qubes OS Userbase Statistics" href="/statistics/" class="fa fa-bar-chart black-icon" aria-hidden="true"></a>
-            </h1>
-          </div>
-        </div>
         <div class="more-bottom white-box page-content">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-12"">
               <article class="post-content">
-		{% assign perm_last_part = page.url | split: '/' | last | lstrip %}
+		    {% assign perm_last_part = page.url | split: '/' | last | lstrip %}
 	         {% if perm_last_part == "news"  %}
         	     {% include news.html %}
-         	{% endif %}
-         	{% if perm_last_part == "categories"  %}
+         	 {% endif %}
+         	 {% if perm_last_part == "categories"  %}
              		{% include catnews.html %}
-         	{% endif %}
+         	 {% endif %}
 
                 {{ content }}
               </article>
             </div>
           </div>
-        </div>
-        {% include footer.html %}
-      </div>
-  </body>
+  </div>
+  {% include footer.html %}
+</div>
+</body>
 </html>

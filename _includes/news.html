@@ -52,10 +52,10 @@
         {% if author_team %}
           <a href="{{ team_link }}#{{ post.author | slugify }}">{{ post.author }}</a>
         {% else %}
-          {{ post.author }}
+          <a href="{{ team_link }}">{{ post.author }}</a>
         {% endif %}
       {% else %}
-        {{ site.default_author }}
+         <a href="{{ team_link }}">{{ site.default_author }}</a>
       {% endif %}
       </strong>
       in <strong>

@@ -1,0 +1,76 @@
+{% if page.lang == nil or page.lang == "en" %}
+        {% assign doc_content = site.data.includes %}
+{% else %}
+        {% assign doc_content = site.data.translation[page.lang].includes %}
+        {% if doc_content == nil or doc_content.size == 0 %}
+                {% assign doc_content = site.data.includes %}
+        {% endif %}
+{% endif %}
+
+{% assign docs = doc_content | where_exp: "item", "item.section == 'doc-widget'" | first %}
+
+{% assign doc = docs.links | where_exp: "item", "item.id == 1" | first %}
+{% assign imprv = docs.links | where_exp: "item", "item.id == 2" | first %}
+{% assign blob = docs.links | where_exp: "item", "item.id == 3" | first %}
+{% assign edit = docs.links | where_exp: "item", "item.id == 4" | first %}
+{% assign sec = docs.links | where_exp: "item", "item.id == 5" | first %}
+{% assign bug = docs.links | where_exp: "item", "item.id == 6" | first %}
+{% assign sup = docs.links | where_exp: "item", "item.id == 7" | first %}
+{% assign don = docs.links | where_exp: "item", "item.id == 8" | first %}
+
+{% if lang == "" %}
+ 	{% assign master_edit =  site.project_repo_path | append: "/qubes-doc/edit/master" | append: page.relative_path | remove_first: '_doc'  %}
+  	{% assign master_blob =  site.project_repo_path | append: "/qubes-doc/blob/master" | append: page.relative_path | remove_first: '_doc'  %}
+{% else %}
+  	{% assign master_edit =  site.project_repo_path | append: "/qubes-translated/edit/master" | append: page.relative_path | remove_first: '_qubes-translated'  %}
+  	{% assign master_blob =  site.project_repo_path | append: "/qubes-translated/blob/master" | append: page.relative_path| remove_first: '_qubes-translated'  %}
+{% endif %}
+
+<a href="{{ doc.url }}"
+   class="btn btn-primary btn-block"
+   title="Go to Documentation">
+   <span class="fa fa-fw fa-book"></span> {{ doc.text }}
+</a><br>
+<a href="{{ imprv.url}}"
+   class="page-source-link btn btn-default btn-block"
+   title="Improve the Docs"
+   target="_blank">
+  <span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
+</a><br>
+<a href="{{ master_blob }}"
+   class="page-source-link btn btn-default btn-block"
+   title="View page source"
+   target="_blank">
+  <span class="fa fa-fw fa-code"></span> {{ blob.text }}
+</a><br>
+<a href="{{ master_edit }}"
+   class="page-source-link btn btn-default btn-block"
+   title="Edit this page"
+   target="_blank">
+ <span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
+</a><br>
+<a href="{{ sec.url }}"
+   class="page-source-link btn btn-default btn-block"
+   title="Report a Security Issue"
+   target="_blank">
+	<span class="fa fa-fw fa-lock"></span> {{ sec.text }} 
+</a><br>
+<a href="{{ bug.url }}"
+   class="page-source-link btn btn-default btn-block"
+   title="Report a Bug"
+   target="_blank">
+  <span class="fa fa-fw fa-bug"></span> {{ bug.text }}
+</a><br>
+<a href="{{ sup.url }}"
+   class="page-source-link btn btn-default btn-block"
+   title="Help & Support"
+   target="_blank">
+  <span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
+</a><br>
+<a href="{{ don.url }}"
+   class="page-source-link btn btn-default btn-block"
+   title="Make a Donation"
+   target="_blank">
+  <span class="fa fa-fw fa-heart"></span> {{ don.text }}
+</a>
+

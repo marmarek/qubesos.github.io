@@ -1,4 +1,4 @@
-- section: doc-content
+- section: doc-widget
   title: Contents
   links:
     - url: /doc/
@@ -11,15 +11,18 @@
       id: 3
     - text: Edit This Page
       id: 4
+    - url: /security/
+      text: Report a Security Issue
+      id: 5   
     - url: /doc/reporting-bugs/
       text: Report a Bug
-      id: 5
-    - url: /support/
-      text: Help & Support
       id: 6
+    - url: /support/
+      text: Help & Support 
+      id: 7
     - url: /donate/
       text: Make a Donation 
-      id: 7
+      id: 8
 
 - section: intro 
   links:
@@ -31,15 +34,19 @@
       id: 2
  
 
-- section: post 
+- section: news-heading 
+  title: Recent News
   links:
     - url: /news/
       text: News
       id: 1
     - url: /news/categories/
-      text: News by Category
+      text: Categories
       id: 2
- 
+    - url: /statistics/
+      text: Statistics
+      id: 3
+
 - section: doc-external
   text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
  

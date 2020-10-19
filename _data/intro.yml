@@ -1,16 +1,18 @@
 - htmlsection: what
   title: What is Qubes OS?
   paragraphs:
-    - paragraph: Qubes OS is a free and open-source security-oriented operating system meant for single-user desktop computing.
     - paragraph:
       - snippets:
+        - snippet: Qubes OS is a free and open-source security-oriented operating system for single-user desktop computing.
         - snippet: Qubes OS leverages
-        - snippet: xen-based virtualization
+        - snippet: Xen-based virtualization
           url: https://wiki.xen.org/wiki/Xen_Project_Software_Overview
-        - snippet: to allow for the creation and management of isolated virtual machines called 
-        - snippet: qubes
+        - snippet: to allow for the creation and management of isolated compartments called 
+        - snippet: qubes.
           url: /doc/glossary#qube
-        - snippet: Qubes, which are implemented as 
+    - paragraph:
+      - snippets:
+        - snippet: These qubes, which are implemented as  
         - snippet: virtual machines (VMs)
           url: /doc/glossary#vm
         - snippet: ", have specific :" 
@@ -32,103 +34,102 @@
           url: /doc/standalone-and-hvm/
         - snippet: or 
         - snippet: stripped-down
-          url: /getting-started/#appvms-qubes-and-templatevms
-        - snippet: virtual machines which are based on popular operating systems such as 
+          url: /getting-started/
+        - snippet: virtual machines based on popular operating systems such as 
         - snippet: Fedora, 
           url: /doc/templates/fedora
-        - snippet: 
         - snippet: Debian
           url: /doc/templates/debian
-        - snippet: or 
-        - snippet: Windows      
+        - snippet: and 
+        - snippet: Windows.      
           url: /doc/windows/
     - item:
       - bold: Levels of trust
         snippets:
         - snippet: from complete to non-existent. All windows are displayed in a unified desktop environment with 
         - snippet: unforgeable colored window borders
-          url: https://www.qubes-os.org/getting-started/
-        - snippet: so different security levels are easily identifiable.
+          url: /getting-started/
+        - snippet: so that different security levels are easily identifiable.
   caption: Qubes OS Overview Example
   note:
     - bold: "Note :"
       snippets:
-        - snippet: Head over to the
+        - snippet: See our
         - snippet: glossary
           url: /doc/glossary/
-        - snippet: or the
+        - snippet: and
         - snippet: FAQ
           url: /faq
-        - snippet: for more information
+        - snippet: for more information.
   section:
     - title: Features
     - item: 1
       title: Strong isolation
       snippets:
-        - snippet: Isolate software as if they were installed on separate physical machines using
+        - snippet: Isolate different pieces of software as if they were installed on separate physical machines using
         - snippet: PV
           url: /doc/glossary/#pv
         - snippet: or
         - snippet: HVM
           url: /doc/glossary/#hvm
-        - snippet: virtualization techniques
+        - snippet: virtualization techniques.
     - item: 1
       title: Template system
       snippets:
-        - snippet: Allow qubes called 
+        - snippet: Use 
         - snippet: AppVMs
-          url: /getting-started/#appvms-qubes-and-templatevms
+          url: /getting-started/
         - snippet: to share a root file system without sacrificing security using the innovative
-        - snippet: Template system
+        - snippet: Template system.
           url: /doc/templates/
     - item: 1
       title: Multiple operating systems
       snippets:
         - snippet: Use multiple operating systems at the same time, including
-        - snippet: Fedora
+        - snippet: Fedora,
           url: /doc/templates/fedora
         - snippet: Debian
           url: /doc/templates/debian
-        - snippet: or
-        - snippet: Windows
+        - snippet: and
+        - snippet: Windows.
           url: /doc/windows/
     - item: 2
       title: Disposable VMs
       snippets:
         - snippet: Create
-        - snippet: disposable VMs
+        - snippet: DisposableVMs
           url: /doc/disposablevm/
-        - snippet: which are spawned quickly and destroyed when closed
-    - item: 2
+        - snippet: on the fly that self-destruct when shut down.
+    - item: 2 
       title: Whonix integration
       snippets: 
         - snippet: Run
         - snippet: Tor
           url: https://www.torproject.org/
         - snippet: securely system-wide using 
-        - snippet: Whonix with Qubes
+        - snippet: Whonix with Qubes.
           url: /doc/whonix/
-    - item: 2
-      title: Controller isolation
+    - item: 2 
+      title: Device isolation
       snippets:
         - snippet: Secure
         - snippet: device handling
           url: /doc/device-handling/
-        - snippet: through isolation of network cards and USB controllers
+        - snippet: through isolation of network cards and USB controllers.
     - item: 3
       title: Split GPG
       snippets:
         - snippet: Utilize
         - snippet: Split GPG
           url: /doc/split-gpg/
-        - snippet: to store private GPG keys in an AppVM
+        - snippet: to keep your private keys safe.
     - item: 3
       title: U2F proxy
       snippets:
         - snippet: Operate
         - snippet: Qubes U2F proxy
           url: /doc/u2f-proxy/
-        - snippet: to use two-factor authentication
+        - snippet: to use two-factor authentication devices without exposing your web browser to the full USB stack.
     - item: 3
       title: Open-source
       snippets: 
@@ -138,7 +139,7 @@
     - note: note 
       bold: "Note :"
       snippets:
-        - snippet: Given the technical nature of Qubes OS, prior experience with a Linux distribution such as Ubuntu, Debian or Fedora is advisable.
+        - snippet: Given the technical nature of Qubes OS, prior experience with a Linux can be helpful.
  
 - htmlsection: why
   title: Why Qubes OS ?
@@ -146,23 +147,39 @@
     - section: 1
       title: Physical isolation is a given safeguard that the digital world lacks 
       paragraphs:
-        - paragraph: Throughout their lives, individuals engage in various activities such as going to school, working, voting, taking care of their families or visiting with friends.  
-        - paragraph: "These activities are spatially and temporally bound : they happen in isolation of one another, in their own compartments, which often represent an essential safeguard, such as in the case of voting."
-        - paragraph: "In one's digital life, the situation is quite different : each activity, often intertwined with its real-life counterpart, tends to happen on a single computing device."
+        - paragraph: "Throughout their lives, individuals engage in various activities such as going to school, working, voting, taking care of their families or visiting with friends. These activities are spatially and temporally bound : they happen in isolation of one another, in their own compartments, which often represent an essential safeguard, such as in the case of voting."
+        - paragraph: "In our digital lives, the situation is quite different: All of our activities typically happen on a single device. This causes us to worry about whether it's safe to click on a link or install an app, since being hacked imperils our entire digital existence."
+        - paragraph: Qubes eliminates this concern by allowing us to divide a device into many compartments, much as we divide a physical building into many rooms. Better yet, it allows us to create new compartments whenever we need them, and it gives us sophisticated tools for securely managing our activities and data across these compartments.
     - section: 2
-      title: Qubes OS compartmentalizes one's digital life
+      title: Qubes allows you to compartmentalize your digital life
       paragraphs:
-        - paragraph: Surprisingly, personal computing devices are not designed to offer means to enforce the same kind of isolation that people enjoy in the physical world.
-        - paragraph: What if there were an operating system that provided a kind of digital compartmentalization almost as strong as physical isolation?
-        - paragraph: Qubes OS allows users to compartmentalize various parts of their digital lives into well-isolated compartments.
+        - paragraph: Many of us are initially surprised to learn that our devices do not support the kind of secure compartmentalization that our lives demand, and we're disappointed that software vendors rely on generic defenses that repeatedly succumb to new attacks.
+        - paragraph: "In building Qubes, our working assumption is that all software contains bugs. Not only that, but in their stampeding rush to meet deadlines, the world's stressed-out software developers are pumping out new code at a staggering rate &mdash; far faster than the comparatively smaller population of security experts could ever hope to analyze it for vulnerabilities, much less fix everything. Rather than pretend that we can prevent these inevitable vulnerabilities from being exploited, we've designed Qubes under the assumption that they <em>will</em> be exploited. It's only a matter of time until the next zero-day attack."
+        - paragraph:
+          - snippets:
+            - snippet: "In light of this sobering reality, Qubes takes an eminently practical approach: confine, control, and contain the damage. It allows you to keep valuable data separate from risky activities, preventing cross-contamination. This means you you can do everything on the same physical computer without having to worry about a single successful cyberattack taking down your entire digital life in one fell swoop. In fact, Qubes has"
+            - snippet: distinct advantages over physical air gaps.
+              url: https://invisiblethingslab.com/resources/2014/Software_compartmentalization_vs_physical_separation.pdf
     - section: 3
-      title: Made to support vulnerable users
+      title: Made to support vulnerable users and power users alike
       paragraphs:
-        - paragraph: Thanks to Qubes OS, vulnerable or actively targeted individuals such as journalists, political activists, whistleblowers or researchers can enjoy the same benefits of using multiple computing devices at a fraction of the cost and without the associated loss of usability.
-        - paragraph: It allows users to do everything on the same physical computer without having to worry about a single successful cyberattack taking down their entire digital life in one fell swoop.
-        - paragraph: Computing should remain an activity where mistakes can be made and where users can explore the web freely, downloading attachments and clicking on links without having to constantly evaluate a myriad of risk factors.
-        - paragraph: Qubes OS strives to bring back this experience. It creates a place where users can feel safe.
-    - section: 
+        - paragraph: "Qubes provides practical, usable security to vulnerable and actively-targeted individuals, such as journalists, activists, whistleblowers, and researchers. Qubes is designed with the understanding that people make mistakes, and it allows you to protect yourself from your own mistakes. It's a place where you can click on links, open attachments, plug in devices, and install software free from worry. It's a place where <em>you</em> have control over your software, not the other way around."
+        - paragraph: 
+          - snippets:
+            - snippet: Qubes is also powerful. Organizations like the
+            - snippet: Freedom of the Press Foundation,
+              url: /partners/#freedom-of-the-press-foundation
+            - snippet: Mullvad,
+              url: /partners/#mullvad
+            - snippet: Let's Encrypt
+              url: https://twitter.com/letsencrypt/status/1239934557710737410
+            - snippet: rely on Qubes as they build and maintain critical privacy and security internet technologies that are in turn relied upon by countless users around the world every day. Renowned security
+            - snippet: experts
+              url: /experts/
+            - snippet: like Edward Snowden, Daniel J. Bernstein, Micah Lee, Christopher Soghoian, Isis Agora Lovecruft, Peter Todd, Bill Budington, and Kenn White use and recommend Qubes.
+        - paragraph: "Qubes is one of the few operating systems that places the security of its users above all else. It is, and always will be, free and open-source software, because the fundamental operating system that constitutes the core infrastructure of our digital lives <em>must</em> be free and open-source in order to be trustworthy."
+    - section: 4 
+      subsections:
       - title: Video Tours
         paragraph: Want to see Qubes OS in action? Sit back and watch a guided tour!
         snippet: Video Tours
@@ -175,4 +192,38 @@
         paragraph: Ready to get started with Qubes? Here's what you need to know after installing.
         snippet: Getting Started
         url: /getting-started/
+    - section: 5
+      title: More information 
+      paragraph: This page is just a brief introduction to what Qubes is all about, and many technical details have been omitted here for the sake of presentation.
+      list:
+        - item:
+          - snippets: 
+            - snippet: If you're a current or potential Qubes user, you may want to check out the
+            - snippet: documentation
+              url: /doc/
+            - snippet: and the
+            - snippet: user FAQ.
+              url: /faq/#users
+        - item:
+          - snippets:
+            - snippet: If you're a developer, there's dedicated
+            - snippet: developer documentation
+              url: /doc/#developer-documentation
+            - snippet:  and a
+            - snippet: developer FAQ
+              url: /faq/#developers
+            - snippet: just for you.
+        - item:
+          - snippets:
+            - snippet: Ready to give Qubes a try? Head on over to the
+            - snippet: downloads
+              url: /downloads/
+            - snippet: page, and read the
+            - snippet: installation guide.
+              url: /doc/installation-guide
+        - item:
+          - snippets:
+            - snippet: Need help, or just want to join the conversation? Learn more about
+            - snippet: help, support, the mailing lists, and the forum.
+              url: /support/
 

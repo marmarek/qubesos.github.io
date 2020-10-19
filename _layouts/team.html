@@ -12,14 +12,13 @@
         {% endif %}
 {% endif %}
 
-
 {% assign coreteam = teamed | where_exp: "item", "item.htmlsection == 'core-team'" | first %}
 {% assign joined = teamed | where_exp: "item", "item.htmlsection == 'join'" | first %}
 {% assign upperlinks = teamed | where_exp: "item", "item.htmlsection == 'upperlinks'" | first  %}
 {% assign emeritus = teamed | where_exp: "item", "item.htmlsection == 'emeritus'" | first %}
 {% assign community = teamed | where_exp: "item", "item.htmlsection == 'community'" | first %}
 
-      <div class="container">
+      
 	{% if page.lang == nil or page.lang == "en" %}
 		{% assign lang = "" %}
 	{% else %}
@@ -69,9 +68,12 @@
         {% if hw.size == 0 %}
                 {% assign hw_link = "/hardware-certification/" %}
         {% endif %}
+
+    <div class="container">
         <div class="row more-top more-bottom">
-          <div class="col-lg-4 col-md-3">
+          <div class="col-xs-12 col-sm-4">
             <h1 class="add-left outer-heading">
+               <a href="{{ team_link }}" class="heading-link">
               <i class="fa fa-users" aria-hidden="true"></i>
               {{ page.title }}
             </h1>
@@ -81,71 +83,96 @@
 		    <li><a href="{{ upperlinks.security[0].url }}"><i class="fa fa-lock fa-fw black-icon"></i> {{ upperlinks.security[0].text }}</a></li>
 		    <li><a href="{{ upperlinks.bug[0].url }}"><i class="fa fa-bug fa-fw black-icon"></i> {{ upperlinks.bug[0].text }}</a></li>
 		    <li><a href="{{ upperlinks.help[0].url }}"><i class="fa fa-life-ring fa-fw black-icon"></i> {{ upperlinks.help[0].text }}</a></li>
-		    <li><a href="{{ upperlinks.join[0].url }}"><i class="fa fa-user-plus fa-fw black-icon"></i> {{ upperlinks.join[0].text }}</a></li>
             </ul>
           </div>
-          <div class="col-lg-4 col-md-5 add-left">
+          <div class="col-xs-12 col-sm-4 col-md-3">
             <ul class="list-unstyled">
-              <li><i class="fa fa-newspaper-o fa-fw"></i> Press inquiries: <a href="mailto:press@qubes-os.org">press@qubes-os.org</a></li>
-              <li><i class="fa fa-briefcase fa-fw"></i> Business inquiries: <a href="mailto:business@qubes-os.org">business@qubes-os.org</a></li>
-	      <li><a href="{{ upperlinks.partner[0].url }}"><i class="fa fa-globe fa-fw black-icon"></i> {{ upperlinks.partner[0].text }}</a></li>
-	      <li><a href="{{ upperlinks.cert[0].url }}"><i class="fa fa-laptop fa-fw black-icon"></i> {{ upperlinks.cert[0].text }}</a></li>
+                <li><a href="mailto:press@qubes-os.org" class="black-link"><i class="fa fa-newspaper-o fa-fw"></i> {{ upperlinks.press[0].text }}</a></li>
+                <li><a href="mailto:business@qubes-os.org" class="black-link"><i class="fa fa-briefcase fa-fw"></i> {{ upperlinks.biz[0].text }}</a></li>
+                <li><a href="{{ upperlinks.partner[0].url }}" class="black-link"><i class="fa fa-globe fa-fw"></i> {{ upperlinks.partner[0].text }}</a></li>
             </ul>
-          </div>
+           </div>
         </div>
 
-<div id="team-core" class="white-box page-content more-bottom">
+<!-- previous content -->
+
+
+<div id="team-core" class="white-box page-content ">
   <div class="col-lg-12 col-md-12 col-sm-12">
 	  <h2 id="core-team" class="text-center more-bottom"> {{ coreteam.title }}</h2>
   </div>
-  {% for team in site.data.team %}
+
+    {% for team in site.data.team %}
     {% if team.type == "core" %}
-      <div class="row team team-core" id="{{team.name | slugify}}">
-        <div class="col-lg-2 col-md-2 col-sm-5 col-xs-12 text-center">
-          <div class="picture more-bottom">
+      <div class="row team team-core" id="{{ team.name | slugify }}">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-center add-bottom">
+          <div class="picture">
             {% if team.picture %}
-	    <a href="{{ team_link }}/#{{team.name | slugify}}"><img src="/attachment/site/{{team.picture}}" title=" {{ coreteam.picture }} {{team.name}}"></a>
+            <a href="{{ team_link }}/#{{ team.name | slugify }}">
+              <img src="/attachment/site/{{team.picture}}"
+                   title="Picture of {{ team.name }}">
+            </a>
             {% else %}
             <i class="fa fa-user"></i>
             {% endif %}
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-7 col-xs-12">
+        <div class="col-lg-5 col-md-5 col-sm-8 col-xs-12 team-info">
           {% assign name_array = team.name | split:" " %}
-          <h4 class="half-bottom" data-anchor-id="{{team.name | slugify}}">{{team.name}}</h4>
-          <em class="role half-bottom">{{team.role}}</em>
-          {% if team.email %}
-	  <a href="mailto:{{team.email}}" class="link add-right"><i class="fa fa-envelope fa-fw black-icon"></i>{{ coreteam.email }}</a>
+          <a href="{{ team_link }}/#{{ team.name | slugify }}">
+          <h4 class="remove-bottom">
+            {{ team.name }}
+          </h4>
+          </a>
+          <em class="role half-bottom">{{ team.role }}</em>
+          {% if team.fingerprint %}
+          <a href="http://keys.gnupg.net/pks/lookup?search=0x{{ team.fingerprint | remove: ' ' }}&fingerprint=on&exact=on&op=get&options=mr"
+             title="Download PGP public key" class="black-link add-right">
+            <i class="fa fa-fw fa-lock"></i>PGP Key
+          </a>
           {% endif %}
-          {% if team.website %}
-	  <a href="{{team.website}}" class="link add-right" target="blank"><i class="fa fa-globe fa-fw black-icon"></i> {{ coreteam.website }}</a>
+          {% if team.email %}
+          <a href="mailto:{{team.email}}" class="black-link add-right"
+             title="Email">
+            <i class="fa fa-fw fa-envelope"></i>{{ coreteam.email }}
+          </a>
           {% endif %}
           {% if team.github %}
-          <a href="https://github.com/{{team.github}}" class="link add-right" target="blank"><i class="fa fa-github fa-fw black-icon"></i>GitHub</a>
+          <a href="https://github.com/{{team.github}}" target="blank"
+             class="black-link add-right" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>GitHub
+          </a>
           {% endif %}
-          {% if team.twitter %}
-          <a href="https://twitter.com/{{team.twitter}}" class="link" target="blank"><i class="fa fa-twitter fa-fw"></i>Twitter</a>
-          {% endif %}
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-          {% if team.fingerprint %}
-          <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
-          {% endif %}
-          {% if team.pgp_key %}
-          <a href="{{team.pgp_key}}"><i class="fa fa-lock fa-fw black-icon"></i>{{name_array[0]}}'s PGP Key</a>
+          {% if team.website %}
+          <a href="{{team.website}}" target="blank" class="black-link"
+             title="Website">
+				  <i class="fa fa-fw fa-globe"></i>{{ coreteam.website }}
+          </a>
           {% endif %}
         </div>
+        {% if team.fingerprint %}
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 more-bottom fingerprint"
+             title="{{ team.name }}'s PGP fingerprint">
+          {{ team.fingerprint }}
+        </div>
+        {% endif %}
       </div>
     {% endif %}
   {% endfor %}
+
+<!-- Hidden when not actively hiring
   <div class="text-center more-bottom">
 	  <a href="{{ joined.url}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
   </div>
+-->
 </div>
-<div class="white-box page-content more-bottom">
-  <div class="col-lg-12 col-md-12 col-sm-12">
-	  <h2 id="emeritus" class="text-center more-bottom">{{ emeritus.title }}</h2>
-	  <p>{{ emeritus.text }}</p>
+
+<div class="page-content more-bottom">
+  <div class="col-lg-12">
+    <h2 id="emeritus" class="text-center more-bottom">{{ emeritus.title }}</h2>
+    <p>
+      {{ emeritus.text }}
+    </p>
   </div>
   {% for team in site.data.team %}
     {% if team.type == "emeritus" %}
@@ -154,22 +181,24 @@
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         {% include team-simple.html %}
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-        {% if team.fingerprint %}
-        <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
-        {% endif %}
-        {% if team.pgp_key %}
-        <a href="{{team.pgp_key}}"><i class="fa fa-lock fa-fw black-icon"></i>{{name_array[0]}}'s PGP Key</a>
-        {% endif %}
+      {% if team.fingerprint %}
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 more-bottom fingerprint">
+        {{ team.fingerprint }}
       </div>
+      {% endif %}
     </div>
     {% endif %}
   {% endfor %}
 </div>
-<div class="white-box page-content more-bottom">
-  <div class="col-lg-12 col-md-12 col-sm-12">
-	  <h2 id="community-contributors" class="text-center more-bottom"> {{ community.title }}</h2>
-	  <p> {{ community.text }} <a href="{{ support_link }}"> {{ community.mail }}</a>.</p>
+
+<div class="page-content more-bottom">
+  <div class="col-lg-12">
+	  <h2 id="community-contributors" class="text-center more-bottom"> 
+        {{ community.title }}
+      </h2>
+	  <p> 
+        {{ community.text }} <a href="{{ support_link }}"> {{ community.mail }}</a>.
+      </p>
   </div>
   {% for team in site.data.team %}
     {% if team.type == "community" %}
@@ -195,10 +224,6 @@
 
 
         {% include footer.html %}
-        <script src="/js/anchor.min.js"></script>
-        <script>
-          anchors.add();
-        </script>
-      </div>
-  </body>
+ </div>
+</body>
 </html>

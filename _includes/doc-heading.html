@@ -16,6 +16,15 @@
 	{% assign doc_link = "/doc/" %}
         {% assign indexed = site.data.index %}
 {% endif %}
+<!-- TODO translate string Documentation -->
+{% if page.permalink == doc_link %}
+	<h1 class="more-top add-left outer-heading">
+	<a href="{{ doc_link }}" class="heading-link">
+	<i class="fa fa-book"></i> Documentation</a>
+	</h1>
+
+{% else %}
+
 {% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
 {% for section in ind %}
   {% if doc_segments contains section.category %}
@@ -31,12 +40,7 @@
     	{% endif %}
   {% endif %}
 {% endfor %}
+
+{% endif %}
  
-<!-- TODO where did this come from? -->
-{% unless doc_heading %}
-	<h1 class="more-top add-left outer-heading">
-	<a href="{{ doc_link }}" class="heading-link">
-	<i class="fa fa-book"></i> Documentation</a>
-	</h1>
-{% endunless %}
 
