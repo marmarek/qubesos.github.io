@@ -4,12 +4,12 @@
 [submodule "_posts"]
 	path = _posts
 	url = https://github.com/QubesOS/qubes-posts
-[submodule "_doc"]
-	path = _doc/en/_doc
-	url = https://github.com/QubesOS/qubes-doc
 [submodule "_hcl"]
 	path = _hcl
 	url = https://github.com/QubesOS/qubes-hcl
 [submodule "_qubes-translated"]
 	path = _qubes-translated
 	url = https://github.com/QubesOS/qubes-translated.git
+[submodule "_doc"]
+	path = _doc
+	url = https://github.com/maiska/qubes-doc
