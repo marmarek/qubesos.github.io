@@ -42,7 +42,8 @@ YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet
         'join', 'partner', 'cert', 'picture', 'email', 'website', 'mail', 'links', 'id',
         'paragraph', 'snippet', 'column', 'hover', 'digest', 'signature', 'pgp', 'green', 'red', 'blue', 'trump', 
         'tts1', 'tts2', 'txp', 'txaq', 'pxaq', 'column1', 'column2', 'column3', 'yes_short', 'no_short', 'no_extended', 'tba',
-        'bold', 'item', 'note', 'section', 'row', 'r_version']
+        'bold', 'item', 'note', 'section', 'row', 'r_version',
+        'go', 'search', 'metatopic', 'ddg']
 URL_KEY = 'url' 
 # md frontmatterkeys:
 PERMALINK_KEY = 'permalink'

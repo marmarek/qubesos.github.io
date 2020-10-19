@@ -14,9 +14,9 @@
   <div class="row">
     <div class="col-md-3">
       <div class="page-source-side remove-bottom">
-	      <h3 class="remove-bottom">Contents</h3>
+			  <h3 class="remove-bottom">{{ docs.text }}</h3>
       </div>
-      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button"> Contents </a>
+      <a id="toc-button" data-toggle="collapse" href="#page-toc" class="btn btn-primary btn-block" role="button">{{ docs.text }}</a>
       <div id="page-toc" class="collapse in"></div>
       <div class="page-source-side">
       {% include doc-widget.html %}

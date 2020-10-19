@@ -47,14 +47,21 @@
       text: Statistics
       id: 3
 
+
 - section: doc-external
   text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
  
 - section: doc-translated
   text: This page is an unverified full translation or translation currently in progress. The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
 
+- section: doc-content
+  text: Contents
+
 - section: footer
   title: The Qubes OS Project and others
+  search: Search
+  go: Go!
+  ddg: Using DurckDuckGo
   links:
     - url: https://github.com/QubesOS/qubesos.github.io
       text: Website Source Code

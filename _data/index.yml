@@ -1,5 +1,6 @@
 - topic: Qubes OS Documentation
   subtopic: Welcome to the Qubes OS documentation!
+  metatopic: Documentation
 - title: Introduction
   category: introduction
   sub-pages:
