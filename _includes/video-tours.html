@@ -1,12 +1,11 @@
-        {% if page.lang == nil or page.lang == "en" %}
-                {% assign vids = site.data.videos %}
-        {% else %}
-                {% assign vids = site.data.translation[page.lang].videos %}
-                {% if vids == nil or vids.size == 0 %}
-                        {% assign vids = site.data.videos %}
-                {% endif %}
-        {% endif %}
-
+{% if page.lang == nil or page.lang == "en" %}
+	{% assign vids = site.data.videos %}
+{% else %}
+    {% assign vids = site.data.translation[page.lang].videos %}
+    {% if vids == nil or vids.size == 0 %}
+        {% assign vids = site.data.videos %}
+    {% endif %}
+{% endif %}
 
 {% assign micah = vids | where_exp: "item", "item.htmlsection == 'micah'" | first %}
 {% assign intro = vids | where_exp: "item", "item.htmlsection == 'intro'" | first %}

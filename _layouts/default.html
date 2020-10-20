@@ -31,6 +31,7 @@
     </h1>
     <div class="white-box more-bottom page-content">
          {{ content }}
+
 		 <!-- add specific includes according to the last permalink -->
          {% assign last_perm = page.url | split: '/' | last | lstrip %}
          {% if last_perm == "intro"  %}

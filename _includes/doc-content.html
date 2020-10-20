@@ -29,19 +29,19 @@
         {{ content }}
 
 	 <!-- Here below the content will be added an _include only in the case the current page has a permalink ending with the specific word -->
-	 {% assign perm_last_part = page.url | split: '/' | last | lstrip %}
-     	 {% if perm_last_part == "bulletins"  %}
+	 	{% assign perm_last_part = page.url | split: '/' | last | lstrip %}
+     	{% if perm_last_part == "bulletins"  %}
              {% include sec-bulletin.html %}
-     	 {% endif %}
-     	 {% if perm_last_part == "canaries"  %}
+     	{% endif %}
+     	{% if perm_last_part == "canaries"  %}
              {% include sec-canaries.html %}
-     	 {% endif %}
-     	 {% if perm_last_part == "xsa"  %}
+     	{% endif %}
+     	{% if perm_last_part == "xsa"  %}
              {% include xsa.html %}
-     	 {% endif %}
-	 {% if perm_last_part == "style-guide" %}
-	     {% include style-guide.html %}
-	 {% endif %}
+     	{% endif %}
+	 	{% if perm_last_part == "style-guide" %}
+	    	 {% include style-guide.html %}
+		{% endif %}
 
       </article>
     <br>

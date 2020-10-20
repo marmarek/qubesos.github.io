@@ -1,17 +1,16 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign partners = site.data.partners %}
+    {% assign partners = site.data.partners %}
 {% else %}
-        {% assign partners = site.data.translation[page.lang].partners %}
-        {% if partners == nil or partners.size == 0 %}
-                {% assign partners = site.data.partners %}
-        {% endif %}
+    {% assign partners = site.data.translation[page.lang].partners %}
+    {% if partners == nil or partners.size == 0 %}
+        {% assign partners = site.data.partners %}
+    {% endif %}
 {% endif %}
 
 <table class="partners more-bottom" border="0">
   <tbody>
 {% for p in partners %}
 {% for partner in p.partners %}
-
 {% assign  pars = partner.paragraph %}
 {% if partner.url %}
 	<tr id="{{ partner.id }}">

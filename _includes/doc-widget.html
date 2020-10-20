@@ -1,10 +1,10 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign doc_content = site.data.includes %}
+    {% assign doc_content = site.data.includes %}
 {% else %}
-        {% assign doc_content = site.data.translation[page.lang].includes %}
-        {% if doc_content == nil or doc_content.size == 0 %}
-                {% assign doc_content = site.data.includes %}
-        {% endif %}
+    {% assign doc_content = site.data.translation[page.lang].includes %}
+    {% if doc_content == nil or doc_content.size == 0 %}
+         {% assign doc_content = site.data.includes %}
+    {% endif %}
 {% endif %}
 
 {% assign docs = doc_content | where_exp: "item", "item.section == 'doc-widget'" | first %}
@@ -28,48 +28,48 @@
 
 <a href="{{ doc.url }}"
    class="btn btn-primary btn-block"
-   title="Go to Documentation">
+   title="{{ doc.text }}">
    <span class="fa fa-fw fa-book"></span> {{ doc.text }}
 </a><br>
 <a href="{{ imprv.url}}"
    class="page-source-link btn btn-default btn-block"
-   title="Improve the Docs"
+   title="{{ imprv.text }}"
    target="_blank">
   <span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
 </a><br>
 <a href="{{ master_blob }}"
    class="page-source-link btn btn-default btn-block"
-   title="View page source"
+   title="{{ blob.text }}"
    target="_blank">
   <span class="fa fa-fw fa-code"></span> {{ blob.text }}
 </a><br>
 <a href="{{ master_edit }}"
    class="page-source-link btn btn-default btn-block"
-   title="Edit this page"
+   title="{{ edit.text }}"
    target="_blank">
  <span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
 </a><br>
 <a href="{{ sec.url }}"
    class="page-source-link btn btn-default btn-block"
-   title="Report a Security Issue"
+   title="{{ sec.text }}"
    target="_blank">
 	<span class="fa fa-fw fa-lock"></span> {{ sec.text }} 
 </a><br>
 <a href="{{ bug.url }}"
    class="page-source-link btn btn-default btn-block"
-   title="Report a Bug"
+   title="{{ bug.text }}"
    target="_blank">
   <span class="fa fa-fw fa-bug"></span> {{ bug.text }}
 </a><br>
 <a href="{{ sup.url }}"
    class="page-source-link btn btn-default btn-block"
-   title="Help & Support"
+   title="{{ sup.text }}"
    target="_blank">
   <span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
 </a><br>
 <a href="{{ don.url }}"
    class="page-source-link btn btn-default btn-block"
-   title="Make a Donation"
+   title="{{ don.text }}"
    target="_blank">
   <span class="fa fa-fw fa-heart"></span> {{ don.text }}
 </a>

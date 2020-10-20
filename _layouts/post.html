@@ -5,6 +5,7 @@
 {% include header.html %}
     <div class="container">
     {% include news-heading.html %}
+
 	{% if page.lang == nil or page.lang == "en" %}
 		{% assign lang = "" %}
 	{% else %}
@@ -12,10 +13,10 @@
 	{% endif %}
 
 	{% assign team_link = lang | append: "/team/" %}
-        {% assign t = site.pages | concat: site.doc | concat: site.qubes-translated | where:'permalink', team_link %}
-        {% if t.size == 0 %}
-                {% assign team_link = "/team/" %}
-        {% endif %}
+    {% assign t = site.pages | concat: site.doc | concat: site.qubes-translated | where:'permalink', team_link %}
+    {% if t.size == 0 %}
+           {% assign team_link = "/team/" %}
+    {% endif %}
         <div class="more-bottom white-box page-content">
           <div class="row">
             <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12">

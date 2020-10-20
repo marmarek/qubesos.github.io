@@ -1,11 +1,11 @@
-	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign inc = site.data.includes %}
-	{% else %}
-        	{% assign inc = site.data.translation[page.lang].includes %}
-        	{% if inc == nil or iinc.size == 0 %}
-                	{% assign inc = site.data.includes %}
-        	{% endif %}
-	{% endif %}
+{% if page.lang == nil or page.lang == "en" %}
+      	{% assign inc = site.data.includes %}
+{% else %}
+       	{% assign inc = site.data.translation[page.lang].includes %}
+       	{% if inc == nil or iinc.size == 0 %}
+               	{% assign inc = site.data.includes %}
+       	{% endif %}
+{% endif %}
 
 {% assign cat = inc | where_exp: "item", "item.section == 'catnews'" | first %}
 

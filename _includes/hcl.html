@@ -1,22 +1,19 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign hcl = site.data.hcl %}
+   {% assign hcl = site.data.hcl %}
 {% else %}
-        {% assign hcl = site.data.translation[page.lang].hcl %}
-        {% if hcl == nil or hcl.size == 0 %}
-                {% assign hcl = site.data.hcl %}
-        {% endif %}
+   {% assign hcl = site.data.translation[page.lang].hcl %}
+   {% if hcl == nil or hcl.size == 0 %}
+        {% assign hcl = site.data.hcl %}
+   {% endif %}
 {% endif %}
 {% assign hw = hcl | where_exp: "item", "item.htmlsection == 'hardware'" | first %}
-
 
 {% assign laptop = hw.links | where_exp: "item", "item.id == 1" | first %}
 {% assign desk = hw.links | where_exp: "item", "item.id == 2" | first %}
 {% assign mother = hw.links | where_exp: "item", "item.id == 3" | first %}
 {% assign add = hw.links | where_exp: "item", "item.id == 4" | first %}
 
-
 {% assign info = hcl | where_exp: "item", "item.htmlsection == 'info'" | first %}
-
 
 {% assign hc = info.links | where_exp: "item", "item.id == 1" | first %}
 {% assign bug = info.links | where_exp: "item", "item.id == 2" | first %}

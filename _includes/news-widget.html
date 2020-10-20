@@ -1,10 +1,10 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign iincludes = site.data.includes %}
+    {% assign iincludes = site.data.includes %}
 {% else %}
-        {% assign iincludes = site.data.translation[page.lang].includes %}
-        {% if iincludes == nil or iincludes.size == 0 %}
-                {% assign iincludes = site.data.includes %}
-        {% endif %}
+    {% assign iincludes = site.data.translation[page.lang].includes %}
+    {% if iincludes == nil or iincludes.size == 0 %}
+        {% assign iincludes = site.data.includes %}
+    {% endif %}
 {% endif %}
 
 {% assign news = iincludes | where_exp: "item", "item.section == 'news-heading'" | first %}

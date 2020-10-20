@@ -1,11 +1,10 @@
-
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign experts = site.data.experts %}
+   {% assign experts = site.data.experts %}
 {% else %}
-        {% assign experts = site.data.translation[page.lang].experts %}
-        {% if experts == nil or experts.size == 0 %}
-                {% assign experts = site.data.experts %}
-        {% endif %}
+   {% assign experts = site.data.translation[page.lang].experts %}
+   {% if experts == nil or experts.size == 0 %}
+        {% assign experts = site.data.experts %}
+   {% endif %}
 {% endif %}
 {% assign experts = experts | where_exp: "item", "item.experts == nil" | first %}
 
@@ -17,7 +16,6 @@
   </div>
   <div class="white-box more-bottom">
 {% for item in experts.expert %}
-
     <div class="row featured-quotes">
       <div class="col-lg-3 col-md-3 text-center">
         <a class="avatar-large" href="{{ item.avatar}}" target="_blank">
@@ -33,7 +31,6 @@
         </a>
       </div>
     </div>
-
 {% endfor %}
   </div>
   {% include footer.html %}

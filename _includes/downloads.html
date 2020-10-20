@@ -1,10 +1,12 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign down = site.data.download %}
+    {% assign down = site.data.download %}
+    {% assign lang = "" %}
 {% else %}
-        {% assign down = site.data.translation[page.lang].download %}
-        {% if down == nil or down.size == 0 %}
-                {% assign down = site.data.download %}
-        {% endif %}
+    {% assign lang = "/" | append: page.lang %}
+    {% assign down = site.data.translation[page.lang].download %}
+    {% if down == nil or down.size == 0 %}
+        {% assign down = site.data.download %}
+    {% endif %}
 {% endif %}
 
 {% assign hw = down | where_exp: "item", "item.htmlsection == 'hardware'" | first %}
@@ -85,6 +87,7 @@
       </ul>
     </div>
   </div>
+
 {% assign surv = down | where_exp: "item", "item.htmlsection == 'survey'" | first %}
 
 <hr class="more-bottom">
@@ -184,11 +187,6 @@
    {% endfor %}
 </div>
 
-{% if page.lang == nil or page.lang == "en"%}
-        {% assign lang = "" %}
-{% else %}
-        {% assign lang = "/" | append: page.lang %}
-{% endif %}
 
 {% assign code = down | where_exp: "item", "item.htmlsection == 'source-code'" | first %}
 {% assign scode = code.links | where_exp: "item", "item.id == 1" | first %}
@@ -286,8 +284,6 @@
 
 <hr class="more-bottom">
 
-
-
 {% assign dm = down | where_exp: "item", "item.htmlsection == 'download-mirrors'" | first %}
 
 <div class="row">
@@ -321,8 +317,6 @@
       </article>
   </div>
 </div>
-
-
 
 {% assign secinfo = down | where_exp: "item", "item.htmlsection == 'sec-info'" | first %}
 {% assign sc = secinfo.links | where_exp: "item", "item.id == 1" | first %}

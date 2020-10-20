@@ -1,10 +1,10 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign intro = site.data.intro %}
+    {% assign intro = site.data.intro %}
 {% else %}
-        {% assign intro = site.data.translation[page.lang].intro %}
-        {% if intro == nil or intro.size == 0 %}
-                {% assign intro = site.data.intro %}
-        {% endif %}
+    {% assign intro = site.data.translation[page.lang].intro %}
+    {% if intro == nil or intro.size == 0 %}
+        {% assign intro = site.data.intro %}
+    {% endif %}
 {% endif %}
 
 {% assign what = intro | where_exp: "item", "item.htmlsection == 'what'" | first %}
@@ -149,9 +149,7 @@
     {% endfor %}
 </div>
 
-
 <h2 id="why-qubes-os-" class="more-bottom"> {{ why.title }}</h2>
-
 {% assign s_1 = why.subsections | where_exp: "item", "item.section == 1" | first %}
 {% assign s_2 = why.subsections | where_exp: "item", "item.section == 2" | first %}
 {% assign s_3 = why.subsections | where_exp: "item", "item.section == 3" | first %}
@@ -225,11 +223,8 @@
     </div>
 </div>
 
-
-
 <hr class="add-top more-bottom">
 {% assign s_4 = why.subsections | where_exp: "item", "item.section == 4" | first %}
-
 <div class="row more-bottom">
     <div class="col-lg-4 col-md-4 col-xs-12">
 	    <h3>{{ s_4.subsections[0].title }}</h3>
@@ -257,7 +252,6 @@
 {% assign s_5 = why.subsections | where_exp: "item", "item.section == 5" | first %}
 {% assign  list_s5 = s_5.list %}
 <h2>{{ s_5.title }}</h2>
-
 <p>
     {{ s_5.paragraph }}
   <ul>
@@ -273,6 +267,5 @@
 		</li>
 		  {% endfor %}
   </ul>
-
 </p>
 

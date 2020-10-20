@@ -1,15 +1,13 @@
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign inc = site.data.includes %}
+    {% assign inc = site.data.includes %}
 {% else %}
-        {% assign inc = site.data.translation[page.lang].includes %}
-        {% if inc == nil or inc.size == 0 %}
-                {% assign inc = site.data.includes %}
-        {% endif %}
+    {% assign inc = site.data.translation[page.lang].includes %}
+    {% if inc == nil or inc.size == 0 %}
+        {% assign inc = site.data.includes %}
+    {% endif %}
 {% endif %}
 
-
 {% assign sec = inc | where_exp: "item", "item.section == 'security-bulletins'" | first %}
-
   <table>
   <tr>
     <th title="Anchor Link"><span class="fa fa-link"></span></th>

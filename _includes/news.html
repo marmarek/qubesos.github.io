@@ -1,21 +1,15 @@
-	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign inc = site.data.includes %}
-	{% else %}
-        	{% assign inc = site.data.translation[page.lang].includes %}
-        	{% if inc == nil or inc.size == 0 %}
-                	{% assign inc = site.data.includes %}
-        	{% endif %}
-	{% endif %}
-
+{% if page.lang == nil or page.lang == "en" %}
+  	{% assign inc = site.data.includes %}
+    {% assign lang = "" %}
+{% else %}
+    {% assign lang = "/" | append: page.lang %}
+   	{% assign inc = site.data.translation[page.lang].includes %}
+   	{% if inc == nil or inc.size == 0 %}
+       	{% assign inc = site.data.includes %}
+  	{% endif %}
+{% endif %}
 
 {% assign news = inc | where_exp: "item", "item.section == 'news'" | first  %}
-
-<ul class="list-unstyled remove-bottom">
-{% if page.lang == nil or page.lang == "en"%}
-        {% assign lang = "" %}
-{% else %}
-        {% assign lang = "/" | append: page.lang %}
-{% endif %}
 
 {% assign team_link = lang | append: "/team/" %}
 {% assign t = site.pages | concat: site.qubes-translated | where:'permalink', team_link %}
@@ -29,6 +23,7 @@
         {% assign nsc_link =  "/news/categories/" %}
 {% endif %}
 
+<ul class="list-unstyled remove-bottom">
 {% for post in site.posts %}
   <li>
     <h2 class="post-title remove-top remove-bottom">

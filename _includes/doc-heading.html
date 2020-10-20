@@ -1,13 +1,13 @@
 {% assign doc_segments = page.relative_path | split: '/' %}
 {% if page.lang == nil or page.lang == "en" %}
-        {% assign indexed = site.data.index %}
+    {% assign indexed = site.data.index %}
 	{% assign lang = "" %}
 {% else %}
 	{% assign lang = "/" | append: page.lang %}
-        {% assign indexed = site.data.translation[page.lang].index %}
-        {% if indexed == nil or indexed.size == 0 %}
-                {% assign indexed = site.data.index %}
-        {% endif %}
+    {% assign indexed = site.data.translation[page.lang].index %}
+    {% if indexed == nil or indexed.size == 0 %}
+         {% assign indexed = site.data.index %}
+    {% endif %}
 {% endif %}
 
 {% assign doc_link = lang | append: "/doc/" %}

@@ -5,18 +5,22 @@
       {% include header.html %}
       <div class="container">
         {% include doc-heading.html %}
-	<!-- TODO doc-content -->
 
 	<div class="more-bottom white-box page-content">
 	{% if page.lang == nil or page.lang == "en" %}
-        	{% assign doc_content = site.data.includes %}
+        {% assign doc_content = site.data.includes %}
 		{% assign lang = "" %}
+		{% assign indexed = site.data.index %}
 	{% else %}
 		{% assign lang = "/" | append: page.lang %}
-        	{% assign doc_content = site.data.translation[page.lang].includes %}
-        	{% if doc_content == nil or doc_content.size == 0 %}
-                	{% assign doc_content = site.data.includes %}
-	        {% endif %}
+		{% assign doc_content = site.data.translation[page.lang].includes %}
+        {% if doc_content == nil or doc_content.size == 0 %}
+               	{% assign doc_content = site.data.includes %}
+	    {% endif %}
+        {% assign indexed = site.data.translation[page.lang].index %}
+        {% if indexed == nil or indexed.size == 0 %}
+           		{% assign indexed = site.data.index %}
+        {% endif %}
 	{% endif %}
 
 	{% assign docs = doc_content | where_exp: "item", "item.section == 'doc-content'" | first %}
@@ -38,14 +42,6 @@
 
 	      <!-- BEGIN CONTENT-->
 	     	{% assign indexed_original = site.data.index %}
-			{% if page.lang == nil or page.lang == "en" %}
-				{% assign indexed = site.data.index %}
-			{% else %}
-		        {% assign indexed = site.data.translation[page.lang].index %}
-		        {% if indexed == nil or indexed.size == 0 %}
-                		{% assign indexed = site.data.index %}
-		        {% endif %}
-			{% endif %} 
 
 			{% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
 			{% assign ind_o = site.data.index | where_exp: "item", "item.topic == nil" %}
@@ -65,7 +61,6 @@
    		<p> {{ item.subtitle }} </p>
     {% endif %}
 
-	<!-- TODO do not forget the headers + smth fishy with subpages fixe it! -->
 	{% assign subpages = item.sub-pages | where_exp: "item", "item.title ==nil" %}
 	{% assign subpages2 = item.sub-pages | where_exp: "item", "item.title !=nil" %}
 	{% assign subpages_o2 = item_original.sub-pages | where_exp: "item", "item.title !=nil" %}
