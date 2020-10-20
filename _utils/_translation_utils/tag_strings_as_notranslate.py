@@ -64,7 +64,7 @@ SOURCE_PATTERNS = ['* * * * *', '</a>']
 # TODO there could be  problem with the regex below, well there is a problem with the regex below, 
 # make it simpler or try re2. actually use re2 per default?
 SOURCE_REGEX_PATTERNS = ['^\!\[(\w*(-)*\w*)*.\w*\]\((\/\w*\/\w*)*(\w*(-)*\w*)*.\w*\)']
-START_END_PATTERNS = {'{%': '%}', '{{': '}}', '{{':'>', '<img src=': '>', '[':']', '<script':'</script>', '<noscript>':'</noscript>', '<object':'</object>'}
+START_END_PATTERNS = {'{%': '%}', '{{': '}}', '{{':'>', '<img src=': '>', '[':']', '<script':'</script>', '<noscript>':'</noscript>', '<object':'</object>', '<div class':'>', '<i class':'/i>', }
 
 # tx resources keys
 STRING_HASH_KEY = 'string_hash'

@@ -1,14 +1,22 @@
 #!/bin/bash
 # to be run from the git root
-# TODO how to incoporate them back, no need
+#to incoporate them back, no need
 #bash _utils/_translation_utils/extract_news_categories_html.sh news/categories/index.html aux/news_categories_strings.yml
 #bash _utils/_translation_utils/extract_news_html.sh news/index.html aux/news_strings.yml
-# TODO do we want to translate also the research section?
 
+# add ref & lang attributes to newly created files
+python3 _utils/_translation_utils/prepare_for_translation.py en _doc/ _utils/_translation_utils/COUNTER.txt
+
+# because there is apparently a feature in tx config that doe snot update an existing configuration, every time everythin will be done from scratch:
+# delete current tx configuration
+rm -rf .tx/config
+#init a tx configuration
+tx init --skipsetup
+# map the files with tx config
 tx config mapping-bulk -p qubes --source-language en  --type GITHUBMARKDOWN -f '.md' -d --source-file-dir _doc/en/_doc/ -i _dev --expression '_qubes-translated/<lang>/_doc/{filepath}/{filename}{extension}'   --execute
 tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir pages --expression '_qubes-translated/<lang>/pages/{filepath}/{filename}{extension}' --execute
-# TODO several main news strings csn be translated at least
-#tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir news --expression '_qubes-translated/<lang>/news/{filepath}/{filename}{extension}' --execute
+tx config mapping-bulk -p qubes --source-language en --type GITHUBMARKDOWN -f '.md' -d --source-file-dir news --expression '_qubes-translated/<lang>/news/{filepath}/{filename}{extension}' --execute
+
 tx config  mapping -r qubes.data_architecture --source-lang en --type YAML_GENERIC --source-file _data/architecture.yml --expression '_qubes-translated/<lang>/_data/<lang>/architecture.yml' --execute
 tx config  mapping -r qubes.data_index --source-lang en --type YAML_GENERIC --source-file _data/index.yml --expression '_qubes-translated/<lang>/_data/<lang>/index.yml' --execute
 tx config  mapping -r qubes.data_includes --source-lang en --type YAML_GENERIC --source-file _data/includes.yml --expression '_qubes-translated/<lang>/_data/<lang>/includes.yml' --execute
@@ -21,6 +29,7 @@ tx config  mapping -r qubes.data_download --source-lang en --type YAML_GENERIC -
 tx config  mapping -r qubes.data_intro --source-lang en --type YAML_GENERIC --source-file _data/intro.yml --expression '_qubes-translated/<lang>/_data/<lang>/intro.yml' --execute
 tx config  mapping -r qubes.data_hcl --source-lang en --type YAML_GENERIC --source-file _data/hcl.yml --expression '_qubes-translated/<lang>/_data/<lang>/hcl.yml' --execute
 tx config  mapping -r qubes.data_style_guide_content --source-lang en --type YAML_GENERIC --source-file _data/style_guide_content.yml --expression '_qubes-translated/<lang>/_data/<lang>/style_guide_content.yml' --execute
+
 crudini --del .tx/config qubes._doc_en__doc_README
 crudini --del .tx/config qubes._doc_en__doc_CONTRIBUTING
 sed -i 's/_doc_en__doc/doc_/g' .tx/config

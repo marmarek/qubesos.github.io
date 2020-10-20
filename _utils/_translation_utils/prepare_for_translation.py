@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''
 this script adds lang and ref attribute (starting from counter) to existing markdown files after permalink line recursively from a given root dir
-invocation: python prepare_for_translation.py bg bg/ ref_counter_file
+invocation: python prepare_for_translation.py en _doc/ ref_counter_file
 param1 is the language in short form
 param2 is a directory or a single file
 param3 is a file containing the value of the current reference counter with exactly onle line in the form of:
