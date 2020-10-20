@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-invoke: python tag_as_notranslate.py tx-resource-names.txt tx-sources-filenames.txt api-token --debug --manual 
+invoke: python tag_as_locked.py tx-resource-names.txt tx-sources-filenames.txt api-token --debug --manual 
 param1: tx-resources-names.txt: provide the file from tx configuration containing the resource names 
 param2: tx-sources-filenames.txt: provide the file from tx configuration containing only the original source filenames 
 param3: api-token: provide the developer api transifex token for auth 
@@ -24,13 +24,11 @@ from collections import deque
 from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
 
 # TODO should we also mark notranslate as also reviewed ? it may need manual labor afterwards though ?
-# TODO try updating context for a string hash
 # Here should also go a comment that this snippet of code should be extended if the data files are to be altered and there are part that have to stay the same
 # This can be done by fetching the strings from the tx api via curl:
 # curl -i -L --user api:XXXXXXXXXXXXXXX -X GET https://www.transifex.com/api/2/project/qubes/resource/no_html_data_hcl/translation/en/strings/ 
 # and searching for the key pattern that should be marked as locked and thus untranslatabel and immutable
 
-# TODO check out faq.md for exmaples where lock strings are not a good idea?
 KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', 
         '^\[(\d)*\](.sub-pages.)\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$', 
         '^\[(\d)*\](.sub-pages.)\[(\d)*\](.icon)$', 
@@ -75,8 +73,21 @@ PERMALINK_KEY = 'permalink'
 REDIRECT_KEY = 'redirect_from'
 # comment and tag for tx source strings
 UPDATE_TAGS = '{"comment": "Added notranslate tag via curl", "tags": ["notranslate"]}'
-# TODO prepare for locked not just notranslate tagging
-UPDATE_TAGS_LOCKED = '{"comment": "Added notranslate and locked tags via curl", "tags": ["notranslate", "locked"]}'
+
+UPDATE_TAGS_LOCKED = '{"comment": "Added locked tags via curl", "tags": ["locked"]}'
+DATA_TO_URL_MAPPING = \
+{
+        'hcl': 'Strings are taken from this page: https://www.qubes-os.org/hcl/',
+        'download': 'Strings are taken from this page: https://www.qubes-os.org/downloads/',
+        'experts': 'Strings are taken from this page: https://www.qubes-os.org/experts/',
+        'home': 'Strings are taken from this page: https://www.qubes-os.org/',
+        'index': 'Strings are taken from this page: https://www.qubes-os.org/doc/',
+        'intro': 'Strings are taken from this page: https://www.qubes-os.org/intro/',
+        'partners': 'Strings are taken from this page: https://www.qubes-os.org/partners/',
+        'style_guide_content': 'Strings are taken from this page: https://www.qubes-os.org/doc/style-guide/',
+        'teamtexts': 'Strings are taken from this page: https://www.qubes-os.org/team/',
+        'videos': 'Strings are taken from this page: https://www.qubes-os.org/video-tours/',
+        }
 
 # transifex schema
 TX_JSON_SCHEMA = {
@@ -101,11 +112,11 @@ TX_JSON_SCHEMA = {
         ]
  }
 
-tagged_notranslate = dict()
+tagged_locked = dict()
 
 basicConfig(level=DEBUG)
 logger = getLogger(__name__)
-LOG_FILE_NAME='/tmp/tag_strings_as_notranslate.log'
+LOG_FILE_NAME='/tmp/tag_strings_as_locked.log'
 
 def configure_logging(logname):
     handler = FileHandler(logname)
@@ -174,7 +185,7 @@ def get_all_original_permalinks_and_redirects(sourcenamesfiles):
 
 def create_hash_and_tags_mapping(tx_resources, tx_api_token, debug, perms_and_redirects, manual):
     '''
-    for every given file uploaded to transifex, get its resource strings, check if they need to be marked as notranslate and
+    for every given file uploaded to transifex, get its resource strings, check if they need to be marked as locked and
     save their hashes for further processing if this is the case
     tx_resources: a list containing all the uploaded transifex files 
     tx_api_token: transifex API token
@@ -241,9 +252,9 @@ def create_hash_and_tags_mapping(tx_resources, tx_api_token, debug, perms_and_re
 
                                 hash_and_tags_mapping.update( {res + '.' + item[STRING_HASH_KEY] : res} )
                                 to_debug = {res + "." + item[STRING_HASH_KEY] : [item[KEY_KEY], item[SOURCE_STRING_KEY]]}
-                                tagged_notranslate.update(to_debug)
+                                tagged_locked.update(to_debug)
                                 if debug:
-                                    logger.debug("The following resource string will be tagged as 'notranslate' %s" % to_debug)
+                                    logger.debug("The following resource string will be tagged as 'locked' %s" % to_debug)
                 else:
                     logger.error("got some weird stuff from transifex: %s" % item)
                     exit(1)
@@ -253,9 +264,9 @@ def create_hash_and_tags_mapping(tx_resources, tx_api_token, debug, perms_and_re
 
     return hash_and_tags_mapping 
          
-def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
+def tag_strings_as_locked(hash_and_tag, tx_api_token, debug):
     '''
-    upload notranslate tags for given string hashes for given strings for given files
+    upload locked tags for given string hashes for given strings for given files
     hash_and_tag: dicitonary containing {string_hash: filename}
     tx_api_token: transifex API token
     debug: if true be verbose
@@ -276,8 +287,16 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
         c.setopt(c.FOLLOWLOCATION, True)
 
         #c.setopt(c.POSTFIELDS, UPDATE_TAGS)
-        c.setopt(c.POSTFIELDS, UPDATE_TAGS_LOCKED)
-        c.setopt(c.HTTPHEADER, ['Content-Type: application/json',
+        if any(filename.endswith(i) for i in DATA_TO_URL_MAPPING) and '_data_' in filename:
+            spl = filename.split('_data_')
+            comment = DATA_TO_URL_MAPPING[spl[len(spl)-1]]
+            tags = '{"comment": "' + comment + '", "tags": ["locked"]}'
+            c.setopt(c.POSTFIELDS, tags)
+            c.setopt(c.HTTPHEADER, ['Content-Type: application/json',
+                                'Content-Length: ' + str(len(tags)) ])
+        else:
+            c.setopt(c.POSTFIELDS, UPDATE_TAGS_LOCKED)
+            c.setopt(c.HTTPHEADER, ['Content-Type: application/json',
                                 'Content-Length: ' + str(len(UPDATE_TAGS_LOCKED)) ])
                                 #'Content-Length: ' + str(len(UPDATE_TAGS)) ])
 
@@ -288,12 +307,12 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
             c.close()
             exit(1)
         if c.getinfo(HTTP_CODE) == 404:
-            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate'." % (stringhash, filename))
+            logger.error("Following string hash %s for file %s could not be tagged as 'locked'." % (stringhash, filename))
             logger.error("Response: %s", buf.getvalue())
             c.close()
             continue
         if c.getinfo(HTTP_CODE) != 200:
-            logger.error("Following string hash %s for file %s could not be tagged as 'notranslate'" % (stringhash, filename))
+            logger.error("Following string hash %s for file %s could not be tagged as 'locked'" % (stringhash, filename))
             logger.error("Response: %s", buf.getvalue())
             c.close()
             continue
@@ -304,7 +323,7 @@ def tag_strings_as_notranslate(hash_and_tag, tx_api_token, debug):
             logger.debug(buf.getvalue())
 
 if __name__ == '__main__':
-    # python _utils/tag_as_notranslate.py _utils/tx-resource-names _utils/tx-sourcesnames api-token --debug --manual 
+    # python _utils/tag_as_locked.py _utils/tx-resource-names _utils/tx-sourcesnames api-token --debug --manual 
     parser = ArgumentParser()
     # provide the file from tx configuration containing the resource names 
     parser.add_argument("tx_resourcenamesfile")
@@ -357,12 +376,12 @@ if __name__ == '__main__':
         logger.debug("-------------STRINGS TAGGED NOTRANSLATE---------")
         logger.debug("------------------------------------------------")
         logger.debug("------------------------------------------------")
-        logger.debug(dumps(tagged_notranslate, indent=4))
+        logger.debug(dumps(tagged_locked, indent=4))
         logger.debug("------------------------------------------------")
         logger.debug("------------------------------------------------")
         logger.debug("------------------------------------------------")
 
-    tag_strings_as_notranslate(hash_and_tags_mapping, args.tx_api_token, args.debug)
+    tag_strings_as_locked(hash_and_tags_mapping, args.tx_api_token, args.debug)
 
 
 
