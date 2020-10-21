@@ -22,7 +22,6 @@ from argparse import ArgumentParser
 from json import loads, dumps
 from collections import deque
 from logging import basicConfig, getLogger, DEBUG, Formatter, FileHandler
-import merge_md_heading_ids as merge
 
 patterns = (
     "](/",
@@ -421,9 +420,6 @@ if __name__ == '__main__':
     source_translation_mapping = create_dict_from_tx_config(args.tx_mappingfile, args.language)
 
     log_debug('source/translation file mapping', source_translation_mapping)
-
-    # process markdown headers
-    merge.process_headers(source_translation_mapping)
 
     main(args.translateddir, args.language, args.yml, source_translation_mapping, args.translated_hrefs_filename)
     

@@ -4,23 +4,24 @@
 # $2 is directory where translated files reside and language needs to be added to internal urls
 # TODO param check
 
-
-
 echo "============================ post processing step 1 ======================================"
 bash _utils/_translation_utils/prepare_tx_config_postprocess.sh .tx/config /tmp/tx-mapping
-echo "============================ press any key to continue ======================================"
-read b
+
 echo "============================ post processing step 2 ======================================"
-python _utils/_translation_utils/postprocess_translation.py $1 $2  /tmp/tx-mapping  /tmp/translated_href_urls.txt --yml
-echo "============================ press any key to continue ======================================"
-read b
+ruby _utils/_translation_utils/merge_md_heading_ids.rb $1 /tmp/tx-mapping
+
 echo "============================ post processing step 3 ======================================"
+python _utils/_translation_utils/postprocess_translation.py $1 $2  /tmp/tx-mapping  /tmp/translated_href_urls.txt --yml
+
+echo "============================ post processing step 4 ======================================"
 bash _utils/_translation_utils/postprocess_translation.sh $1 $2 /tmp/translated_href_urls.txt
 
 echo "================================= build suite =================================="
 bundle exec jekyll b
+
 echo "================================= run htmlproofer ==============================="
 htmlproofer ./_site   --disable-external   --checks-to-ignore ImageCheck   --file-ignore ./_site/video-tours/index.html,./_site/$1/video-tours/index.html --url-ignore "/qubes-issues/" --log-level debug 2&> /tmp/html.output 
+
 echo "================================== as a last resort in case of errors process html proofer errors ================================="
 python _utils/_translation_utils/postprocess_htmlproofer.py $1 /tmp/html.output $2
 

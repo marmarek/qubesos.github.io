@@ -178,16 +178,16 @@ def insert_ids_to_gfm_file(line_to_id_map, gfm_lines)
     line_to_id_map.each do |key, value|
         str_to_insert = '<a id="' + value + '"></a>'
         line = result[key]
-        if line.start_with?('#')
+        if !line.nil? and line.start_with?('#')
             if key + 1 >= n
                 result = result + ['']
             end
-            result[key + 1] = str_to_insert + result[key + 1]
+            result[key + 1] = str_to_insert.to_s + result[key + 1].to_s
         else
             if key + 2 >= n
                 result = result + ['']
             end
-            result[key + 2] = str_to_insert + result[key + 2]
+            result[key + 2] = str_to_insert.to_s + result[key + 2].to_s
         end
     end
     return result
@@ -228,31 +228,28 @@ def merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines)
     return result_trl_gfm
 end
 
-def create_dict_from_tx_config(mappingfile, lang)
+def create_dict_from_tx_config(lang, mappingfile)
     # read a tx.xonfig file containing only file_filter and source_file information store it in a dict and give it back
     # mappingfile:  a tx.xonfig file containing only file_filter and source_file information
     # return: a dict containing a mapping between an original file and its downloaded tx translation
     mapping = {}
 
     lines = []
-    File.open(mappingfile, "r") do |f|
-        f.each_line do |line|
-            lines += [line]
-        end
-    end
+    lines = read_file(mappingfile)
 
     translated = []
     source = []
     n = lines.length
     idx = 0
     while idx < n do
-        translated += ["./" + lines[idx].split('file_filter =')[1].strip.gsub("<lang>", lang)]
-        idx += 1
+        t = lines[idx].split('file_filter =')[1].strip
+        s = lines[idx+1].split('source_file =')[1].strip
+        translated += ["./" + t.gsub("<lang>", lang)]
         if idx >= n then
             break
         end
-        source += ["./" + lines[idx].split('source_filter =')[1].strip]
-        idx += 1
+        source += ["./" + s]
+        idx += 2 
     end
 
     n = translated.length
@@ -265,35 +262,40 @@ def create_dict_from_tx_config(mappingfile, lang)
     return mapping
 end
 
+def read_file(filename)
+    read_lines = []
+    File.open(filename, "r") do |f|
+        f.each_line do |line|
+            read_lines += [line]
+        end
+    end
+    return read_lines
+end
+
+def write_file(contents, filename)
+    read_lines = []
+    File.open(filename, "w") do |f|
+        f.write(contents)
+    end
+end
 
 def main()
     if ARGV.length != 2
         exit(1)
     end
 
-    # read original file
-    orig_gfm_lines = []
-    File.open(ARGV[0], "r") do |f|
-        f.each_line do |line|
-            orig_gfm_lines += [line]
+    mapping = create_dict_from_tx_config(ARGV[0], ARGV[1])
+    mapping.each do |key, value|
+        if !key.end_with?(".yml")
+            orig_gfm_lines = read_file(key)
+            trl_gfm_lines = read_file(value)
+            # merge ids in gfm files
+            result = merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines)
+            write_file(result, value)
         end
     end
 
-    # read translated file
-    trl_gfm_lines = []
-    File.open(ARGV[1], "r") do |f|
-        f.each_line do |line|
-            trl_gfm_lines += [line]
-        end
-    end
-
-    # merge ids in gfm files
-    result = merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines)
-
-    # print result
-    puts result
 end
-
 
 
 if __FILE__ == $0
