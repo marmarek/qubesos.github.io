@@ -228,6 +228,42 @@ def merge_ids_in_gfm_files(orig_gfm_lines, trl_gfm_lines)
     return result_trl_gfm
 end
 
+def create_dict_from_tx_config(mappingfile, lang)
+    # read a tx.xonfig file containing only file_filter and source_file information store it in a dict and give it back
+    # mappingfile:  a tx.xonfig file containing only file_filter and source_file information
+    # return: a dict containing a mapping between an original file and its downloaded tx translation
+    mapping = {}
+
+    lines = []
+    File.open(mappingfile, "r") do |f|
+        f.each_line do |line|
+            lines += [line]
+        end
+    end
+
+    translated = []
+    source = []
+    n = lines.length
+    idx = 0
+    while idx < n do
+        translated += ["./" + lines[idx].split('file_filter =')[1].strip.gsub("<lang>", lang)]
+        idx += 1
+        if idx >= n then
+            break
+        end
+        source += ["./" + lines[idx].split('source_filter =')[1].strip]
+        idx += 1
+    end
+
+    n = translated.length
+    idx = 0
+    while idx < n do
+        mapping[source[idx]] = translated[idx]
+        idx += 1
+    end
+
+    return mapping
+end
 
 
 def main()
