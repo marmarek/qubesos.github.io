@@ -18,12 +18,12 @@
 {% for item in experts.expert %}
     <div class="row featured-quotes">
       <div class="col-lg-3 col-md-3 text-center">
-        <a class="avatar-large" href="{{ item.avatar}}" target="_blank">
+        <a class="avatar-large" href="{{ item.avatar}}" >
           <img src="{{ item.img }}">
         </a>
       </div>
       <div class="col-lg-9 col-md-9 more-top">
-        <a href="{{ item.tweet }}" target="_blank">
+        <a href="{{ item.tweet }}" >
           <blockquote>"{{ item.quote }}"
             <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>
             <footer>{{ item.name }}<cite>, {{ item.occupation }}</cite></footer>
