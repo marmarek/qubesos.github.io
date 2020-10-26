@@ -34,19 +34,9 @@
 
 		 <!-- add specific includes according to the last permalink -->
          {% assign last_perm = page.url | split: '/' | last | lstrip %}
-         {% if last_perm == "intro"  %}
-             {% include intro-content.html %}
-         {% endif %}
          {% if last_perm == "research"  %}
              {% include research.html %}
          {% endif %}
-         {% if last_perm == "getting-started"  %}
-             {% include getting-started.html %}
-         {% endif %}
-         {% if last_perm == "video-tours"  %}
-             {% include video-tours.html %}
-         {% endif %}
-
 
     </div>
     {% include footer.html %}

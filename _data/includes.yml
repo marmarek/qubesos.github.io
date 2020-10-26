@@ -54,8 +54,14 @@
 - section: doc-translated
   text: This page is an unverified full translation or translation currently in progress. The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
 
+
 - section: doc-content
   text: Contents
+
+- section: home-news
+  snippets:
+    - snippet: Posted in
+    - snippet: on
 
 - section: footer
   title: The Qubes OS Project and others
