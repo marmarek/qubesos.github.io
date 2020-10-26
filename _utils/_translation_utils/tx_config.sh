@@ -38,8 +38,6 @@ tx config  mapping -r qubes.data_style_guide_content --source-lang en --type YAM
 crudini --del .tx/config qubes._doc_en__doc_README
 crudini --del .tx/config qubes._doc_en__doc_CONTRIBUTING
 
-# in order tx client to function with the update function we should not alter the original mapping of the files, even
-# if it is cumbersome to read for translators
 sed -i 's/_doc_en__doc/doc/g' .tx/config
 
 
