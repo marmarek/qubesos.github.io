@@ -3,26 +3,26 @@
   links:
     - url: /doc/
       text: Documentation
-      id: 1
+      icon: fa-book
     - url: /doc/doc-guidelines/
       text: Improve the Docs
-      id: 2
+      icon: fa-pencil
     - text: View Page Source
-      id: 3
+      icon: fa-code
     - text: Edit This Page
-      id: 4
+      icon: fa-code-fork
     - url: /security/
       text: Report a Security Issue
-      id: 5   
+      icon: fa-lock
     - url: /doc/reporting-bugs/
       text: Report a Bug
-      id: 6
+      icon: fa-bug
     - url: /support/
       text: Help & Support 
-      id: 7
+      icon: fa-life-ring
     - url: /donate/
       text: Make a Donation 
-      id: 8
+      icon: fa-heart
 
 - section: intro 
   links:
@@ -32,7 +32,6 @@
     - url: /screenshots/
       text: Screenshots
       id: 2
- 
 
 - section: news-heading 
   title: Recent News
@@ -47,13 +46,11 @@
       text: Statistics
       id: 3
 
-
 - section: doc-external
   text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
  
 - section: doc-translated
   text: This page is an unverified full translation or translation currently in progress. The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
-
 
 - section: doc-content
   text: Contents
@@ -87,30 +84,6 @@
     - url: /sitemap.xml
       text: Sitemap
       id: 6
-
-- section: getting-started
-  subsections:
-    - title: Compatible Hardware
-      snippets: 
-        - snippet: Ready to install Qubes? Make sure your hardware is compatible, as Qubes cannot run on every type of computer. Also, check out
-        - snippet: Qubes-certified Laptops
-          url: /doc/certified-laptops/
-      url: /hcl/
-      text: Hardware Compatibility List
-    - title: Downloads
-      snippets: 
-        - snippet: Download an ISO, learn how to verify its authenticity and integrity, and follow our guides to install Qubes. Looking for the source code? You'll find it on 
-        - snippet: Github
-          url: https://github.com/QubesOS
-      url: /downloads/ 
-      text: Downloads
-    - title: Documentation
-      snippets: 
-        - snippet: Peruse our extensive library of documentation for users and developers of Qubes. You can even help us 
-        - snippet: improve it!
-          url: /doc/doc-guidelines/
-      url: /doc/
-      text: Documentation
 
 - section: catnews
   htmlsections: 
@@ -156,7 +129,6 @@
       columns: 
         - title: Date 
         - title: Qubes Security Bulletin
-
 
 - section: security-canaries
   htmlsections:

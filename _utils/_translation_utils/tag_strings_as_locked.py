@@ -52,6 +52,8 @@ KEY_REGEX_LOCK_PATTERNS = ['^\[(\d)*\](.sub-pages.)\[(\d)*\](.url)$',
         '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
         '^(\[(\d)*\])(.subsections.)(\[(\d)*\])(.section.)(\[(\d)*\])(.url)$', 
         '^(\[(\d)*\])(.paragraph.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', 
+        '^categories.(\[(\d)*\])(.slug)$', '^papers.(\[(\d)*\])(.title)$','^papers.(\[(\d)*\])(.author)$', '^papers.(\[(\d)*\])(.url)$', '^papers.(\[(\d)*\])(.category)$',
+        '^(\[(\d)*\])(.name)$', '^(\[(\d)*\])(.type)$', '^(\[(\d)*\])(.picture)$', '^(\[(\d)*\])(.email)$', '^(\[(\d)*\])(.fingerprint)$', '^(\[(\d)*\])(.github)$', '^(\[(\d)*\])(.website)$', 
         '^(\[(\d)*\])(.section.)(\[(\d)*\])(.snippets.)(\[(\d)*\])(.url)$', '^(\[(\d)*\])(.section)$', 
         '^(\[(\d)*\])(.releases.)(\[(\d)*\])(.r_version)$', '^(\[(\d)*\])(.section.)(\[(\d)*\])(.note)$']
 
@@ -59,9 +61,16 @@ KEY_REGEX_PATTERNS = ['^\[\d\](.sub-pages.)\[\d\](.url)$', '^\[\d\](.sub-pages.)
 
 KEY_PATTERNS = ['lang', 'layout', 'permalink', 'redirect_from']
 SOURCE_PATTERNS = ['* * * * *', '</a>']
-# TODO there could be  problem with the regex below, well there is a problem with the regex below, 
-# make it simpler or try re2. actually use re2 per default?
-SOURCE_REGEX_PATTERNS = ['^\!\[(\w*(-)*\w*)*.\w*\]\((\/\w*\/\w*)*(\w*(-)*\w*)*.\w*\)']
+# TODO use re2 per default?
+# examples for the first regex:
+# ![edit-button-mobile](/attachment/wiki/doc-edit/02-button1.png)
+# ![commit](/attachment/wiki/doc-gel/07-commit-msg.png)
+# for the second one a liquid include html line
+
+SOURCE_REGEX_PATTERNS = [
+        '^\!\[(\w{0,50}(-){0,50}(\.){0,2}\w{0,50}){0,10}\]\((\/(\w{0,50}(-){0,8}\w{0,50})){0,10}(\w{0,50}(-){0,50}\w{0,50}){0,10}.\w{0,10}\)',
+        '{%[^\S\n]{1,8}include[\s\w-]*\.html[^\S\n]{1,8}%}'
+        ]
 START_END_PATTERNS = {'{%': '%}', '{{': '}}', '{{':'>', '<img src=': '>', '[':']', '<script':'</script>', '<noscript>':'</noscript>', '<object':'</object>', '<div class':'>', '<i class':'/i>', }
 
 # tx resources keys

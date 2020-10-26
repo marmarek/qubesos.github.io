@@ -9,15 +9,6 @@
 
 {% assign docs = doc_content | where_exp: "item", "item.section == 'doc-widget'" | first %}
 
-{% assign doc = docs.links | where_exp: "item", "item.id == 1" | first %}
-{% assign imprv = docs.links | where_exp: "item", "item.id == 2" | first %}
-{% assign blob = docs.links | where_exp: "item", "item.id == 3" | first %}
-{% assign edit = docs.links | where_exp: "item", "item.id == 4" | first %}
-{% assign sec = docs.links | where_exp: "item", "item.id == 5" | first %}
-{% assign bug = docs.links | where_exp: "item", "item.id == 6" | first %}
-{% assign sup = docs.links | where_exp: "item", "item.id == 7" | first %}
-{% assign don = docs.links | where_exp: "item", "item.id == 8" | first %}
-
 {% if lang == "" %}
  	{% assign master_edit =  site.project_repo_path | append: "/qubes-doc/edit/master" | append: page.relative_path | remove_first: '_doc'  %}
   	{% assign master_blob =  site.project_repo_path | append: "/qubes-doc/blob/master" | append: page.relative_path | remove_first: '_doc'  %}
@@ -26,51 +17,25 @@
   	{% assign master_blob =  site.project_repo_path | append: "/qubes-translated/blob/master" | append: page.relative_path| remove_first: '_qubes-translated'  %}
 {% endif %}
 
-<a href="{{ doc.url }}"
-   class="btn btn-primary btn-block"
-   title="{{ doc.text }}">
-   <span class="fa fa-fw fa-book"></span> {{ doc.text }}
-</a><br>
-<a href="{{ imprv.url}}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ imprv.text }}"
-   target="_blank">
-  <span class="fa fa-fw fa-pencil"></span> {{ imprv.text }}
-</a><br>
-<a href="{{ master_blob }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ blob.text }}"
-   target="_blank">
-  <span class="fa fa-fw fa-code"></span> {{ blob.text }}
-</a><br>
-<a href="{{ master_edit }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ edit.text }}"
-   target="_blank">
- <span class="fa fa-fw fa-code-fork"></span> {{ edit.text }}
-</a><br>
-<a href="{{ sec.url }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ sec.text }}"
-   target="_blank">
-	<span class="fa fa-fw fa-lock"></span> {{ sec.text }} 
-</a><br>
-<a href="{{ bug.url }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ bug.text }}"
-   target="_blank">
-  <span class="fa fa-fw fa-bug"></span> {{ bug.text }}
-</a><br>
-<a href="{{ sup.url }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ sup.text }}"
-   target="_blank">
-  <span class="fa fa-fw fa-life-ring"></span> {{ sup.text }}
-</a><br>
-<a href="{{ don.url }}"
-   class="page-source-link btn btn-default btn-block"
-   title="{{ don.text }}"
-   target="_blank">
-  <span class="fa fa-fw fa-heart"></span> {{ don.text }}
-</a>
+{% for item in docs.links %}
+	{% if item.icon == "fa-book" %}
+		{% assign a_class = "btn btn-primary btn-block" %}
+	{% else %}
+		{% assign a_class = "page-source-link btn btn-default btn-block" %}
+	{% endif %}
+
+	{% if item.icon == "fa-code" %}
+		{% assign a_href = master_blob %}
+	{% elsif item.icon == "fa-code-fork" %}
+		{% assign a_href = master_edit %}
+	{% else %}
+		{% assign a_href = item.url %}
+	{% endif %}
+	<a href="{{ a_href }}"
+	   class="{{ a_class }}"
+   	   title="{{ item.text }}">
+   	   <span class="fa fa-fw {{ item.icon }}"></span> {{ item.text }}
+	</a><br>
+
+{% endfor %}
 
