@@ -1,7 +1,6 @@
 <!-- Fixed navbar -->
 <nav class="navbar navbar-custom navbar-static-top">
   <div class="container">
-
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -9,6 +8,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+    {% assign langmenu = true %}
+    {% if page.layout == nil or page.collection == 'posts' %}
+      <!-- no translation for news -->
+      {% assign langmenu = false %}
+      {% assign archies = site.data.architecture %}
+    {% else %}
+      {% if page.lang == nil or page.lang == "en" %}
+        {% assign archies = site.data.architecture %}
+      {% else %}
+        {% assign archies = site.data.translation[page.lang].architecture %}
+        {% if archies == nil or archies.size == 0 %}
+          {% assign archies = site.data.architecture %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% if langmenu %}
+      {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where:'ref', page.ref | sort: 'lang' %}
+      <div class="langdropdown langdropdown-sm">
+        <span><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></span>
+        <div class="langdropdown-items">
+          {% for post in posts %}
+          <a class="c1" href="{{ post.url }}">{{ post.lang }}</a>
+          {% endfor %}
+        </div>
+      </div>
       <a class="page-link" href="/">
         <img src="/attachment/icons/128x128/apps/qubes-logo-icon.png" width="44" height="44" alt="Qubes OS Project">
         <span><strong>Qubes</strong> OS</span>
@@ -16,43 +40,23 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav nav-justified">
-
-	 {% assign langmenu = true %}
-	 {% if page.layout == nil or page.collection == 'posts' %}
-         <!-- no translation for news -->
-	  		{% assign langmenu = false %}
-          	{% assign archies = site.data.architecture %}
-     {% else %}
-         	{% if page.lang == nil or page.lang == "en" %}
-				{% assign archies = site.data.architecture %}
-			{% else %}
-				{% assign archies = site.data.translation[page.lang].architecture %}
-				{% if archies == nil or archies.size == 0 %}
-                  {% assign archies = site.data.architecture %}
-            	{% endif %}
-			{% endif %}
-
-	 {% endif %}
-     {% for section in archies %}
-            <li id="nav-button-{{ section.title | slugify }}">
-             <a href="{{ section.url }}">{{ section.title }}</a>
-            </li>
-     {% endfor %}
-	 {% if langmenu %}
-          {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where:'ref', page.ref | sort: 'lang' %}
-		  <li>
-		   <div class="langdropdown">
-		     <span><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></span>
-		     <div class="langdropdown-items">
-		       {% for post in posts %}
-			 	<a class="c1" href="{{ post.url }}">{{ post.lang }}</a>
-		       {% endfor %}
-		     </div>
-		   </div>
-		 </li>
-	 {% endif %}
-
+        {% for section in site.data.architecture %}
+        <li id="nav-button-{{ section.title | slugify }}">
+          <a href="{{ section.url }}">{{ section.title }}</a>
+        </li>
+        {% endfor %}
+        <li id="nav-button-lang-switch">
+          <div class="langdropdown langdropdown-lg">
+            <span><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></span>
+            <div class="langdropdown-items">
+              {% for post in posts %}
+              <a class="c1" href="{{ post.url }}">{{ post.lang }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </li>
       </ul>
+    {% endif %}
     </div><!--/.nav-collapse -->
   </div>
 </nav>
