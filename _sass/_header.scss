@@ -87,14 +87,18 @@
   }
 
   // Language Switcher
-  .langdropdown-lg {
-    position: relative;
-    display: inline-block;
+  .langdropbtn-lg {
+    border: none;
     padding: 10px 15px;
     margin-left: 25px;
   }
 
-  .langdropdown-items {
+  .langdropdown-lg {
+    position: relative;
+    display: inline-block;
+  }
+
+  .langdropdown-content {
     display: none;
     position: absolute;
     text-align: center;
@@ -102,6 +106,7 @@
     border: 1px solid $gray-light;
     margin-top: 5px;
     padding: 10px;
+    z-index: 1;
     a {
       color: $gray-base;
       font-family: $ostrich-heavy;
@@ -110,14 +115,35 @@
     }
   }
 
-  .langdropdown:hover .langdropdown-items {
+  .langdropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
+  }
+
+  /* .dropdown:hover .dropdown-content {display: block;} */
+  /* display the element with ID `dd` which is a sibling of the (checked) checkbox with ID `toggle` */
+  #langdropdown-toggle-lg:checked ~ #langdropdown-dd-lg {
+    display: block;
+  }
+
+  .langdropdown:hover .langdropbtn-lg {
+    background-color: $gray-light;
+    border-radius: $base-radius;
+  }
+
+  /* "hide" the checkbox (`display: none` doesn't work everwhere properly) */
+  #langdropdown-toggle-lg {
+    position: absolute;
+    top: -10000vh;
+    left: -10000vw;
+    opacity: 0;
   }
 
   .langdropdown-sm {
     display: none;
   }
-
 
 }
 
@@ -154,28 +180,6 @@
       }
     }
 
-    .langdropdown-sm {
-      display: block;
-      position: relative;
-      float: right;
-      margin-right: 15px;
-      margin-top: 5px;
-      margin-bottom: 11px;
-      padding: 9px 10px;
-    }
-
-    .langdropdown-items {
-      display: none;
-    }
-
-    .langdropdown:hover .langdropdown-items {
-      display: block;
-    }
-
-    .langdropdown-lg {
-      display: none;
-    }
-
     .navbar-collapse {
       position: relative;
       top: 10px;
@@ -195,6 +199,44 @@
           background-color: $gray-light;
         }
       }
+    }
+
+    // Language Switcher
+    .langdropbtn-sm {
+      border: none;
+      padding: 9px 10px;
+      margin-right: 15px;
+      margin-top: 3px;
+      margin-bottom: 8px;
+    }
+
+    .langdropdown-sm {
+      position: relative;
+      display: inline-block;
+      float: right;
+    }
+
+    /* .dropdown:hover .dropdown-content {display: block;} */
+    /* display the element with ID `dd` which is a sibling of the (checked) checkbox with ID `toggle` */
+    #langdropdown-toggle-sm:checked ~ #langdropdown-dd-sm {
+      display: block;
+    }
+
+    .langdropdown:hover .langdropbtn-sm {
+      background-color: $gray-light;
+      border-radius: $base-radius;
+    }
+
+    /* "hide" the checkbox (`display: none` doesn't work everwhere properly) */
+    #langdropdown-toggle-sm {
+      position: absolute;
+      top: -10000vh;
+      left: -10000vw;
+      opacity: 0;
+    }
+
+    .langdropdown-lg {
+      display: none;
     }
   }
 }

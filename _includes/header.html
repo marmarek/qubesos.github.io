@@ -26,8 +26,9 @@
     {% if langmenu %}
       {% assign posts = site.pages | concat: site.doc | concat: site.qubes-translated | where:'ref', page.ref | sort: 'lang' %}
       <div class="langdropdown langdropdown-sm">
-        <span><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></span>
-        <div class="langdropdown-items">
+        <label class="langdropbtn-sm" for="langdropdown-toggle-sm"><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></label>
+        <input type="checkbox" id="langdropdown-toggle-sm">
+        <div class="langdropdown-content" id="langdropdown-dd-sm">
           {% for post in posts %}
           <a class="c1" href="{{ post.url }}">{{ post.lang }}</a>
           {% endfor %}
@@ -47,8 +48,9 @@
         {% endfor %}
         <li id="nav-button-lang-switch">
           <div class="langdropdown langdropdown-lg">
-            <span><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></span>
-            <div class="langdropdown-items">
+            <label class="langdropbtn-lg" for="langdropdown-toggle-lg"><img src="/attachment/icons/icons8-translation-64.png" width="24" height="24"></label>
+            <input type="checkbox" id="langdropdown-toggle-lg">
+            <div class="langdropdown-content" id="langdropdown-dd-lg">
               {% for post in posts %}
               <a class="c1" href="{{ post.url }}">{{ post.lang }}</a>
               {% endfor %}
