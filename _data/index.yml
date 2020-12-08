@@ -41,7 +41,7 @@
 
 - title: User Documentation
   subtitle: Core documentation for Qubes users.
-  category: user-documentation
+  category: user
   sub-pages:
   - title: Choosing Your Hardware 
     sub-pages:
@@ -99,8 +99,6 @@
         text: Device Handling
       - url: /doc/optical-discs/
         text: Optical Discs
-      - url: /doc/managing-appvm-shortcuts/
-        text: Application Shortcuts
       - url: /doc/full-screen-mode/ 
         text: Fullscreen Mode
   - title: Managing Operating Systems within Qubes
@@ -168,32 +166,14 @@
         text: i3 Window Manager
       - url: /doc/awesome/ 
         text: awesome Window Manager
+
   - title: Troubleshooting
     sub-pages:
       - url: /doc/installation-troubleshooting
         text: Installation Troubleshooting
       - url: /doc/uefi-troubleshooting/
         text: UEFI Troubleshooting
-      - url: /doc/out-of-memory/ 
-        text: Home directory is out of disk space error
-      - text: Installing on system with new AMD GPU (missing firmware problem)
-        url: https://groups.google.com/group/qubes-devel/browse_thread/thread/e27a57b0eda62f76
-      - url: /doc/install-nvidia-driver/ 
-        text: How to install an Nvidia driver in dom0
-      - url: /doc/nvidia-troubleshooting/ 
-        text: Nvidia troubleshooting guide
-      - url: /doc/thinkpad-troubleshooting/ 
-        text: Lenovo ThinkPad Troubleshooting
-      - url: /doc/macbook-troubleshooting/ 
-        text: Apple MacBook Troubleshooting
-      - url: /doc/sony-vaio-tinkering/ 
-        text: Getting Sony Vaio Z laptop to work with Qubes
-      - url: /doc/wireless-troubleshooting/
-        text: Fixing wireless on suspend & resume
-      - url: /doc/remove-vm-manually/ 
-        text: How to remove VMs manually
-      - url: /doc/intel-igfx-troubleshooting/ 
-        text: Intel Integrated Graphics Troubleshooting
+
   - title: Reference Pages
     sub-pages:
       - url: /doc/tools/
@@ -206,9 +186,10 @@
         text: Command Execution in VMs (and Qubes RPC)
       - text: Deprecated Documentation
         url: https://github.com/QubesOS/qubesos.github.io#deprecated-documentation 
+
 - title: Developer Documentation
   subtitle: Core documentation for Qubes developers and advanced users.
-  category: developer-documentation
+  category: developer
   sub-pages:
   - title: General
     sub-pages:
@@ -326,7 +307,7 @@
   - snippet: For more, please see
   - snippet: Qubes Community Documentation
     url: https://github.com/Qubes-Community/Contents/tree/master/docs
-  category: external-documentation
+  category: external
   sub-pages:   
   - title: Operating System Guides
     sub-pages:
@@ -408,6 +389,9 @@
         url: https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com 
       - url: /doc/multimedia/ 
         text: How to Make a Multimedia TemplateVM
+      - url: /doc/install-nvidia-driver/ 
+        text: How to install an Nvidia driver in dom0
+ 
 
   - title: Customization Guides
     sub-pages:
@@ -421,6 +405,25 @@
         text: Dark Theme in Dom0 and DomU
       - url: /doc/removing-templatevm-packages/ 
         text: "Safely Removing TemplateVM Packages (Example: Thunderbird)"
+
+  - title: Troubleshooting
+    sub-pages:
+      - url: /doc/nvidia-troubleshooting/ 
+        text: Nvidia troubleshooting guide
+      - url: /doc/thinkpad-troubleshooting/ 
+        text: Lenovo ThinkPad Troubleshooting
+      - url: /doc/macbook-troubleshooting/ 
+        text: Apple MacBook Troubleshooting
+      - url: /doc/sony-vaio-tinkering/ 
+        text: Sony Vaio Troubleshooting
+      - url: /doc/intel-igfx-troubleshooting/ 
+        text: Intel Integrated Graphics Troubleshooting
+      - url: /doc/multiboot/#troubleshooting 
+        text: Multiboot Troubleshooting
+      - url: /doc/application-troubleshooting/
+        text: Application Troubleshooting
+      - url: /doc/tails-troubleshooting/
+        text: Tails Troubleshooting
 
   - title: Building Guides
     sub-pages:

@@ -26,8 +26,10 @@
 {% else %}
 
 {% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
+
 {% for section in ind %}
   {% if doc_segments contains section.category %}
+  <!-- TODO please rename the documenation subfolders according to the index.yml file and its categories in _data folder, thank  you, fuck -->
  	 {% assign s = section.title | slugify %}
     <h1 class="more-top add-left outer-heading">
 	    <a href="{{ doc_link }}#{{ s }}" class="heading-link">
@@ -35,9 +37,9 @@
           {{ section.category | replace: "-", " "}} 
       </a>
     </h1>
-    	{% if section.category == "external-documentation" %}
-      		{% include doc-external-warning.html %}
-    	{% endif %}
+  	{% if section.category == "external" %}
+   		{% include doc-external-warning.html %}
+   	{% endif %}
   {% endif %}
 {% endfor %}
 
