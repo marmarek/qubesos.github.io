@@ -173,6 +173,30 @@
         text: Installation Troubleshooting
       - url: /doc/uefi-troubleshooting/
         text: UEFI Troubleshooting
+      - text: Suspend/Resume Troubleshooting
+        url: /doc/suspend-resume-troubleshooting/
+      - text: Application Shortcut Troubleshooting
+        url: /doc/managing-appvm-shortcuts/
+      - text: VM Troubleshooting
+        url: /doc/vm-troubleshooting/
+      - text: HVM Troubleshooting
+        url: /doc/hvm-troubleshooting/
+      - text: Disk Troubleshooting
+        url: /doc/disk-troubleshooting/
+      - text: PCI Troubleshooting
+        url: /doc/pci-troubleshooting/
+      - text: USB Troubleshooting
+        url: /doc/usb-troubleshooting/
+      - text: GUI Troubleshooting
+        url: /doc/gui-troubleshooting/
+      - text: Media Troubleshooting
+        url: /doc/media-troubleshooting/
+      - text: Firewall Troubleshooting
+        url: /doc/firewall/#firewall-troubleshooting
+      - text: VPN Troubleshooting
+        url: /doc/vpn-troubleshooting/
+      - text: Update Troubleshooting
+        url: /doc/update-troubleshooting/
 
   - title: Reference Pages
     sub-pages:
@@ -211,6 +235,7 @@
         text: Style Guide
       - url: /doc/usability-ux/ 
         text: Usability & UX
+
   - title: Code
     sub-pages:
       - url: /doc/source-code/ 
@@ -221,6 +246,7 @@
         text: Coding Guidelines
       - url: /doc/code-signing/ 
         text: Code Signing
+
   - title: System
     sub-pages:
       - url: /doc/architecture/ 
@@ -245,12 +271,11 @@
         text: Storage Pools
       - url: /doc/audio-virtualization/ 
         text: Audio virtualization
+
   - title: Services
     sub-pages:
       - url: /doc/qfilecopy/
         text: Inter-domain file copying
-      - text: Deprecated inter-domain file copying
-        url: /doc/qfileexchgd/ 
       - url: /doc/qmemman/ 
         text: Dynamic memory management in Qubes
       - url: /doc/dvm-impl/ 
@@ -263,6 +288,7 @@
         text: "Qrexec: Qubes RPC internals"
       - url: /doc/qrexec-socket-services/ 
         text: "Qrexec: Socket-based services"
+
   - title: Debugging
     sub-pages:
       - url: /doc/profiling/  
@@ -279,6 +305,7 @@
         text: Safe Remote Dom0 Terminals
       - url: /doc/mount-lvm-image/ 
         text: Mount LVM Image
+
   - title: Building
     sub-pages:
       - url: /doc/qubes-builder/  
@@ -291,6 +318,7 @@
         text: Building Qubes OS ISO
       - url: https://github.com/QubesOS/qubes-template-configs
         text: Qubes Template Configuration Files
+
   - title: Releases
     sub-pages:
       - url: /doc/releases/notes/ 
@@ -303,7 +331,6 @@
 - title: External Documentation
   subtitle: Unofficial, third-party documentation from the Qubes community and others.
   snippets: 
-  - snippet:
   - snippet: For more, please see
   - snippet: Qubes Community Documentation
     url: https://github.com/Qubes-Community/Contents/tree/master/docs
@@ -311,130 +338,137 @@
   sub-pages:   
   - title: Operating System Guides
     sub-pages:
-      - url: /doc/templates/ubuntu/
-        text: "Template: Ubuntu"
-      - url: /doc/whonix/ 
-        text: "Template: Whonix"
-      - url: /doc/pentesting/ 
-        text: Pentesting
-      - url: /doc/pentesting/blackarch/ 
-        text: "Pentesting: BlackArch"
-      - url: /doc/pentesting/kali/
-        text: "Pentesting: Kali"
-      - url: /doc/pentesting/ptf/
-        text: "Pentesting: PTF"
-      - url: /doc/linux-hvm-tips/
-        text: Tips for Using Linux in an HVM
-      - url: /doc/netbsd/ 
-        text: Creating a NetBSD VM
+      - text: "Template: Ubuntu"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/ubuntu.md
+      - text: "Template: Whonix"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/whonix.md
+      - text: "Template: CentOS"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/centos.md 
+      - text: "Template: Gentoo"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/gentoo.md
+      - text: Pentesting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/pentesting.md
+      - text: "Pentesting: BlackArch"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/pentesting/blackarch.md
+      - text: "Pentesting: Kali"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/pentesting/kali.md
+      - text: "Pentesting: PTF"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/pentesting/ptf.md
+      - text: Tips for Using Linux in an HVM
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/linux-hvm-tips.md
+      - text: Creating a NetBSD VM
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/netbsd.md
+
   - title: Security Guides
     sub-pages:
-      - url: /doc/security-guidelines/ 
-        text: Security Guidelines
-      - url: /doc/multifactor-authentication/ 
-        text: Using Multi-factor Authentication with Qubes
-      - url: /doc/split-bitcoin/ 
-        text: How to Set Up a Split Bitcoin Wallet in Qubes
+      - text: Security Guidelines
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/security/security-guidelines.md
+      - text: Using Multi-factor Authentication with Qubes
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/security/multifactor-authentication.md
+      - text: How to Set Up a Split Bitcoin Wallet in Qubes
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/security/split-bitcoin.md
       - text: Split dm-crypt 
-        url: https://github.com/rustybird/qubes-split-dm-crypt 
+        url: https://github.com/rustybird/qubes-split-dm-crypt
       - text: Split SSH
-        url: https://kushaldas.in/posts/using-split-ssh-in-qubesos-4-0.html 
+        url: https://kushaldas.in/posts/using-split-ssh-in-qubesos-4-0.html
       - text: Using OnlyKey with Qubes OS 
-        url: https://docs.crp.to/qubes.html 
+        url: https://docs.crp.to/qubes.html
+
   - title: Privacy Guides
     sub-pages:
-      - url: /doc/whonix/ 
-        text: Whonix for Privacy & Anonymity
-      - url: /doc/tails 
-        text: Running Tails in Qubes
-      - url: /doc/anonymizing-your-mac-address/ 
-        text: Anonymizing your MAC Address
-      - url: /doc/signal/ 
-        text: Signal
-      - url: /doc/w3m/ 
-        text: Reducing the fingerprint of the text-based web browser w3m
+      - text: Whonix for Privacy & Anonymity
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/whonix.md
+      - text: Running Tails in Qubes
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/tails.md
+      - text: Anonymizing your MAC Address
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/anonymizing-your-mac-address.md
+      - text: Signal
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/signal.md
+      - text: Reducing the fingerprint of the text-based web browser w3m
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/w3m.md
+
   - title: Configuration Guides
     sub-pages:
-      - url: /doc/tips-and-tricks/ 
-        text: Qubes Tips and Tricks
-      - url: /doc/vpn/ 
-        text: How to set up a ProxyVM as a VPN Gateway
-      - url: /doc/multiboot/ 
-        text: Multibooting
-      - url: /doc/change-time-zone/
-        text: Changing your Time Zone
-      - url: /doc/zfs/ 
-        text: Installing ZFS in Qubes
-      - url: /doc/mutt/ 
-        text: Mutt Guide
-      - url: /doc/postfix/ 
-        text: Postfix Guide
-      - url: /doc/fetchmail/ 
-        text: Fetchmail Guide
+      - text: Qubes Tips and Tricks
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/tips-and-tricks.md
+      - text: How to set up a ProxyVM as a VPN Gateway
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/vpn.md
+      - text: Multibooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/multiboot.md
+      - text: Changing your Time Zone
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/change-time-zone.md
+      - text: Installing ZFS in Qubes
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/zfs.md
+      - text: Mutt Guide
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/mutt.md
+      - text: Postfix Guide
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/postfix.md
+      - text: Fetchmail Guide
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/fetchmail.md
       - text: Creating Custom NetVMs and ProxyVMs
         url: https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html 
       - text: How to make proxy for individual tcp connection from networkless VM
         url: https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a 
-      - url: /doc/network-bridge-support/
-        text: Adding Bridge Support to the NetVM (EXPERIMENTAL)
-      - url: /doc/disk-trim/ 
-        text: Enabling TRIM for SSD disks
-      - url: /doc/network-printer/ 
-        text: Configuring a Network Printer
-      - url: /doc/external-audio/
-        text: Using External Audio Devices
-      - url: /doc/rxvt/ 
-        text: Rxvt Guide
+      - text: Adding Bridge Support to the NetVM (EXPERIMENTAL)
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/network-bridge-support.md
+      - text: Enabling TRIM for SSD disks
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/disk-trim.md
+      - text: Configuring a Network Printer
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/network-printer.md
+      - text: Using External Audio Devices
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/external-audio.md
+      - text: Rxvt Guide
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/rxvt.md
       - text: Adding SSD storage cache
         url: https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com 
-      - url: /doc/multimedia/ 
-        text: How to Make a Multimedia TemplateVM
-      - url: /doc/install-nvidia-driver/ 
-        text: How to install an Nvidia driver in dom0
+      - text: How to Make a Multimedia TemplateVM
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/multimedia.md
+      - text: How to install an Nvidia driver in dom0
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/install-nvidia-driver.md
  
 
   - title: Customization Guides
     sub-pages:
-      - url: /doc/fedora-minimal-template-customization/ 
-        text: Customizing Fedora minimal templates
-      - url: /doc/windows-template-customization/ 
-        text: Customizing Windows 7 templates
-      - url: /doc/language-localization/
-        text: Language Localization
-      - url: /doc/dark-theme/ 
-        text: Dark Theme in Dom0 and DomU
-      - url: /doc/removing-templatevm-packages/ 
-        text: "Safely Removing TemplateVM Packages (Example: Thunderbird)"
+      - text: Customizing Fedora minimal templates
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/customization/fedora-minimal-template-customization.md
+      - text: Customizing Windows 7 templates
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/customization/windows-template-customization.md
+      - text: Language Localization
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/customization/language-localization.md
+      - text: Dark Theme in Dom0 and DomU
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/customization/dark-theme.md
+      - text: "Safely Removing TemplateVM Packages (Example: Thunderbird)"
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/customization/removing-templatevm-packages.md
 
   - title: Troubleshooting
     sub-pages:
-      - url: /doc/nvidia-troubleshooting/ 
-        text: Nvidia troubleshooting guide
-      - url: /doc/thinkpad-troubleshooting/ 
-        text: Lenovo ThinkPad Troubleshooting
-      - url: /doc/macbook-troubleshooting/ 
-        text: Apple MacBook Troubleshooting
-      - url: /doc/sony-vaio-tinkering/ 
-        text: Sony Vaio Troubleshooting
-      - url: /doc/intel-igfx-troubleshooting/ 
-        text: Intel Integrated Graphics Troubleshooting
-      - url: /doc/multiboot/#troubleshooting 
-        text: Multiboot Troubleshooting
-      - url: /doc/application-troubleshooting/
-        text: Application Troubleshooting
-      - url: /doc/tails-troubleshooting/
-        text: Tails Troubleshooting
+      - text: Nvidia troubleshooting guide
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/nvidia-troubleshooting.md
+      - text: Lenovo ThinkPad Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/thinkpad-troubleshooting.md
+      - text: Apple MacBook Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/macbook-troubleshooting.md
+      - text: Sony Vaio Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/sony-vaio-tinkering.md
+      - text: Intel Integrated Graphics Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/intel-igfx-troubleshooting.md
+      - text: Multiboot Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/multiboot.md#troubleshooting
+      - text: Application Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/application-troubleshooting.md
+      - text: Tails Troubleshooting
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/troubleshooting/tails-troubleshooting.md
 
   - title: Building Guides
     sub-pages:
-      - url: /doc/building-non-fedora-template/ 
-        text: Building a TemplateVM based on a new OS (ArchLinux example)
-      - url: /doc/building-archlinux-template/ 
-        text: Building the Archlinux Template
-      - url: /doc/building-whonix-template/ 
-        text: Building the Whonix Templates
+      - text: Building a TemplateVM based on a new OS (ArchLinux example)
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/building/building-non-fedora-template.md
+      - text: Building the Archlinux Template
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/building/building-archlinux-template.md
+      - text: Building the Whonix Templates
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/building/building-whonix-template.md
       - text: How to compile kernels for dom0
-        url: https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion 
+        url: https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion
 
 
 
