@@ -119,9 +119,9 @@ def process_markdown(source_file, translated_file, permalinks, lang):
                 mdt[REDIRECT_KEY] = [(SLASH + lang + elem.replace('/en/', SLASH) if not elem.startswith(SLASH + lang + SLASH) else elem)
                                for elem in redirects]
 
-                if mds[PERMALINK_KEY] in mdt[REDIRECT_KEY]:
+                if mds.get(PERMALINK_KEY) != None and mds[PERMALINK_KEY] in mdt[REDIRECT_KEY]:
                     mdt[REDIRECT_KEY].remove(mds[PERMALINK_KEY])
-                if mdt[PERMALINK_KEY] in mdt[REDIRECT_KEY]:
+                if mdt.get(PERMALINK_KEY) != None and mdt[PERMALINK_KEY] in mdt[REDIRECT_KEY]:
                     mdt[REDIRECT_KEY].remove(mdt[PERMALINK_KEY])
 
                 tmp = list(set(mdt[REDIRECT_KEY]))
@@ -417,7 +417,10 @@ if __name__ == '__main__':
     configure_logging(LOG_FILENAME)
 
     
+    log_debug('START', {})
+
     source_translation_mapping = create_dict_from_tx_config(args.tx_mappingfile, args.language)
+
 
     log_debug('source/translation file mapping', source_translation_mapping)
 
