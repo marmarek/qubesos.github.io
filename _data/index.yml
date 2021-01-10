@@ -310,8 +310,6 @@
     sub-pages:
       - url: /doc/qubes-builder/  
         text: Building Qubes
-      - url: /doc/qubes-builder-details/ 
-        text: API Details
       - url: /doc/development-workflow/ 
         text: Development Workflow
       - url: /doc/qubes-iso-building/ 
