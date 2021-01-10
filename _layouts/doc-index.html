@@ -41,79 +41,53 @@
       	 <article id="doc-content" class="post-content">
 
 	      <!-- BEGIN CONTENT-->
-	     	{% assign indexed_original = site.data.index %}
+		{% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
+        <!-- this is needed to assure building the correct id of the link when there is a translation -->
+		{% assign index_english = site.data.index | where_exp: "item", "item.topic == nil" %}
+		{% assign topic = indexed | where_exp: "item", "item.topic != nil" | first %}
+		<h1 id="qubes-os-documentation">{{ topic.topic }}</h1>
+		<p> {{ topic.subtopic }}</p>
+        {% assign english_count = 0 %}
 
-			{% assign ind = indexed | where_exp: "item", "item.topic == nil" %}
-			{% assign ind_o = site.data.index | where_exp: "item", "item.topic == nil" %}
-			{% assign topic = indexed | where_exp: "item", "item.topic != nil" | first %}
-			<h1 id="qubes-os-documentation">{{ topic.topic }}</h1>
-			<p> {{ topic.subtopic }}</p>
-				{% assign original_count = 0 %}
+		{% for item in ind %}
 
-		  		{% for item in ind %}
+			{% assign item_en = index_english[english_count] %}
+			{% assign english_count = english_count | plus: 1 %}
 
-				{% assign item_original = ind_o[original_count] %}
-				{% assign original_count = original_count | plus: 1 %}
+	        <a id="{{ item_en.title | downcase | replace: " ", "-" | replace: ",", ""}}"></a>
+	        <h2 id="{{ item.title | downcase | replace: " ", "-" | replace: ",",""}}">{{ item.title }}</h2>
+            {% if item.subtitle %}
+   		    <p> {{ item.subtitle }} </p>
+            {% endif %}
+	        {% assign subpages = item.sub-pages | where_exp: "item", "item.title == nil" %}
+	        {% assign subpages2 = item.sub-pages | where_exp: "item", "item.title != nil" %}
+	        {% assign subsubpages_en = item_en.sub-pages | where_exp: "item", "item.title != nil" %}
+	      <ul>
+	        {% for sub in subpages %} 
+                <li> <a href="{{ sub.url }}">{{ sub.text }}</a></li>   
+	        {% endfor %}
 
-	<a id="{{ item_original.title | downcase | replace: " ", "-" | replace: ",", ""}}"></a>
-	<h2 id="{{ item.title | downcase | replace: " ", "-" | replace: ",",""}}">{{ item.title }}</h2>
-	{% if item.subtitle %}
-   		<p> {{ item.subtitle }} </p>
-    {% endif %}
+	        {% assign sub_count = 0 %}
+	        {% for sub2 in subpages2 %} 
+		        {% assign sub_o2 = subsubpages_en[sub_count] %}
+		        {% assign sub_count = sub_count | plus: 1 %}
 
-	{% assign subpages = item.sub-pages | where_exp: "item", "item.title ==nil" %}
-	{% assign subpages2 = item.sub-pages | where_exp: "item", "item.title !=nil" %}
-	{% assign subpages_o2 = item_original.sub-pages | where_exp: "item", "item.title !=nil" %}
-	<ul>
-	{% for sub in subpages %} 
-    	{% if sub.url contains lang %}
-        	{% assign u = sub.url %}
-       	{% else %}
-			{% assign u = lang  | append: sub.url %}
-       	{% endif %}
- 
-    	{% assign s = site.doc | concat: site.qubes-translated | where: 'permalink', u| first %}
-    	{% if s %} 
-	     	<li> <a href="{{ s.url }}">{{ s.title }}</a></li>
-	    {% else %}
-            <li> <a href="{{ sub.url }}">{{ sub.text }}</a></li>   
-    	{% endif %}
-
-	{% endfor %}
-
-	{% assign sub_count = 0 %}
-	{% for sub2 in subpages2 %} 
-		{% assign sub_o2 = subpages_o2[sub_count] %}
-		{% assign sub_count = sub_count | plus: 1 %}
-
-		{% if sub2.url == nil %}
-			<a id="{{ sub_o2.title | downcase | replace: " ", "-" | replace: ",", ""}}"></a>
-			<h3 id="{{ sub2.title | downcase | replace: " ", "-" | replace: ",",""}}">{{ sub2.title }}</h3>
-		{% else %}
-		<ul>
-			<li><a href="{{ sub2.url }}">{{ sub2.title }}</a></li>
-		</ul>
-		{% endif %}
-		{% assign subpages3 = sub2.sub-pages  %}
-		<ul>
-       		{% for sub3 in subpages3 %} 
-
-       			{% if sub3.url contains lang %}
-       				{% assign u3 = sub3.url %}
-       			{% else %}
-       				{% assign u3 = lang  | append: sub3.url %}
-       			{% endif %}
-
-       			{% assign s3 = site.doc | concat: site.qubes-translated | where: 'permalink', u3| first %}
-       			{% if s3 %}
-	     			<li> <a href="{{ s3.url }}">{{ s3.title }}</a></li>
-       			{% elsif sub3.title != nil %}
-	     			<li> <a href="{{ sub3.url }}">{{ sub3.title }}</a></li>
-       			{% endif %}
-			{% endfor %}
-		</ul>
-	{% endfor %}
-	</ul>
+		        {% if sub2.url == nil %}
+			    <a id="{{ sub_o2.title | downcase | replace: " ", "-" | replace: ",", "" }}"></a>
+			    <h3 id="{{ sub2.title | downcase | replace: " ", "-" | replace: ",","" }}">{{ sub2.title }}</h3>
+		        {% else %}
+		        <ul>
+			        <li><a href="{{ sub2.url }}">{{ sub2.title }}</a></li>
+		        </ul>
+		        {% endif %}
+		        {% assign subpages3 = sub2.sub-pages  %}
+		        <ul>
+       		    {% for sub3 in subpages3 %} 
+	     		    <li> <a href="{{ sub3.url }}">{{ sub3.text }}</a></li>
+			    {% endfor %}
+		        </ul>
+	        {% endfor %}
+	   </ul>
 	{% endfor %}
 	      <!-- END CONTENT-->
       </article>
