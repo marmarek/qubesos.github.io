@@ -43,6 +43,33 @@ YML_KEYS = ['url', 'topic', 'title', 'category', 'folder', 'htmlsection', 'tweet
         'tts1', 'tts2', 'txp', 'txaq', 'pxaq', 'column1', 'column2', 'column3', 'yes_short', 'no_short', 'no_extended', 'tba',
         'bold', 'item', 'note', 'section', 'row', 'r_version',
         'go', 'search', 'metatopic', 'ddg', 'hover']
+
+YML_KEYS_ORIGINAL_TO_RETAIN= [
+        'icon',
+        'category',
+        'img',
+        'attachment',
+        'tweet',
+        'avatar',
+        'htmlsection',
+        'folder',
+        'id',
+        'slug',
+        'title',
+        'author',
+        'category',
+        'name',
+        'type',
+        'picture',
+        'email',
+        'fingerprint',
+        'github',
+        'website',
+        'section',
+        'r_version',
+        'note'
+        ]
+
 URL_KEY = 'url' 
 # md frontmatterkeys:
 PERMALINK_KEY = 'permalink'
@@ -236,17 +263,20 @@ def replace_url(to_replace, original, lang, permalinks):
         if isinstance(v_r, list) and isinstance(v_o, list):
             for i, j in zip(v_r, v_o):
                 replace_url(i, j, lang, permalinks)
-        elif URL_KEY == k_r and URL_KEY == k_o:
-            val = original[k_r]
-            if val is not None and '#' in val:
-                tmp_val = val[0:val.find('#')]
-                to_replace[URL_KEY]= SLASH + lang + val if (tmp_val in permalinks) else val
-            else:
-                to_replace[URL_KEY]= SLASH + lang + val if (val in permalinks) else val
-        elif k_r != k_o:
+        if k_r != k_o:
             logger.error("ERROR, ordered of the loaded yml file is not preserved %s" % k_r +':' + k_o)
             exit(1)
-
+        if k_r in YML_KEYS_ORIGINAL_TO_RETAIN:
+            to_replace[k_r] = original[k_r]
+        if URL_KEY == k_r and URL_KEY == k_o:
+            val = original[URL_KEY]
+            if val is not None and '#' in val and "http" not in val and not val.startswith('#'):
+                tmp_val = val[0:val.find('#')]
+                to_replace[URL_KEY]= SLASH + lang + val if (tmp_val in permalinks) else val
+            elif val is not None and "http" not in val and not val.startswith('#'):
+                to_replace[URL_KEY]= SLASH + lang + val if (val in permalinks) else val
+            else:
+                logger.error("Do nothing ")
 
 
 def process_yml(source, translated, lang, permalinks):
