@@ -193,6 +193,8 @@
         url: /doc/media-troubleshooting/
       - text: Firewall Troubleshooting
         url: /doc/firewall/#firewall-troubleshooting
+      - text: Hardware Troubleshooting
+        url: /doc/hardware-troubleshooting/
       - text: VPN Troubleshooting
         url: /doc/vpn-troubleshooting/
       - text: Update Troubleshooting
