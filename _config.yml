@@ -35,6 +35,8 @@ collections:
   qubes-translated:
     output: true
 
+exclude:
+  - attachment/COPYRIGHT*
 
 allowed_categories:
   - press
