@@ -12,7 +12,7 @@
       id: 3
 
 - htmlsection: sec
-  title: Installing Qubes Securely 
+  title: Installing Qubes Securely
   links:
     - url: /doc/installation-guide/
       text: Installation Guide
@@ -25,12 +25,12 @@
       id: 3
 
 - htmlsection: help
-  title: Help and Support 
+  title: Help and Support
   links:
     - url: /support/
       text: Help and Support
       id: 1
-    - url: /doc/#troubleshooting 
+    - url: /doc/#troubleshooting
       text: Troubleshooting Guides
       id: 2
     - url: /doc/reporting-bugs/
@@ -51,10 +51,10 @@
       id: 3
 
 - htmlsection: version-info
-  title: Version Information 
+  title: Version Information
   links:
     - url: /doc/supported-versions/
-      text: Supported Versions 
+      text: Supported Versions
       id: 1
     - url: /doc/templates/
       text: Templates
@@ -92,7 +92,7 @@
   url: /donate/
   text: Donate
 
-- htmlsection: survey 
+- htmlsection: survey
   title: We want to learn from you!
   paragraph: The Qubes team is running our first ever survey of new, prospective, and longtime users. Our goal is to ensure Qubes OS meets the needs of the community by gathering responses to common questions about what the community seeks from Qubes OS. Surveys are 100% anonymous (no IP or timestamp information collected) and hosted on a server we own and operate. 5-10 minutes is all it should take.
   url: https://survey.qubes-os.org/index.php?r=survey/index&sid=791682&lang=en
@@ -108,7 +108,7 @@
           url: /doc/reporting-bugs/
         - snippet: For important work, we recommend the latest stable release. 
     - r_version: stable
-      snippets: 
+      snippets:
         - snippet: This is the latest stable Qubes OS release. We recommend this release for all new and existing users.
     - r_version: old
       snippets:

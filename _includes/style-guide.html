@@ -22,10 +22,10 @@
 {% for font in site.data.styleguide.fonts %}
   <div class="row">
   <div class="col-lg-6 col-md-6 focus">
-	  <div class="font {{font.class}}"> {{ fonts.snippets[0].snippet }}</div>
+      <div class="font {{font.class}}"> {{ fonts.snippets[0].snippet }}</div>
   </div>
   <div class="col-lg-6 col-md-6">
-	  <strong>{{ fonts.snippets[1].snippet }}</strong> {{font.family}}<br>
+      <strong>{{ fonts.snippets[1].snippet }}</strong> {{font.family}}<br>
   </div>
   </div>
 {% endfor %}
@@ -74,9 +74,9 @@
 <p>
 {% for s in snippet %}
    {% if s.url != nil %}
-	<a href="{{ s.url }}">{{ s.snippet }}</a>	
+     <a href="{{ s.url }}">{{ s.snippet }}</a>
    {% else %}
-	{{ s.snippet }}
+     {{ s.snippet }}
    {% endif %}
 {% endfor %}
 .</p>
@@ -91,9 +91,9 @@
 <p>
 {% for s in snippet %}
    {% if s.url != nil %}
-	<a href="{{ s.url }}">{{ s.snippet }}</a>	
+     <a href="{{ s.url }}">{{ s.snippet }}</a>
    {% else %}
-	{{ s.snippet }}
+     {{ s.snippet }}
    {% endif %}
 {% endfor %}
 .</p>

@@ -5,6 +5,7 @@
   snippets:
     - snippet: Custom Qubes Font
     - snippet: "Family:" 
+    - snippet: "Family:"
 
 - htmlsection: colors
   title: Colors

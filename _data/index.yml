@@ -140,7 +140,7 @@
         text: Configuration Files
       - url: /doc/secondary-storage/
         text: Storing AppVMs on Secondary Drives
-      - url: /doc/rpc-policy/ 
+      - url: /doc/rpc-policy/
         text: RPC Policies
       - url: /doc/usb-qubes/
         text: USB Qubes
@@ -150,21 +150,21 @@
         text: Salt Management Stack
       - url: /doc/disposablevm-customization/
         text: DisposableVM Customization
-      - url: /doc/bind-dirs/ 
+      - url: /doc/bind-dirs/
         text: Making Any File Persistent Using `bind-dirs`
-      - url: /doc/gui-configuration/ 
+      - url: /doc/gui-configuration/
         text: GUI Configuration
       - url: /doc/resize-disk-image/
         text: Resizing Disk Images
-      - url: /doc/newer-hardware-troubleshooting/ 
+      - url: /doc/newer-hardware-troubleshooting/
         text: Troubleshooting Newer Hardware
-      - url: /doc/mount-from-other-os/ 
+      - url: /doc/mount-from-other-os/
         text: Mounting and Decrypting Qubes Partitions from Outside Qubes
-      - url: /doc/kde/ 
+      - url: /doc/kde/
         text: KDE
-      - url: /doc/i3/ 
+      - url: /doc/i3/
         text: i3 Window Manager
-      - url: /doc/awesome/ 
+      - url: /doc/awesome/
         text: awesome Window Manager
 
   - title: Troubleshooting
@@ -204,9 +204,9 @@
     sub-pages:
       - url: /doc/tools/
         text: Command-line Tools
-      - url: /doc/glossary/ 
+      - url: /doc/glossary/
         text: Glossary
-      - url: /doc/qubes-service/ 
+      - url: /doc/qubes-service/
         text: Qubes Service Framework
       - url: /doc/qrexec/
         text: Command Execution in VMs (and Qubes RPC)
@@ -219,34 +219,34 @@
   sub-pages:
   - title: General
     sub-pages:
-      - url: /faq/#developers 
+      - url: /faq/#developers
         text: Developer FAQ
-      - url: /doc/package-contributions/ 
+      - url: /doc/package-contributions/
         text: Package Contributions
-      - url: /doc/doc-guidelines/ 
+      - url: /doc/doc-guidelines/
         text: Documentation Guidelines
       - text: Community-Developed Feature Tracker
-        url: /qubes-issues/ 
-      - url: /gsoc/ 
+        url: /qubes-issues/
+      - url: /gsoc/
         text: Google Summer of Code
       - url: /gsod/
         text: Google Season of Docs
-      - url: /doc/devel-books/ 
+      - url: /doc/devel-books/
         text: Books for Developers
-      - url: /doc/style-guide/ 
+      - url: /doc/style-guide/
         text: Style Guide
-      - url: /doc/usability-ux/ 
+      - url: /doc/usability-ux/
         text: Usability & UX
 
   - title: Code
     sub-pages:
-      - url: /doc/source-code/ 
+      - url: /doc/source-code/
         text: Source Code
-      - url: /doc/license/ 
+      - url: /doc/license/
         text: Software License
-      - url: /doc/coding-style/ 
+      - url: /doc/coding-style/
         text: Coding Guidelines
-      - url: /doc/code-signing/ 
+      - url: /doc/code-signing/
         text: Code Signing
 
   - title: System
@@ -278,34 +278,34 @@
     sub-pages:
       - url: /doc/qfilecopy/
         text: Inter-domain file copying
-      - url: /doc/qmemman/ 
+      - url: /doc/qmemman/
         text: Dynamic memory management in Qubes
-      - url: /doc/dvm-impl/ 
+      - url: /doc/dvm-impl/
         text: Implementation of DisposableVMs
-      - url: /doc/dom0-secure-updates/ 
+      - url: /doc/dom0-secure-updates/
         text: Dom0 secure update mechanism
-      - url: /doc/qrexec/ 
+      - url: /doc/qrexec/
         text: "Qrexec: secure communication across domains"
       - url: /doc/qrexec-internals/
         text: "Qrexec: Qubes RPC internals"
-      - url: /doc/qrexec-socket-services/ 
+      - url: /doc/qrexec-socket-services/
         text: "Qrexec: Socket-based services"
 
   - title: Debugging
     sub-pages:
-      - url: /doc/profiling/  
+      - url: /doc/profiling/
         text: Profiling python code
-      - url: /doc/test-bench/ 
+      - url: /doc/test-bench/
         text: Test environment in separate machine for automatic tests
-      - url: /doc/automated-tests/ 
+      - url: /doc/automated-tests/
         text: Automated tests
-      - url: /doc/vm-interface/ 
+      - url: /doc/vm-interface/
         text: VM-dom0 internal configuration interface
-      - url: /doc/windows-debugging/ 
+      - url: /doc/windows-debugging/
         text: Debugging Windows VMs
-      - url: /doc/safe-remote-ttys/ 
+      - url: /doc/safe-remote-ttys/
         text: Safe Remote Dom0 Terminals
-      - url: /doc/mount-lvm-image/ 
+      - url: /doc/mount-lvm-image/
         text: Mount LVM Image
 
   - title: Building
@@ -321,11 +321,11 @@
 
   - title: Releases
     sub-pages:
-      - url: /doc/releases/notes/ 
+      - url: /doc/releases/notes/
         text: Release notes
-      - url: /doc/releases/schedules/ 
+      - url: /doc/releases/schedules/
         text: Release schedules
-      - url: /doc/releases/todo/ 
+      - url: /doc/releases/todo/
         text: Release checklist
 
 - title: External Documentation
@@ -343,7 +343,7 @@
       - text: "Template: Whonix"
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/whonix.md
       - text: "Template: CentOS"
-        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/centos.md 
+        url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/centos.md
       - text: "Template: Gentoo"
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/os/gentoo.md
       - text: Pentesting
@@ -406,9 +406,9 @@
       - text: Fetchmail Guide
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/fetchmail.md
       - text: Creating Custom NetVMs and ProxyVMs
-        url: https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html 
+        url: https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html
       - text: How to make proxy for individual tcp connection from networkless VM
-        url: https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a 
+        url: https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a
       - text: Adding Bridge Support to the NetVM (EXPERIMENTAL)
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/network-bridge-support.md
       - text: Enabling TRIM for SSD disks
@@ -425,7 +425,6 @@
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/multimedia.md
       - text: How to install an Nvidia driver in dom0
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/configuration/install-nvidia-driver.md
- 
 
   - title: Customization Guides
     sub-pages:
@@ -469,6 +468,4 @@
         url: https://github.com/Qubes-Community/Contents/blob/master/docs/building/building-whonix-template.md
       - text: How to compile kernels for dom0
         url: https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion
-
-
 

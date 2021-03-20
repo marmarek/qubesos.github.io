@@ -14,7 +14,6 @@
 {% assign emeritus = teamed | where_exp: "item", "item.htmlsection == 'emeritus'" | first %}
 {% assign community = teamed | where_exp: "item", "item.htmlsection == 'community'" | first %}
 
-      
 {% assign team_link = lang | append: "/team/" %}
 {% assign teams = site.pages | concat: site.qubes-translated | where:'permalink', team_link %}
 {% if teams.size == 0 %}
@@ -22,10 +21,9 @@
 {% endif %}
 <!-- previous content -->
 
-
 <div id="team-core" class="white-box page-content ">
   <div class="col-lg-12 col-md-12 col-sm-12">
-	  <h2 id="core-team" class="text-center more-bottom"> {{ coreteam.title }}</h2>
+    <h2 id="core-team" class="text-center more-bottom"> {{ coreteam.title }}</h2>
   </div>
 
     {% for team in site.data.team %}
@@ -59,7 +57,7 @@
           {% endif %}
           {% if team.email %}
           <a href="mailto:{{team.email}}" class="black-link add-right"
-			title="{{ coreteam.email }}">
+            title="{{ coreteam.email }}">
             <i class="fa fa-fw fa-envelope"></i>{{ coreteam.email }}
           </a>
           {% endif %}
@@ -71,8 +69,8 @@
           {% endif %}
           {% if team.website %}
           <a href="{{team.website}}" target="blank" class="black-link"
-			title="{{ coreteam.website }}">
-			<i class="fa fa-fw fa-globe"></i>{{ coreteam.website }}
+            title="{{ coreteam.website }}">
+            <i class="fa fa-fw fa-globe"></i>{{ coreteam.website }}
           </a>
           {% endif %}
         </div>
@@ -88,7 +86,7 @@
 
 <!-- Hidden when not actively hiring
   <div class="text-center more-bottom">
-	  <a href="{{ joined.url}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
+      <a href="{{ joined.url}}" class="btn btn-primary"><i class="fa fa-user-plus fa-fw white-icon"></i>{{ joined.title }}</a>
   </div>
 -->
 </div>
@@ -119,10 +117,10 @@
 
 <div class="page-content more-bottom">
   <div class="col-lg-12">
-	  <h2 id="community-contributors" class="text-center more-bottom"> 
+      <h2 id="community-contributors" class="text-center more-bottom">
         {{ community.title }}
       </h2>
-	  <p> 
+      <p>
         {{ community.text }} <a href="{{ support_link }}"> {{ community.mail }}</a>.
       </p>
   </div>

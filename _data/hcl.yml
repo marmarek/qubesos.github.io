@@ -14,8 +14,8 @@
       text: Add Your Device
       id: 4
 
-- htmlsection: info 
-  title: Information 
+- htmlsection: info
+  title: Information
   links:
     - url: /doc/hcl/
       text: What is the Hardware Compatibility List (HCL)?

@@ -10,7 +10,7 @@
 {% assign news = iincludes | where_exp: "item", "item.section == 'news-heading'" | first %}
 
 <h2 class="text-center outer-heading">
-	{{ news.title }}
+  {{ news.title }}
 </h2>
 <div class="white-box">
   <ul class="list-unstyled remove-bottom">

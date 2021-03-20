@@ -18,13 +18,13 @@
       text: Report a Bug
       icon: fa-bug
     - url: /support/
-      text: Help & Support 
+      text: Help & Support
       icon: fa-life-ring
     - url: /donate/
-      text: Make a Donation 
+      text: Make a Donation
       icon: fa-heart
 
-- section: intro 
+- section: intro
   links:
     - url: /video-tours/
       text: Video Tours
@@ -33,7 +33,7 @@
       text: Screenshots
       id: 2
 
-- section: news-heading 
+- section: news-heading
   title: Recent News
   links:
     - url: /news/
@@ -48,7 +48,7 @@
 
 - section: doc-external
   text: This is unofficial, third-party documentation. The Qubes OS Project cannot guarantee the accuracy of this page. Please exercise caution. 
- 
+
 - section: doc-translated
   text: This page is an unverified full translation or translation currently in progress. The Qubes OS Project cannot evaluate the accuracy of translations into languages that our team cannot read.
 

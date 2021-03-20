@@ -1,9 +1,9 @@
 {% if page.lang == nil or page.lang == "en" %}
-	{% assign inc = site.data.includes %}
+    {% assign inc = site.data.includes %}
 {% else %}
     {% assign inc = site.data.translation[page.lang].includes %}
     {% if inc == nil or inc.size == 0 %}
-    	{% assign inc = site.data.includes %}
+        {% assign inc = site.data.includes %}
     {% endif %}
 {% endif %}
 
@@ -34,10 +34,10 @@
 {% assign affected_percentage = xsa_affected | divided_by: xsa_used | times: 100.0 | round: 2 %}
 
 <ul>
-	<li> {{ statistics.tts1 }}: <strong>{{ timespan_human }} {{ statistics.tts2 }}</strong> ({{ date_first }} - {{ date_last }}) </li>
-	<li> {{ statistics.txp }}: <strong>{{ xsa_used | round }}</strong></li>
-	<li> {{ statistics.txaq }}: <strong>{{ xsa_affected | round }}</strong> </li>
-	<li> {{ statistics.pxaq }}: <strong>{{ affected_percentage }}</strong> </li>
+  <li> {{ statistics.tts1 }}: <strong>{{ timespan_human }} {{ statistics.tts2 }}</strong> ({{ date_first }} - {{ date_last }}) </li>
+  <li> {{ statistics.txp }}: <strong>{{ xsa_used | round }}</strong></li>
+  <li> {{ statistics.txaq }}: <strong>{{ xsa_affected | round }}</strong> </li>
+  <li> {{ statistics.pxaq }}: <strong>{{ affected_percentage }}</strong> </li>
 </ul>
 
 <h2 id="tracker">{{ tracker.title }}</h2>
@@ -86,5 +86,3 @@
     </td>
   </tr>
 {% endfor %}
-</table>
-

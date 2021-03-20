@@ -27,63 +27,63 @@
 <div class="white-box more-bottom page-content">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
-	    <h3>{{ hw.title }}</h3>
+      <h3>{{ hw.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ sr.url }}" class="black-link">
-	        <i class="fa fa-server fa-fw black-icon"></i> {{ sr.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ ch.url }}" class="black-link">
-	        <i class="fa fa-floppy-o fa-fw black-icon"></i> {{ ch.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ hcl.url }}" class="black-link">
-	        <i class="fa fa-laptop fa-fw black-icon"></i> {{ hcl.text }}
-	       </a>
-	      </li>
+        <li>
+         <a href="{{ sr.url }}" class="black-link">
+          <i class="fa fa-server fa-fw black-icon"></i> {{ sr.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ ch.url }}" class="black-link">
+          <i class="fa fa-floppy-o fa-fw black-icon"></i> {{ ch.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ hcl.url }}" class="black-link">
+          <i class="fa fa-laptop fa-fw black-icon"></i> {{ hcl.text }}
+         </a>
+        </li>
       </ul>
     </div>
     <div class="col-xs-12 col-sm-4">
-	    <h3> {{ sec.title }}</h3>
+      <h3> {{ sec.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ ig.url }}" class="black-link">
-	        <i class="fa fa-book fa-fw black-icon"></i> {{ ig.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ vs.url }}" class="black-link">
-	        <i class="fa fa-lock fa-fw black-icon"></i> {{ vs.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ isc.url }}" class="black-link">
-	        <i class="fa fa-lightbulb-o fa-fw black-icon"></i> {{ isc.text }}
-	       </a>
-	      </li>
+        <li>
+         <a href="{{ ig.url }}" class="black-link">
+          <i class="fa fa-book fa-fw black-icon"></i> {{ ig.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ vs.url }}" class="black-link">
+          <i class="fa fa-lock fa-fw black-icon"></i> {{ vs.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ isc.url }}" class="black-link">
+          <i class="fa fa-lightbulb-o fa-fw black-icon"></i> {{ isc.text }}
+         </a>
+        </li>
       </ul>
     </div>
     <div class="col-xs-12 col-sm-4">
-	    <h3>{{ help.title }}</h3>
+      <h3>{{ help.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ hs.url }}" class="black-link">
-	        <i class="fa fa-life-ring fa-fw black-icon"></i> {{ hs.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ tg.url }}" class="black-link">
-	        <i class="fa fa-file-text-o fa-fw black-icon"></i> {{ tg.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ rb.url }}" class="black-link">
-	        <i class="fa fa-bug fa-fw black-icon"></i> {{ rb.text }}
-	       </a>
-	      </li>
+        <li>
+         <a href="{{ hs.url }}" class="black-link">
+          <i class="fa fa-life-ring fa-fw black-icon"></i> {{ hs.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ tg.url }}" class="black-link">
+          <i class="fa fa-file-text-o fa-fw black-icon"></i> {{ tg.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ rb.url }}" class="black-link">
+          <i class="fa fa-bug fa-fw black-icon"></i> {{ rb.text }}
+         </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -109,22 +109,23 @@
 {% assign old = ls.releases | where_exp: "item", "item.r_version == 'old'" | first %}
 {% assign depr = ls.releases | where_exp: "item", "item.r_version == 'deprecated'" | first %}
 
-<div class="more-bottom">
+<hr class="more-bottom">
 {% for releasex in site.data.downloads.releases %}
   <div class="row">
     <div class="col-xs-12">
 
-    {% assign release_name = releasex[0] %}
-    {% assign release = releasex[1] %}
-    {% assign testing = release.testing | default: false %}
-    {% assign latest = release.latest | default: false %}
-    {% assign aging = release.aging | default: false %}
-    {% assign deprecated = release.deprecated | default: false %}
+      {% assign release_name = releasex[0] %}
+      {% assign release = releasex[1] %}
+      {% assign testing = release.testing | default: false %}
+      {% assign latest = release.latest | default: false %}
+      {% assign aging = release.aging | default: false %}
+      {% assign deprecated = release.deprecated | default: false %}
       <h3 id="{{ release_name | slugify }}">{{ release_name }}</h3>
 
       {% if testing %}
       <div class="alert alert-info" role="alert">
       <i class="fa fa-question-circle"></i>
+
       {% if testing != true %} 
               {{ testing }}
       {% else %} 
@@ -135,58 +136,58 @@
                    {{ s.snippet }}
                {% endif %}
               {% endfor %}
-		{% endif %}
+      {% endif %}
       </div>
       {% endif %}
       {% if latest %}
       <div class="alert alert-success" role="alert">
-	      <i class="fa fa-check-circle"></i>
-	      {% if latest != true %} 
-	        {{ latest }}
-	      {% else %} 
-	        {{ stable.snippets[0].snippet }} 
-	      {% endif %}
+
+        <i class="fa fa-check-circle"></i>
+        {% if latest != true %}
+          {{ latest }}
+        {% else %}
+          {{ stable.snippets[0].snippet }}
+        {% endif %}
       </div>
       {% endif %}
 
       {% if aging %}
       <div class="alert alert-warning" role="alert">
-		<i class="fa fa-info-circle"></i>
-		{% if aging != true %} 
-		{{ aging }}
-		{% else %}
-	    {% for s in old.snippets %}
-                {% if s.url != nil %}
-                        <a href="{{ s.url }}">{{ s.snippet }}</a>
-                {% else %}
-                        {{ s.snippet }}
-                {% endif %}
-	    {% endfor %}
-		{% endif %}
+      <i class="fa fa-info-circle"></i>
+      {% if aging != true %}
+        {{ aging }}
+      {% else %}
+        {% for s in old.snippets %}
+          {% if s.url != nil %}
+            <a href="{{ s.url }}">{{ s.snippet }}</a>
+          {% else %}
+            {{ s.snippet }}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
       </div>
       {% endif %}
 
       {% if deprecated %}
-      <div class="alert alert-danger" role="alert">
-		<i class="fa fa-exclamation-circle"></i>
-		{% if deprecated != true %} 
-	        {{ deprecated }}
-		{% else %} 
-	       {% for s in depr.snippets %}
-       	   {% if s.url != nil %}
-                       <a href="{{ s.url }}">{{ s.snippet }}</a>
-	          {% else %}
-                      {{ s.snippet }}
-       	   {% endif %}
-	       {% endfor %}
-		{% endif %}
-      </div>
+        <div class="alert alert-danger" role="alert">
+          <i class="fa fa-exclamation-circle"></i>
+          {% if deprecated != true %}
+            {{ deprecated }}
+          {% else %}
+            {% for s in depr.snippets %}
+              {% if s.url != nil %}
+                <a href="{{ s.url }}">{{ s.snippet }}</a>
+              {% else %}
+                {{ s.snippet }}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
       {% endif %}
-	</div>
+      </div>
    </div>
-   {% endfor %}
-</div>
 
+{% endfor %}
 
 {% assign code = down | where_exp: "item", "item.htmlsection == 'source-code'" | first %}
 {% assign scode = code.links | where_exp: "item", "item.id == 1" | first %}
@@ -289,12 +290,13 @@
 <div class="row">
   <div class="col-xs-12">
       <article>
-	<h3 id="mirrors">{{ dm.title }}</h3>
+
+      <h3 id="mirrors">{{ dm.title }}</h3>
         <table>
           <tr>
-	 	<th>{{ dm.table[0].column }}</th>
-		<th>{{ dm.table[1].column }}</th>
-		<th>{{ dm.table[2].column }}</th>
+            <th>{{ dm.table[0].column }}</th>
+            <th>{{ dm.table[1].column }}</th>
+            <th>{{ dm.table[2].column }}</th>
           </tr>
         {% for mirror in site.data.mirrors %}
           <tr id="{{ mirror.organization | slugify }}">
@@ -310,10 +312,11 @@
           </tr>
         {% endfor %}
         </table>
-	<a href="{{ dm.links[0].url }}" class="black-link">
-	<i class="fa fa-cloud fa-fw black-icon"></i>
-	{{ dm.links[0].text }}
-	</a>
+
+        <a href="{{ dm.links[0].url }}" class="black-link">
+          <i class="fa fa-cloud fa-fw black-icon"></i>
+          {{ dm.links[0].text }}
+        </a>
       </article>
   </div>
 </div>
@@ -333,61 +336,62 @@
   <div class="col-xs-12 col-sm-4">
      <h3 id="security">{{ secinfo.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ sc.url }}" class="black-link" title="{{ sc.text }}">
-	        <i class="fa fa-lock fa-fw black-icon"></i> {{ sc.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ sp.url }}" class="black-link" title="{{ sp.text }}">
-	        <i class="fa fa-folder fa-fw black-icon"></i> {{ sp.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ sg.url }}" class="black-link" title="{{ sg.text }}">
-	        <i class="fa fa-tasks fa-fw black-icon"></i> {{ sg.text }}
-	       </a>
-	      </li>
+        <li>
+         <a href="{{ sc.url }}" class="black-link" title="{{ sc.text }}">
+          <i class="fa fa-lock fa-fw black-icon"></i> {{ sc.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ sp.url }}" class="black-link" title="{{ sp.text }}">
+          <i class="fa fa-folder fa-fw black-icon"></i> {{ sp.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ sg.url }}" class="black-link" title="{{ sg.text }}">
+          <i class="fa fa-tasks fa-fw black-icon"></i> {{ sg.text }}
+         </a>
+        </li>
       </ul>
   </div>
   <div class="col-xs-12 col-sm-4">
      <h3 id="versions"> {{ ver.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ sv.url }}" class="black-link" title="{{ sv.text }}">
-	        <i class="fa fa-history fa-fw black-icon"></i> {{ sv.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ t.url }}" class="black-link" title="{{ t.text }}">
-	        <i class="fa fa-clone fa-fw black-icon"></i> {{ t.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ vs.url }}" class="black-link" title="{{ vs.text }}">
-	        <i class="fa fa-code-fork fa-fw black-icon"></i> {{ vs.text }}
-	       </a>
-	      </li>
+        <li>
+         <a href="{{ sv.url }}" class="black-link" title="{{ sv.text }}">
+          <i class="fa fa-history fa-fw black-icon"></i> {{ sv.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ t.url }}" class="black-link" title="{{ t.text }}">
+          <i class="fa fa-clone fa-fw black-icon"></i> {{ t.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ vs.url }}" class="black-link" title="{{ vs.text }}">
+          <i class="fa fa-code-fork fa-fw black-icon"></i> {{ vs.text }}
+         </a>
+        </li>
       </ul>
   </div>
   <div class="col-lg-4 col-md-4">
     <h3 id="source-code">{{ code.title }}</h3>
       <ul class="list-unstyled">
-	      <li>
-	       <a href="{{ scode.url }}" class="black-link" title="{{ scode.text }}">
-	        <i class="fa fa-code fa-fw black-icon"></i> {{ scode.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ cg.url }}" class="black-link" title="{{ cg.text }}">
-	        <i class="fa fa-terminal fa-fw black-icon"></i> {{ cg.text }}
-	       </a>
-	      </li>
-	      <li>
-	       <a href="{{ sl.url }}" class="black-link" title="{{ sl.text }} ">
-	        <i class="fa fa-file-text-o fa-fw black-icon"></i> {{ sl.text }} 
-	       </a>
-	      </li>
+
+        <li>
+         <a href="{{ scode.url }}" class="black-link" title="{{ scode.text }}">
+          <i class="fa fa-code fa-fw black-icon"></i> {{ scode.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ cg.url }}" class="black-link" title="{{ cg.text }}">
+          <i class="fa fa-terminal fa-fw black-icon"></i> {{ cg.text }}
+         </a>
+        </li>
+        <li>
+         <a href="{{ sl.url }}" class="black-link" title="{{ sl.text }} ">
+          <i class="fa fa-file-text-o fa-fw black-icon"></i> {{ sl.text }}
+         </a>
+        </li>
       </ul>
   </div>
 </div>

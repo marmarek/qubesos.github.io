@@ -13,7 +13,7 @@
 {% for partner in p.partners %}
 {% assign  pars = partner.paragraph %}
 {% if partner.url %}
-	<tr id="{{ partner.id }}">
+        <tr id="{{ partner.id }}">
       <td>
         <a href="{{ partner.url }}">
           <img src="{{ partner.img }}">
@@ -21,17 +21,17 @@
       </td>
       <td>
         <h3 data-anchor-id="{{ partner.id }}">{{ partner.title }}</h3>
-	{% for p in pars %}
-	<p>
-	{% for s in p.snippets %}
-        	{% if s.url != nil %}
-                	<a href="{{ s.url }}">{{ s.snippet }}</a>
-        	{% else %}
-                	{{ s.snippet }}
-        	{% endif %}
-	{% endfor %}
-	</p>
-	{% endfor %}
+        {% for p in pars %}
+          <p>
+          {% for s in p.snippets %}
+            {% if s.url != nil %}
+              <a href="{{ s.url }}">{{ s.snippet }}</a>
+            {% else %}
+              {{ s.snippet }}
+            {% endif %}
+          {% endfor %}
+          </p>
+        {% endfor %}
       </td>
     </tr>
 {% else %}
@@ -39,19 +39,19 @@
       <td><h2 class="outer-heading">{{ partner.title }}</h2></td>
       <td>
         <h3 data-anchor-id="{{ partner.id }}">{{ partner.title }}</h3>
-	{% for p in pars %}
-	<p>
-	{% for s in p.snippets %}
+        {% for p in pars %}
+        <p>
+        {% for s in p.snippets %}
         {% if s.url != nil %}
-                <a href="{{ s.url }}">{{ s.snippet }}</a>
-	{% elsif s.bold %}
-		<b>{{ s.snippet }}</b>
+          <a href="{{ s.url }}">{{ s.snippet }}</a>
+        {% elsif s.bold %}
+          <b>{{ s.snippet }}</b>
         {% else %}
-                {{ s.snippet }}
+          {{ s.snippet }}
         {% endif %}
-	{% endfor %}
-	</p>  
-	{% endfor %}
+        {% endfor %}
+        </p>
+        {% endfor %}
       </td>
     </tr>
 {% endif %}
