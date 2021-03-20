@@ -276,7 +276,7 @@ def replace_url(to_replace, original, lang, permalinks):
             elif val is not None and "http" not in val and not val.startswith('#'):
                 to_replace[URL_KEY]= SLASH + lang + val if (val in permalinks) else val
             else:
-                logger.error("Do nothing ")
+                logger.debug("Do nothing for key:value in yaml file. %s: %s", k_o, v_o)
 
 
 def process_yml(source, translated, lang, permalinks):
