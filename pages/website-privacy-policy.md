@@ -1,24 +1,29 @@
 ---
 lang: en
 layout: default
-permalink: /privacy/
-redirect_from:
-- /en/privacy/
-- /doc/privacy/
-- /wiki/privacy/
+permalink: /website-privacy-policy/
 ref: 3
-title: Privacy Policy
+title: Website Privacy Policy
 ---
 
-# Privacy Policy
+<div class="alert alert-info" role="alert">
+  <i class="fa fa-info-circle"></i>
+  <b>Note:</b> This Website Privacy Policy pertains only to the Qubes website. For non-website topics, please see our more general <a href="/privacy/">Privacy Policy</a>.
+</div>
+
+# Website Privacy Policy
 
 Effective date: 2018-07-26
 
-The Qubes OS Project ("us", "we", or "our") operates the [https://www.qubes-os.org/](https://www.qubes-os.org/) website (the "Service").
+The Qubes OS Project ("us", "we", or "our") operates the <https://www.qubes-os.org/> website (the "Service"). This Privacy Policy applies only to the <https://www.qubes-os.org/> website (the "Service"). It does NOT apply to the Qubes OS operating system.
 
 This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. This Privacy Policy for The Qubes OS Project is powered by [PrivacyPolicies.com](https://privacypolicies.com/free-privacy-policy-generator/)
 
 We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from [Terms](https://www.qubes-os.org/terms/)
+
+## GitHub and GitHub Pages
+
+The Service is hosted by [GitHub Pages](https://pages.github.com/), which is owned and operated by [GitHub](https://github.com/). We have no knowledge of or control over GitHub Pages' infrastructure or privacy practices beyond the information and controls provided to us through by GitHub as a user of GitHub Pages and other GitHub services. Please see the [GitHub Privacy Statement](https://docs.github.com/en/github/site-policy/github-privacy-statement) for further details. In particular, please see the [GitHub Pages section](https://docs.github.com/en/github/site-policy/github-privacy-statement#github-pages). Please also see GitHub's [Global Privacy Practices](https://docs.github.com/en/github/site-policy/global-privacy-practices).
 
 ## Information Collection And Use
 

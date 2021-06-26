@@ -10,7 +10,7 @@
 
 {% assign docs = doc_content | where_exp: "item", "item.section == 'doc-content'" | first %}
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 sidebar">
       <div class="page-source-side remove-bottom">
         <h3 class="remove-bottom">{{ docs.text }}</h3>
       </div>
@@ -23,6 +23,16 @@
     <div class="toc-button-spacer more-bottom"></div>
     <div class="col-xs-12 col-md-9 page-content-right">
       <article id="doc-content" class="post-content">
+
+        {% assign doc_segments = page.relative_path | split: '/' %}
+        {% if section.category == "external" %}
+          {% include doc-alert-external.html %}
+        {% elsif doc_segments contains 'advanced-topics' or page.advanced %}
+          {% include doc-alert-advanced.html %}
+        {% endif %}
+
+        <h1>{{ page.title }}</h1>
+
         {{ content }}
     <!-- Here below the content will be added an _include only in the case the current page has a permalink ending with the specific word -->
         {% assign perm_last_part = page.url | split: '/' | last | lstrip %}

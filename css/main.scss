@@ -186,8 +186,9 @@ article tr.center {
   }
 }
 
-// Custom - Sticky external documentation warning
+// Custom - Sticky elements
 .alert-sticky {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 1;
   top: 10px;
