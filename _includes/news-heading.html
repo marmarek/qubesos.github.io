@@ -1,21 +1,30 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign news = includes | where_exp: "item", "item.section == 'news-heading'" | first %}
+{% assign n = news.links | where_exp: "item", "item.id == 1" | first %}
+{% assign nc = news.links | where_exp: "item", "item.id == 2" | first %}
+{% assign s = news.links | where_exp: "item", "item.id == 3" | first %}
+<!-- News heading -->
 <div class="row more-top">
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     <h1 class="add-left outer-heading">
-      <a href="/news/" class="heading-link">
-        <i class="fa fa-newspaper-o"></i> News
+      <a href="{{ n.url }}" class="heading-link">
+        <i class="fa fa-newspaper-o"></i> {{ n.text }}
       </a>
     </h1>
   </div>
+  <!-- News by category & Statistics -->
   <div class="col-lg-5 col-md-4 col-sm-5 col-xs-12">
     <h1 class="outer-heading">
-      <a href="/news/categories/" class="btn btn-default">
-        <i class="fa fa-fw fa-tag" aria-hidden="true"></i>Categories
+      <a href="{{ nc.url }}" class="btn btn-default">
+        <i class="fa fa-fw fa-tag" aria-hidden="true"></i>{{ nc.text }}
       </a>
-      <a href="/statistics/" class="btn btn-default">
-        <i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i>Statistics
+      <a href="{{ s.url }}" class="btn btn-default">
+        <i class="fa fa-fw fa-bar-chart" aria-hidden="true"></i>{{ s.text }}
       </a>
     </h1>
   </div>
+  <!-- Button links -->
   <div class="col-lg-4 col-md-5 col-sm-3 col-xs-12 button-heading">
     <h1 class="outer-heading">
       <a title="GitHub" href="https://github.com/QubesOS" class="fa fa-github-square black-icon" aria-hidden="true"></a>

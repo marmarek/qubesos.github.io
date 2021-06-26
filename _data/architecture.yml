@@ -38,6 +38,7 @@
     url: /doc/certified-hardware/
   - title: Compatibility List
     url: /hcl/
+    icon: fa-power-off
   - title: Installation Guide
     url: /doc/installation-guide/
   - title: Verifying Signatures
@@ -65,14 +66,14 @@
     url: /doc/#choosing-your-hardware
   - title: Installing & Upgrading
     url: /doc/#downloading-installing-and-upgrading-qubes
-  - title: Common Tasks
-    url: /doc/#common-tasks
-  - title: Managing OSes
-    url: /doc/#managing-operating-systems-within-qubes
+  - title: How-to Guides
+    url: /doc/#how-to-guides
+  - title: Templates
+    url: /doc/#templates
+  - title: Troubleshooting
+    url: /doc/#troubleshooting
   - title: Security in Qubes
     url: /doc/#security-in-qubes
-  - title: Advanced Config
-    url: /doc/#advanced-configuration
   - title: Developer Docs
     url: /doc/#developer-documentation
   - title: External Docs
@@ -113,11 +114,15 @@
     url: /security/
     icon: fa-lock
   - title: Report a Bug
-    url: /doc/reporting-bugs/
-  - title: Press Inquiries
-    url: mailto:press@qubes-os.org
-  - title: Business Inquiries
-    url: mailto:business@qubes-os.org
+    url: /doc/issue-tracking/
+  - title: Inquiries
+    url: /team/#inquiries
+  - title: Core Team
+    url: /team/#core-team
+  - title: Emeritus
+    url: /team/#emeritus
+  - title: Community Contributors
+    url: /team/#community-contributors
 
 - title: Donate
   url: /donate/
@@ -128,8 +133,6 @@
   - title: Partners
     url: /partners/
     icon: fa-globe
-  - title: Merchandise
-    url: /merchandise/
   - title: Contributing
     url: /doc/contributing/
 

@@ -1,0 +1,8 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign advanced = includes | where_exp: "item", "item.section == 'doc-advanced'" | first %}
+<!-- Alert -->
+<div class="alert alert-sticky alert-warning" role="alert">
+  <i class="fa fa-exclamation-circle"></i>
+  <strong>{{ advanced.prompt }}</strong> {{ advanced.text }}
+</div>

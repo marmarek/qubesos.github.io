@@ -1,0 +1,19 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign sec = includes | where_exp: "item", "item.section == 'security-canaries'" | first %}
+<!-- Canary list -->
+<table>
+  <tr>
+    <th title="Anchor Link"><span class="fa fa-link"></span></th>
+    {% for item in sec.htmlsections[0].columns %}
+      <th>{{ item.title }}</th>
+    {% endfor %}
+  </tr>
+  {% for canary in site.data.sec-canary reversed %}
+    <tr id="{{ canary.canary }}">
+      <td><a href="#{{ canary.canary }}" class="fa fa-link black-icon" title="Anchor link to Qubes Canary row: Qubes Canary #{{ canary.canary }}"></a></td>
+      <td>{{ canary.date }}</td>
+      <td><a href="https://github.com/QubesOS/qubes-secpack/blob/master/canaries/canary-{{ canary.canary }}-{{ canary.date | date: '%Y' }}.txt">Qubes Canary #{{ canary.canary }}</a></td>
+    </tr>
+  {% endfor %}
+</table>

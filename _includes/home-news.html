@@ -1,0 +1,16 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign n = includes | where_exp: "item", "item.section == 'home-news'" | first %}
+<!-- List posts -->
+{% for post in site.posts limit:7 %}
+  <li class="list-links">
+    <a class="black-link headline" href="{{ post.url }}">
+      {{ post.title }}
+      {% for category in post.categories %}
+        {% if site.allowed_categories contains category %}
+          <span class="detail"> {{ n.snippets[0].snippet }} {{ category | capitalize }} {{ n.snippets[1].snippet }} {{ post.date | date: "%Y-%m-%d" }}</span>
+        {% endif %}
+      {% endfor %}
+    </a>
+  </li>
+{% endfor %}

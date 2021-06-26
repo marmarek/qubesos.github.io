@@ -17,3 +17,5 @@ coverage
 tmp/*
 .jekyll-metadata
 /vendor
+.tx/
+.tx/config
