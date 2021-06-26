@@ -1,0 +1,20 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign author_team = false %}
+{% for member in site.data.team %}
+  {% if page.author == member.name %}
+    {% assign author_team = true %}
+  {% endif %}
+{% endfor %}
+<!-- Post author -->
+<strong>
+{% if page.author %}
+  {% if author_team %}
+    <a href="{{ team_link }}#{{ page.author | slugify }}">{{ page.author }}</a>
+  {% else %}
+    <a href="{{ team_link }}">{{ page.author }}</a>
+  {% endif %}
+{% else %}
+  <a href="{{ team_link }}">{{ site.default_author }}</a>
+{% endif %}
+</strong>

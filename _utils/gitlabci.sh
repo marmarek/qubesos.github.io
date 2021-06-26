@@ -52,9 +52,9 @@ echo -e "section_end:$(date +%s):prepare\r\e[0K"
 
 if is_pr; then
     echo -e "section_start:$(date +%s):build_orig\r\e[0KBuilding original site to compare"
-    # exact value doesn't matter, but needs to be the same as in the other call
-    # below
-    echo 'time: 2020-01-01 00:00:00 +0100' >> _config.yml
+    # exact value doesn't matter as long as it is in the future, but needs to
+    # be the same as in the other call below
+    echo 'time: 2038-01-01 00:00:00 +0100' >> _config.yml
     bundle exec jekyll build
     git checkout _config.yml
 
@@ -73,7 +73,7 @@ fi
 git -C "$sub_path" fetch --update-shallow ${CI_PROJECT_DIR} HEAD
 git -C "$sub_path" checkout FETCH_HEAD
 
-echo 'time: 2020-01-01 00:00:00 +0100' >> _config.yml
+echo 'time: 2038-01-01 00:00:00 +0100' >> _config.yml
 bundle exec jekyll build
 git checkout _config.yml
 cp -f robots-staging.txt _site/robots.txt

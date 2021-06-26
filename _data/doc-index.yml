@@ -9,7 +9,7 @@
     - url: /video-tours/
     - url: /screenshots/
     - url: /faq/
-    - url: /doc/reporting-bugs/
+    - url: /doc/issue-tracking/
     - url: /support/
     - url: /doc/contributing/
 
@@ -18,8 +18,8 @@
   sub-pages:
     - url: /security/
     - url: /security/pack/
-    - url: /security/bulletins/
-    - url: /security/canaries/
+    - url: /security/qsb/
+    - url: /security/canary/
     - url: /security/xsa/
     - url: /security/verifying-signatures/
     - url: /security/pgp-keys/
@@ -43,7 +43,6 @@
       - url: /doc/installation-guide/
       - url: /doc/upgrade/
       - url: /doc/supported-versions/
-      - url: /doc/version-scheme/
       - url: /doc/testing/
 
   - title: How-to Guides
@@ -80,6 +79,7 @@
       - url: /doc/update-troubleshooting/
       - url: /doc/hardware-troubleshooting/
       - url: /doc/uefi-troubleshooting/
+      - url: /doc/autostart-troubleshooting/
       - url: /doc/suspend-resume-troubleshooting/
       - url: /doc/app-menu-shortcut-troubleshooting/
       - url: /doc/vm-troubleshooting/
@@ -108,7 +108,7 @@
     sub-pages:
       - url: /doc/how-to-install-software-in-dom0/
       - url: /doc/volume-backup-revert/
-      - url: /doc/standalones-and-hvm/
+      - url: /doc/standalones-and-hvms/
       - url: /doc/windows/
       - url: /doc/config-files/
       - url: /doc/secondary-storage/
@@ -125,7 +125,7 @@
       - url: /doc/mount-from-other-os/
       - url: /doc/kde/
       - url: /doc/i3/
-      - url: /doc/awesome/
+      - url: /doc/awesomewm/
 
   - title: Reference
     subcategory: reference
@@ -167,7 +167,6 @@
       - url: /doc/security-critical-code/
       - url: /doc/qubes-core-admin/
       - url: /doc/qubes-core-admin-client/
-      - url: /doc/qubes-admin-api/
       - url: /doc/qubes-core-stack/
       - url: /doc/gui/
       - url: /doc/networking/
@@ -185,6 +184,7 @@
       - url: /doc/qrexec/
       - url: /doc/qrexec-internals/
       - url: /doc/qrexec-socket-services/
+      - url: /doc/admin-api/
 
   - title: Debugging
     subcategory: debugging
@@ -211,6 +211,7 @@
       - url: /doc/releases/notes/
       - url: /doc/releases/schedules/
       - url: /doc/releases/todo/
+      - url: /doc/version-scheme/
 
 - title: External Documentation
   subtitle: Unofficial, third-party documentation from the Qubes community and others.

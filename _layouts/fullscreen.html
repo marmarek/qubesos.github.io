@@ -1,0 +1,14 @@
+---
+layout: base
+---
+{% if page.path contains '_doc/' %}
+  {% include doc-heading.html %}
+  <div class="more-bottom white-box page-content">
+    {% include doc-content.html %}
+  </div>
+{% else %}
+  {% include heading.html %}
+  <div class="more-bottom white-box">
+    {{ content }}
+  </div>
+{% endif %}
