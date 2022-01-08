@@ -4,53 +4,54 @@
   sub-pages:
   - title: What is Qubes OS?
     url: /intro/
-  - title: FAQ
-    url: /faq/
-    icon: fa-question-circle
-  - title: Video Tours
+  - title: Outside expert views
+    url: /experts/
+  - title: Getting started
+    url: /doc/getting-started/
+    icon: fa-cubes
+  - title: Video tours
     url: /video-tours/
     icon: fa-play-circle
-  - title: From the Experts
-    url: /experts/
   - title: Screenshots
     url: /screenshots/
     icon: fa-picture-o
-  - title: Getting Started
-    url: /getting-started/
-    icon: fa-cubes
-  - title: Help and Support
+  - title: FAQ
+    url: /faq/
+  - title: Help and support
     url: /support/
-    icon: fa-life-ring
-  - title: Code of Conduct
-    url: /code-of-conduct/
-  - title: Security Center
+    icon: fa-question-circle
+  - title: Security center
     url: /security/
-  - title: OS Architecture
+    icon: fa-shield-alt
+  - title: Architecture
     url: /doc/architecture/
+  - title: Code of conduct
+    url: /code-of-conduct/
 
 - title: Downloads
   url: /downloads/
   icon: fa-download
   sub-pages:
-  - title: System Requirements
+  - title: System requirements
     url: /doc/system-requirements/
-  - title: Certified Hardware
+  - title: Certified hardware
     url: /doc/certified-hardware/
-  - title: Compatibility List
+  - title: Compatibility list
     url: /hcl/
-  - title: Installation Guide
+    icon: fa-power-off
+  - title: Installation guide
     url: /doc/installation-guide/
-  - title: Verifying Signatures
+  - title: Verifying signatures
     url: /security/verifying-signatures/
-  - title: Supported Versions
+  - title: Supported versions
     url: /doc/supported-versions/
-  - title: Version Scheme
+  - title: Version scheme
     url: /doc/version-scheme/
-  - title: Source Code
+  - title: Source code
     url: /doc/source-code/
-  - title: Software License
+  - title: Software license
     url: /doc/license/
-  - title: Download Mirrors
+  - title: Download mirrors
     url: /downloads/#mirrors
 
 - title: Documentation
@@ -59,23 +60,23 @@
   sub-pages:
   - title: Introduction
     url: /doc/#introduction
-  - title: Project Security
-    url: /doc/#project-security
-  - title: Choosing Hardware
+  - title: Choosing hardware
     url: /doc/#choosing-your-hardware
-  - title: Installing & Upgrading
+  - title: Installing and upgrading
     url: /doc/#downloading-installing-and-upgrading-qubes
-  - title: Common Tasks
-    url: /doc/#common-tasks
-  - title: Managing OSes
-    url: /doc/#managing-operating-systems-within-qubes
+  - title: How-to guides
+    url: /doc/#how-to-guides
+  - title: Templates
+    url: /doc/#templates
+  - title: Troubleshooting
+    url: /doc/#troubleshooting
   - title: Security in Qubes
     url: /doc/#security-in-qubes
-  - title: Advanced Config
-    url: /doc/#advanced-configuration
-  - title: Developer Docs
+  - title: Project security
+    url: /doc/#project-security
+  - title: Developer docs
     url: /doc/#developer-documentation
-  - title: External Docs
+  - title: External docs
     url: /doc/#external-documentation
 
 - title: News
@@ -86,16 +87,16 @@
     url: /news/categories/#announcements
   - title: Articles
     url: /news/categories/#articles
+  - title: Userbase statistics
+    url: /statistics/
+    icon: fa-bar-chart
   - title: Research
     icon: fa-file-text
     url: /research/
-  - title: Statistics
-    url: /statistics/
-    icon: fa-bar-chart
   - title: GitHub
     url: https://github.com/QubesOS
-  - title: Qubes Forum
-    url: https://qubes-os.discourse.group/
+  - title: Qubes forum
+    url: https://forum.qubes-os.org/
   - title: Twitter
     url: https://twitter.com/QubesOS
   - title: Reddit
@@ -109,15 +110,19 @@
   url: /team/
   icon: fa-users
   sub-pages:
-  - title: Report a Security Issue
+  - title: Report a bug
+    url: /doc/issue-tracking/
+  - title: Report a security Issue
     url: /security/
-    icon: fa-lock
-  - title: Report a Bug
-    url: /doc/reporting-bugs/
-  - title: Press Inquiries
-    url: mailto:press@qubes-os.org
-  - title: Business Inquiries
-    url: mailto:business@qubes-os.org
+    icon: fa-shield-alt
+  - title: Inquiries
+    url: /team/#inquiries
+  - title: Core team
+    url: /team/#core-team
+  - title: Emeritus
+    url: /team/#emeritus
+  - title: Community contributors
+    url: /team/#community-contributors
 
 - title: Donate
   url: /donate/
@@ -125,11 +130,8 @@
   sub-pages:
   - title: How to donate
     url: /donate/
-  - title: Partners
+  - title: Qubes partners
     url: /partners/
     icon: fa-globe
-  - title: Merchandise
-    url: /merchandise/
-  - title: Contributing
+  - title: How to contribute
     url: /doc/contributing/
-

@@ -1,0 +1,151 @@
+- organization: Ignite Refereeing
+  org_url: https://igniterefereeing.com.au
+  location: Australia
+  urls:
+  - url: https://qubes-mirror.igniterefereeing.com.au
+  - url: http://ti4mfvefw2sx2xpf2l3dpaa6iuwiors7ef3hm3nyal7xhq3chrygorqd.onion
+
+- organization: Foundation for Applied Privacy
+  org_url: https://applied-privacy.net/
+  location: Austria
+  urls:
+  - url: https://qubesos-mirror.applied-privacy.net/
+
+- organization: Alibaba Cloud
+  org_url: https://mirrors.aliyun.com/
+  location: China
+  urls:
+  - url: https://mirrors.aliyun.com/qubes/
+
+- organization: eScience Center, Nanjing University
+  org_url: https://sci.nju.edu.cn/
+  location: China
+  urls:
+  - url: https://mirrors.nju.edu.cn/qubes/
+  - url: rsync://mirrors.nju.edu.cn/qubes/
+
+- organization: Tsinghua University TUNA Association
+  org_url: https://tuna.moe/
+  location: China
+  urls:
+  - url: https://mirrors.tuna.tsinghua.edu.cn/qubesos/
+
+- organization: University of Cyprus, Library
+  org_url: http://library.ucy.ac.cy
+  location: Cyprus
+  urls:
+  - url: https://mirror.library.ucy.ac.cy/linux/qubes/
+
+- organization: dotsrc.org
+  org_url: https://dotsrc.org/
+  location: Denmark
+  urls:
+  - url: https://mirrors.dotsrc.org/qubes/
+
+- organization: Hosthink
+  org_url: https://www.hosthink.net/
+  location: Finland
+  urls:
+  - url: https://mirror-2.hosthink.net/qubes
+
+- organization: RWTH Aachen University
+  org_url: https://www.halifax.rwth-aachen.de
+  location: Germany
+  urls:
+  - url: http://ftp.halifax.rwth-aachen.de/qubes/iso/
+
+- organization: Kolja Sagorski
+  org_url: https://koljasagorski.de/
+  location: Germany
+  urls:
+  - url: https://mirror.koljasagorski.de/qubes/
+
+- organization: University of Crete Computer Center
+  org_url: http://cc.uoc.gr/
+  location: Greece
+  urls:
+  - url: https://ftp.cc.uoc.gr/mirrors/linux/qubes/
+
+- organization: Quantum Mirror
+  org_url: https://quantum-mirror.hu/
+  location: Hungary
+  urls:
+  - url: https://quantum-mirror.hu/mirrors/pub/qubes
+
+- organization: Linux Users' Group of Durgapur
+  org_url: https://dgplug.org/
+  location: India
+  urls:
+  - url: https://mirrors.dgplug.org/qubes/
+
+- organization: Q Continuum
+  org_url: https://qontinuum.space:4443/
+  location: Monaco
+  urls:
+  - url: https://qubes-os.qontinuum.space:4443/
+  - url: http://v5tpvgbz4c63qwb65h7n6yxphhyo3djkjxoetnbpjrk3kqpytdyr7eid.onion/
+  - url: rsync://qubes-os.qontinuum.space/qubes-os
+
+- organization: ICM, University of Warsaw
+  org_url: http://icm.edu.pl
+  location: Poland
+  urls:
+  - url: http://ftp.icm.edu.pl/pub/os/qubes/
+
+- organization: krmir NPO
+  org_url: https://krmir.org/
+  location: South Korea
+  urls:
+  - url: https://mirror.krmir.org/qubes
+  - url: ftp://mirror.krmir.org/qubes
+  - url: rsync://mirror.krmir.org/qubes
+
+- organization: ACC, Umeå University
+  org_url: http://www.acc.umu.se/
+  location: Sweden
+  urls:
+  - url: https://ftp.acc.umu.se/mirror/qubes-os.org/
+
+- organization: LinuxPizza
+  org_url: https://linux.pizza/
+  location: Sweden
+  urls:
+  - url: https://mirror.linux.pizza/qubes-os.org/
+  - url: rsync://mirror.linux.pizza/mirror/qubes-os.org/
+
+- organization: UKFast
+  org_url: https://www.ukfast.co.uk/
+  location: United Kingdom
+  urls:
+  - url: https://mirrors.ukfast.co.uk/sites/qubes-os.org/
+
+- organization: GigeNET
+  org_url: https://www.gigenet.com/
+  location: United States
+  urls:
+  - url: https://mirrors.gigenet.com/qubes/
+
+- organization: Hacking & Coffee
+  org_url: https://hackingand.coffee/
+  location: United States
+  urls:
+  - url: https://mirror.hackingand.coffee/qubes/
+
+- organization: Purdue Linux Users Group
+  org_url: https://plug-mirror.rcac.purdue.edu/info.html
+  location: United States
+  urls:
+  - url: https://plug-mirror.rcac.purdue.edu/qubes/
+
+- organization: The Linux Kernel Archives
+  org_url: https://www.kernel.org/
+  location: (Distributed)
+  urls:
+  - url: https://mirrors.edge.kernel.org/qubes/iso/
+
+- organization: The Qubes OS Project
+  org_url: https://www.qubes-os.org/
+  location: (Distributed)
+  urls:
+  - url: https://ftp.qubes-os.org/iso/
+  - url: http://iso.qubesosfasa4zl44o4tws22di6kepyzfeqv3tg4e3ztknltfxqrymdad.onion

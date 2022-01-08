@@ -152,6 +152,7 @@ article table {
     display: block;
     overflow: auto;
     border-collapse: collapse;
+    white-space: nowrap;
     margin: 0 0 25px;
 }
 article td, article th {
@@ -185,8 +186,9 @@ article tr.center {
   }
 }
 
-// Custom - Sticky external documentation warning
+// Custom - Sticky elements
 .alert-sticky {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 1;
   top: 10px;
@@ -204,4 +206,22 @@ article tr.center {
       background-color: #3874d8;
     }
   }
+}
+
+// Custom - Videos
+.video{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+iframe.responsive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }

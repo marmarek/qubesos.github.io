@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-{% include header.html %}
+---
+layout: base
+---
 <div class="container">
   {% include news-heading.html %}
   <div class="more-bottom white-box page-content">
@@ -12,33 +10,10 @@
           <h1 class="post-title remove-bottom">{{ page.title }}</h1>
           <p class="post-meta">
             {{ page.date | date: "%Y-%m-%d" }}
-            by <strong>
-            {% assign author_team = false %}
-            {% for member in site.data.team %}
-              {% if page.author == member.name %}
-                {% assign author_team = true %}
-              {% endif %}
-            {% endfor %}
-            {% if page.author %}
-              {% if author_team %}
-                <a href="/team/#{{ page.author | slugify }}">{{ page.author }}</a>
-              {% else %}
-                <a href="/team/">{{ page.author }}</a>
-              {% endif %}
-            {% else %}
-              <a href="/team/">{{ site.default_author }}</a>
-            {% endif %}
-            </strong>
-            {% if page.meta %}{{ page.meta }}{% endif %}
-            in <strong>
-            {% if page.categories.first %}
-              {% for category in page.categories %}
-                <a href="/news/categories/#{{ category | slugify }}">{{ category | capitalize }}</a>{% if forloop.index < forloop.length %},{% endif %}
-              {% endfor %}
-            {% else %}
-              <a href="/news/categories/#{{ site.default_category | slugify }}">{{ site.default_category | capitalize }}</a>
-            {% endif %}
-            </strong>
+            by
+            {% include news-post-author.html %}
+            in
+            {% include news-post-category.html %}
           </p>
         </header>
         <article class="post-content">
@@ -46,22 +21,15 @@
         </article>
       </div>
       <div class="news-widget-side col-lg-4 col-md-3 col-sm-12 col-xs-12">
-      {% include news-widget.html %}
+        {% include news-widget.html %}
       </div>
     </div>
     <div class="news-widget-bottom more-top">
       <div class="row">
         <div class="col-lg-12">
-        {% include news-widget.html %}
+          {% include news-widget.html %}
         </div>
       </div>
     </div>
   </div>
-  {% include footer.html %}
-  <script src="/js/anchor.min.js"></script>
-  <script>
-    anchors.add();
-  </script>
 </div>
-</body>
-</html>

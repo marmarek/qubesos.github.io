@@ -1,0 +1,50 @@
+- htmlsection: donation
+  title: Qubes OS is made possible by your donations!
+  paragraph: As a free and open-source software project, we rely on donations from users like you in order to keep running. Your contributions directly support the developers who work hard every day to improve your security. Please consider making a donation today.
+  url: /donate/
+  text: Donate
+
+- htmlsection: survey
+  title: We want to learn from you!
+  paragraph: The Qubes team is running our first ever survey of new, prospective, and longtime users. Our goal is to ensure Qubes OS meets the needs of the community by gathering responses to common questions about what the community seeks from Qubes OS. Surveys are 100% anonymous (no IP or timestamp information collected) and hosted on a server we own and operate. 5-10 minutes is all it should take.
+  url: https://survey.qubes-os.org/index.php?r=survey/index&sid=791682&lang=en
+  text: Begin survey
+
+- htmlsection: loop-releases
+  releases:
+    - r_version: testing
+      snippets:
+        - snippet: This is a testing release.
+          url: /doc/testing/
+        - snippet: Please help us improve it by reporting any bugs you encounter. For important work, we recommend the latest stable release.
+    - r_version: stable
+      snippets:
+        - snippet: This is the latest stable Qubes OS release. We recommend this release for all new and existing users.
+    - r_version: old
+      snippets:
+        - snippet: This is an old, supported release. For the best Qubes OS experience, we suggest upgrading to the latest stable release.
+    - r_version: deprecated
+      snippets:
+        - snippet: This is an old, unsupported release. We strongly recommend upgrading to a supported release in order to receive the latest security updates.
+
+- htmlsection: download-content
+  links:
+    - text: Cryptographic hash values
+    - text: Detached PGP signature
+    - text: Qubes release signing key
+    - text: How to verify downloads
+      url: /security/verifying-signatures/
+    - text: All download mirrors
+      url: '#mirrors'
+      hover: View all download mirrors
+
+- htmlsection: download-mirrors
+  title: Download mirrors
+  text: Please note that the Qubes OS Project has no control over third-party download mirrors.
+  table:
+    - column: Organization
+    - column: Location
+    - column: URL
+  links:
+    - url: /downloads/mirrors/#instructions-for-mirror-operators
+      text: How to contribute a download mirror

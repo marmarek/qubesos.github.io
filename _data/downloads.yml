@@ -5,92 +5,92 @@
 # "Deprecated" means old and no longer supported.
 
 releases:
-  Qubes Release 4.0.4-rc1:
+  Qubes release 4.1.0-rc3:
     testing: yes
     latest: no
     aging: no
     deprecated: no
     sources:
       - name: qubes-os.org
-        display: no
-        method: HTTPS
-        type: ISO
-        filename: Qubes-R4.0.4-rc1-x86_64.iso
-        size: 4.8 GiB (5,117,050,880 bytes)
-        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.iso
-        verifiers:
-          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
-          key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
-      - name: qubes-os.org
-        display: no
-        method: BitTorrent
-        type: Torrent
-        filename: Qubes-R4.0.4-rc1-x86_64.torrent
-        size: 96 KiB (98,183 bytes)
-        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.torrent
-        verifiers:
-          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
-          key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
-      - name: kernel.org
         display: yes
         method: HTTPS
         type: ISO
-        filename: Qubes-R4.0.4-rc1-x86_64.iso
-        size: 4.8 GiB (5,117,050,880 bytes)
-        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso
+        filename: Qubes-R4.1.0-rc3-x86_64.iso
+        size: 5.4 GiB (5,787,090,944 bytes)
+        url: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.iso
         verifiers:
-          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
+          hash: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
+          key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
+      - name: qubes-os.org
+        display: yes
+        method: BitTorrent
+        type: Torrent
+        filename: Qubes-R4.1.0-rc3-x86_64.torrent
+        size: 109 KiB (110,964 bytes)
+        url: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.torrent
+        verifiers:
+          hash: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: https://ftp.qubes-os.org/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
+          key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
+      - name: kernel.org
+        display: no
+        method: HTTPS
+        type: ISO
+        filename: Qubes-R4.1.0-rc3-x86_64.iso
+        size: 5.4 GiB (5,787,090,944 bytes)
+        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso
+        verifiers:
+          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: halifax.rwth-aachen.de
         display: no
         method: HTTP
         type: ISO
-        filename: Qubes-R4.0.4-rc1-x86_64.iso
-        size: 4.8 GiB (5,117,050,880 bytes)
-        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso
+        filename: Qubes-R4.1.0-rc3-x86_64.iso
+        size: 5.4 GiB (5,787,090,944 bytes)
+        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso
         verifiers:
-          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
+          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: kernel.org
-        display: yes
+        display: no
         method: BitTorrent
         type: Torrent
-        filename: Qubes-R4.0.4-rc1-x86_64.torrent
-        size: 96 KiB (98,183 bytes)
-        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.torrent
+        filename: Qubes-R4.1.0-rc3-x86_64.torrent
+        size: 109 KiB (110,964 bytes)
+        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.torrent
         verifiers:
-          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
+          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: halifax.rwth-aachen.de
         display: no
         method: BitTorrent
         type: Torrent
-        filename: Qubes-R4.0.4-rc1-x86_64.torrent
-        size: 96 KiB (98,183 bytes)
-        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.torrent
+        filename: Qubes-R4.1.0-rc3-x86_64.torrent
+        size: 109 KiB (110,964 bytes)
+        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.torrent
         verifiers:
-          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.DIGESTS
-          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-rc1-x86_64.iso.asc
+          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.DIGESTS
+          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.1.0-rc3-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
-        url: /doc/releases/4.0/release-notes/
-      Release Schedule:
-        url: /doc/releases/4.0/schedule/
-      Upgrading to Qubes R4.0:
-        url: /doc/releases/4.0/release-notes/#upgrading
+      Release notes:
+        url: /doc/releases/4.1/release-notes/
+      Release schedule:
+        url: /doc/releases/4.1/schedule/
+      Upgrading to Qubes R4.1:
+        url: /doc/releases/4.1/release-notes/#upgrading
     featured_docs:
       get:
-      - Release Notes
-  Qubes Release 4.0.3:
+      - Release notes
+  Qubes release 4.0.4:
     testing: no
     latest: yes
     aging: no
@@ -100,82 +100,82 @@ releases:
         display: no
         method: HTTPS
         type: ISO
-        filename: Qubes-R4.0.3-x86_64.iso
-        size: 4.5 GiB (4,830,789,632 bytes)
-        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.iso
+        filename: Qubes-R4.0.4-x86_64.iso
+        size: 4.9 GiB (5,199,888,384 bytes)
+        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.iso
         verifiers:
-          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: qubes-os.org
         display: no
         method: BitTorrent
         type: Torrent
-        filename: Qubes-R4.0.3-x86_64.torrent
-        size: 91 KiB (92,723 bytes)
-        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.torrent
+        filename: Qubes-R4.0.4-x86_64.torrent
+        size: 98 KiB (99,747 bytes)
+        url: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.torrent
         verifiers:
-          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: https://ftp.qubes-os.org/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: kernel.org
         display: yes
         method: HTTPS
         type: ISO
-        filename: Qubes-R4.0.3-x86_64.iso
-        size: 4.5 GiB (4,830,789,632 bytes)
-        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.iso
+        filename: Qubes-R4.0.4-x86_64.iso
+        size: 4.9 GiB (5,199,888,384 bytes)
+        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.iso
         verifiers:
-          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: halifax.rwth-aachen.de
         display: no
         method: HTTP
         type: ISO
-        filename: Qubes-R4.0.3-x86_64.iso
-        size: 4.5 GiB (4,830,789,632 bytes)
-        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.iso
+        filename: Qubes-R4.0.4-x86_64.iso
+        size: 4.9 GiB (5,199,888,384 bytes)
+        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.iso
         verifiers:
-          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: kernel.org
         display: yes
         method: BitTorrent
         type: Torrent
-        filename: Qubes-R4.0.3-x86_64.torrent
-        size: 91 KiB (92,723 bytes)
-        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.torrent
+        filename: Qubes-R4.0.4-x86_64.torrent
+        size: 98 KiB (99,747 bytes)
+        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.torrent
         verifiers:
-          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
       - name: halifax.rwth-aachen.de
         display: no
         method: BitTorrent
         type: Torrent
-        filename: Qubes-R4.0.3-x86_64.torrent
-        size: 91 KiB (92,723 bytes)
-        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.torrent
+        filename: Qubes-R4.0.4-x86_64.torrent
+        size: 98 KiB (99,747 bytes)
+        url: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.torrent
         verifiers:
-          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.iso.DIGESTS
-          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.3-x86_64.iso.asc
+          hash: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.iso.DIGESTS
+          sig: http://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.0.4-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-4-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/4.0/release-notes/
-      Release Schedule:
+      Release schedule:
         url: /doc/releases/4.0/schedule/
       Upgrading to Qubes R4.0:
         url: /doc/releases/4.0/release-notes/#upgrading
     featured_docs:
       get:
-      - Release Notes
-  Qubes Release 3.2.1:
+      - Release notes
+  Qubes release 3.2.1:
     testing: no
     latest: no
     aging: no
@@ -248,20 +248,20 @@ releases:
           sig: https://ftp.qubes-os.org/iso/Qubes-R3.2.1-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-3-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/3.2/release-notes/
-      Release Schedule:
+      Release schedule:
         url: /doc/releases/3.2/schedule/
       Upgrading to Qubes R3.2:
         url: /doc/releases/3.2/release-notes/#upgrading
     featured_docs:
       get:
       - Upgrading to Qubes R3.2
-      - Release Notes
-  Qubes Release 3.1:
+      - Release notes
+  Qubes release 3.1:
     testing: no
     latest: no
     aging: no
@@ -306,7 +306,7 @@ releases:
         type: Torrent
         filename: Qubes-R3.1-x86_64.iso.torrent
         size: 95.6 kB (95,639 bytes)
-        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R3.1-x86_64.torrent
+        url: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R3.1-x86_64.iso.torrent
         verifiers:
           hash: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R3.1-x86_64.iso.DIGESTS
           sig: https://mirrors.edge.kernel.org/qubes/iso/Qubes-R3.1-x86_64.iso.asc
@@ -334,26 +334,26 @@ releases:
           sig: https://ftp.qubes-os.org/qubes/iso/Qubes-R3.1-x86_64.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-3-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/3.1/release-notes/
-      Release Schedule:
+      Release schedule:
         url: /doc/releases/3.1/schedule/
       Upgrading to Qubes R3.1:
         url: /doc/releases/3.1/release-notes/#upgrading
     featured_docs:
       get:
       - Upgrading to Qubes R3.1
-      - Release Notes
-      - Release Schedule
-  Qubes Live USB (alpha):
+      - Release notes
+      - Release schedule
+  Qubes live USB (alpha):
     testing: no
     latest: no
     aging: no
     deprecated: yes
-    deprecated: The Live USB edition is no longer supported or maintained. Users
+    deprecated: The live USB edition is no longer supported or maintained. Users
                 who wish to install Qubes while preserving the contents of their
                 internal drives are instead advised to install the latest stable
                 release on an external drive, such as a USB flash drive or an
@@ -394,7 +394,7 @@ releases:
       Usage Guide:
         featured: yes
         url: /doc/live-usb/
-  Qubes Release 3.0:
+  Qubes release 3.0:
     testing: no
     latest: no
     aging: no
@@ -434,21 +434,21 @@ releases:
           sig: https://ftp.qubes-os.org/iso/Qubes-R3.0-x86_64-DVD.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-3-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/3.0/release-notes/
-      Release Schedule:
+      Release schedule:
         url: /doc/releases/3.0/schedule/
       Upgrading to Qubes R3.0:
         url: /doc/releases/3.0/release-notes/#upgrading
     featured_docs:
       get:
       - Upgrading to Qubes R3.0
-      - Release Notes
-      - Release Schedule
-  Qubes Release 2:
+      - Release notes
+      - Release schedule
+  Qubes release 2:
     testing: no
     latest: no
     aging: no
@@ -488,14 +488,14 @@ releases:
           sig: https://ftp.qubes-os.org/iso/Qubes-R2-x86_64-DVD.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-2-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/2.0/release-notes/
       Upgrading to Qubes R2:
         url: /doc/releases/2.0/release-notes/#upgrading
-  Qubes Release 1:
+  Qubes release 1:
     testing: no
     latest: no
     aging: no
@@ -535,8 +535,8 @@ releases:
           sig: https://ftp.qubes-os.org/iso/Qubes-R1-x86_64-DVD.iso.asc
           key: https://keys.qubes-os.org/keys/qubes-release-1-signing-key.asc
     docs:
-      Installation Guide:
+      Installation guide:
         featured: yes
         url: /doc/installation-guide/
-      Release Notes:
+      Release notes:
         url: /doc/releases/1.0/release-notes/

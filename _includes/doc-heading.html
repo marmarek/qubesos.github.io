@@ -1,25 +1,33 @@
-{% if page.permalink == "/doc/" %}
+<!-- Variables -->
+{% include variables.html %}
+<!-- Create heading -->
+{% if page.permalink == doc_link %}
+  {% assign meta = doc-index | where_exp: "item", "item.topic != nil" %}
   <h1 class="more-top add-left outer-heading">
-    <a href="/doc/" class="heading-link">
-      <i class="fa fa-book"></i> Documentation
-    </a>
+  <a href="{{ doc_link }}" class="heading-link">
+    <i class="fa fa-book"></i> {{ meta[0].metatopic }}</a>
   </h1>
 {% else %}
-  {% assign doc_segments = page.relative_path | split: '/' %}
-  {% for section in site.data.doc %}
-    {% if doc_segments contains section.folder %}
+  {% assign ind = doc-index | where_exp: "item", "item.topic == nil" %}
+  {% for section in ind %}
+    <!-- Section heading -->
+    {% if path_segments contains section.category %}
       <h1 class="more-top add-left outer-heading">
-        <a href="/doc/#{{ section.category | slugify }}" class="heading-link">
-          <i class="fa fa-book"></i>
-            {{ section.category }}
+        <a href="{{ doc_link }}#{{ section.title | slugify }}" class="heading-link">
+          <i class="fa fa-book"></i>{{ section.title }}
         </a>
+        <!-- Breadcrumb heading -->
+        {% for subsection in section.sub-pages %}
+          {% if path_segments contains subsection.subcategory %}
+            /
+            <a href="{{ doc_link }}#{{ subsection.title | slugify }}" class="heading-link">
+              {{ subsection.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
       </h1>
-      {% if section.category == "External Documentation" %}
-        {% include doc-external-warning.html %}
-      {% endif %}
-      {% if page.translated %}
-        {% include doc-translated-warning.html %}
-      {% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}
+ 
+

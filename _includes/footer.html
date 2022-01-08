@@ -1,182 +1,104 @@
+<!-- Variables -->
+{% include variables.html %}
+{% assign foot = includes | where_exp: "item", "item.section == 'footer'" | first %}
+<!-- Footer -->
 <footer>
-<div class="white-box footer-search more-bottom">
-  <div class="row">
-    <div class="col-lg-3 col-md-3 text-center">
-      <h4 class="remove-bottom">
-        <i class="fa fa-search"></i> Search qubes-os.org
-      </h4>
+<!-- Search bar -->
+  <div class="white-box footer-search more-bottom">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 text-center">
+        <h4 class="remove-bottom"><i class="fa fa-search"></i> {{ foot.search }} qubes-os.org</h4>
+      </div>
+      <div class="col-lg-9 col-md-9 text-left">
+        <form action="https://duckduckgo.com/" method="get">
+          <div class="input-group">
+            <input type="hidden" name="sites" value="qubes-os.org  -site:forum.qubes-os.org">
+            <input type="text" class="form-control" name="q" placeholder="{{ foot.ddg }}&hellip;">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">{{ foot.go }}</button>
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="col-lg-9 col-md-9 text-left">
-      <form action="https://duckduckgo.com/" method="get">
-        <div class="input-group">
-          <input type="hidden" name="sites" value="https://www.qubes-os.org">
-          <input type="text" class="form-control" name="q" placeholder="Using DuckDuckGo&hellip;">
-          <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">Go!</button>
-          </span>
-        </div>
-      </form>
+  </div>
+  <!-- Navigation links -->
+  <div class="row footer-nav">
+    {% for section in architecture %}
+    <div class="col-xs-12 col-sm-4 col-md-2">
+      <a href="{{section.url}}">
+        <h5 class="text-left add-bottom">
+          {{section.title}}
+          {% if section.title == "Donate" %}
+            <i class="fa fa-heart"></i>
+          {% endif %}
+        </h5>
+      </a>
+      <ul class="list-unstyled">
+        {% for sub in section.sub-pages %}
+        <li><a href="{{sub.url}}">{{sub.title}}</a></li>
+        {% endfor %}
+      </ul>
     </div>
+    {% endfor %}
   </div>
-</div>
-<div class="row footer-nav">
-  {% for section in site.data.architecture %}
-  <div class="col-lg-2 col-md-2">
-    <a href="{{section.url}}">
-      <h5 class="text-left add-bottom">
-        {{section.title}}
-        {% if section.title == "Donate" %}
-          <i class="fa fa-heart"></i>
-        {% endif %}
-      </h5>
-    </a>
-    <ul class="list-unstyled">
-      {% for sub in section.sub-pages %}
-      <li><a href="{{sub.url}}">{{sub.title}}</a></li>
-      {% endfor %}
-    </ul>
+  <!-- Colophon -->
+  {% assign web-source = foot.links | where_exp: "item", "item.id == 1" | first %}
+  {% assign onion = foot.links | where_exp: "item", "item.id == 2" | first %}
+  {% assign bug-report = foot.links | where_exp: "item", "item.id == 3" | first %}
+  {% assign privacy = foot.links | where_exp: "item", "item.id == 4" | first %}
+  {% assign terms = foot.links | where_exp: "item", "item.id == 5" | first %}
+  {% assign sitemap = foot.links | where_exp: "item", "item.id == 6" | first %}
+  <div class="row footer-nav text-center more-top add-bottom">
+    <div class="footer-logo more-bottom">
+      <a href="{{ lang }}">
+        <img src="/attachment/icons/logo-outline-small.svg" alt="Qubes">
+        <strong>Qubes</strong> OS
+      </a>
+    </div>
+    <p>
+      &#169;
+      <script type="text/javascript">
+        document.write(new Date().getFullYear());
+      </script>
+      {{ foot.title }}<br>
+      <a href="{{ web-source.url }}">{{ web-source.text }}</a> |
+      <a href="{{ onion.url }}">{{ onion.text }}</a> |
+      <a href="{{ bug-report.url }}">{{ bug-report.text }}</a> |
+      <a href="{{ privacy.url }}">{{ privacy.text }}</a> |
+      <a href="{{ terms.url }}">{{ terms.text }}</a> |
+      <a href="{{ sitemap.url }}">{{ sitemap.text }}</a>
+    </p>
   </div>
-  {% endfor %}
-</div>
-<div class="row footer-nav text-center more-top add-bottom">
-  <div class="footer-logo more-bottom">
-    <a href="/">
-      <img src="/attachment/icons/logo-outline-small.svg" alt="Qubes">
-      <strong>Qubes</strong> OS
-    </a>
-  </div>
-  <p>
-    &#169;
-    <script>document.write(new Date().getFullYear());</script>
-    <noscript>2020</noscript>
-    The Qubes OS Project and others<br>
-    <a href="https://github.com/QubesOS/qubesos.github.io">Website Source Code</a> |
-    <a href="http://qubesosfasa4zl44o4tws22di6kepyzfeqv3tg4e3ztknltfxqrymdad.onion">Tor Onion Service</a> |
-    <a href="/doc/reporting-bugs/">Report a Problem</a> |
-    <a href="/privacy/">Privacy Policy</a> |
-    <a href="/terms/">Terms of Use</a> |
-    <a href="/sitemap.xml">Sitemap</a>
-  </p>
-</div>
 </footer>
-
+<!-- JavaScript -->
 <script src="/js/jquery-2.2.2.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-{% if page.permalink == "/video-tours/" %}
-<script src="/js/jquery.tubeplayer.min.js"></script>
-<script>
-$(document).ready(function() {
-
-  // Uses the jQuery plugin, TubePlayer
-  // https://github.com/nirvanatikku/jQuery-TubePlayer-Plugin/
-  var tourVideo0 = $("#player0").tubeplayer({
-      width: 700,
-      height: 393,
-      allowFullScreen: "true",
-      initialVideo: "dD0_gq_ugw8",
-      start: 0,
-      preferredQuality: "hd720",
-      showControls: true,
-      showRelated: false,
-      playsinline: false,
-      autoPlay: false,
-      autoHide: true,
-      theme: "dark",
-      color: "white",
-      showinfo: false,
-      modestbranding: true,
-      annotations: true,
-      loop: 0,
-      protocol: 'https',
-      loadSWFObject: false,
-      iframed: true,
-      onPlayerUnstarted: function(){ console.log('onPlayerUnstarted must be loaded...') },
-      onPlayerCued: function(){ console.log('onPlayerCued must ready...') },
-      onSeek: function(time){}
-  })
-
-  var tourVideo1 = $("#player1").tubeplayer({
-      width: 700,
-      height: 393,
-      allowFullScreen: "true",
-      initialVideo: "q7mCeYCrQ24",
-      start: 0,
-      preferredQuality: "hd720",
-      showControls: true,
-      showRelated: false,
-      playsinline: false,
-      autoPlay: false,
-      autoHide: true,
-      theme: "dark",
-      color: "white",
-      showinfo: false,
-      modestbranding: true,
-      annotations: true,
-      loop: 0,
-      protocol: 'https',
-      loadSWFObject: false,
-      iframed: true,
-      onPlayerUnstarted: function(){ console.log('onPlayerUnstarted must be loaded...') },
-      onPlayerCued: function(){ console.log('onPlayerCued must ready...') },
-      onSeek: function(time){}
-  })
-
-  $('.player0-seek').on('click', function(e) {
-    e.preventDefault()
-    //console.log('Jump to: ' + $(this).attr('href'))
-    tourVideo0.tubeplayer("seek", $(this).attr('href'))
-    tourVideo0.tubeplayer("play")
-
-    $.each($('#player0-menu li'), function() {
-      $(this).find('i.fa').remove()
-    })
-
-    $(this).prepend('<i class="fa fa-arrow-right"></i> ')
-  })
-
-  $('.player1-play').on('click', function(e) {
-    e.preventDefault()
-    //console.log('Jump to: ' + $(this).attr('href'))
-    tourVideo1.tubeplayer("play", $(this).attr('href'))
-
-    $.each($('#player1-menu li'), function() {
-      $(this).find('i.fa').remove()
-    })
-
-    $(this).prepend('<i class="fa fa-arrow-right"></i> ')
-  })
-
-})
-</script>
-{% endif %}
-{% if page.layout == "post" %}
-<script src="/js/jquery.tubeplayer.min.js"></script>
-<script>
-$(document).ready(function() {
-  $("#video").tubeplayer({
-      width: 700,
-      height: 393,
-      allowFullScreen: "true",
-  {% if page.url == "/news/2016/12/17/interview-the-new-screen-savers/" %}
-      initialVideo: "549hjuc7trk",
-      start: 2007,
+  <!-- Make HCL table sortable -->
+  {% if page.permalink == '/hcl/' %}
+    <script src="/js/sorttable.js"></script>
   {% endif %}
-      preferredQuality: "hd720",
-      showControls: true,
-      showRelated: false,
-      playsinline: false,
-      autoPlay: false,
-      autoHide: true,
-      theme: "dark",
-      color: "white",
-      showinfo: false,
-      modestbranding: true,
-      annotations: true,
-      loop: 0,
-      protocol: 'https',
-      loadSWFObject: false,
-      iframed: true
-  })
-})
-</script>
-{% endif %}
+  <!-- Doc page table of contents -->
+  {% if page.path contains '_doc/' %}
+    <script src="/js/jquery.toc.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#doc-content').toc({
+          renderIn: '#page-toc',
+          anchorPrefix: 'tocAnchor-', // the default prefix used for generated TOC elements IDs
+          showAlways: true, //Show TOC also if only one H1 is present on page, the TOC is never show if no H1s are found on page
+          saveShowStatus: false, // Save the collapse status using a cookie (see dependecies for further details)
+          contentsText: 'Contents', // The label text shown for Content, you can localize passing another string
+          hideText: 'hide', // The label text shown for hide button, you can localize passing another string
+          showText: 'show' // The label text shown for show button, you can localize passing another string
+        })
+      })
+    </script>
+  {% endif %}
+<!-- Heading anchor links -->
+<script src="/js/anchor.min.js"></script>
+<script>anchors.add();</script>
+  <!-- Remove anchors on team page -->
+  {% if page.permalink == '/team/' %}
+    <script>anchors.removeAll();</script>
+  {% endif %}
