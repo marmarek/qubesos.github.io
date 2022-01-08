@@ -31,15 +31,11 @@
           <a href="{{ team_link }}#{{ team.name | slugify }}"><h4 class="remove-bottom">{{ team.name }}</h4></a>
           <p class="half-bottom"><a href="mailto:{{ team.email }}" class="black-link">{{ team.email }}</a></p>
           {% if team.fingerprint %}
-            <a href="http://keys.gnupg.net/pks/lookup?search=0x{{ team.fingerprint | remove: ' ' }}&fingerprint=on&exact=on&op=get&options=mr" title="Download PGP public key" class="black-link">
-              <i class="fa fa-fw fa-lock"></i>PGP Key
-            </a>
+            {% include team-pgp.html %}
           {% endif %}
         </div>
         {% if team.fingerprint %}
-          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 more-bottom fingerprint" title="{{ team.name }} account's PGP fingerprint">
-            {{ team.fingerprint }}
-          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 more-bottom fingerprint" title="{{ team.name }} account's email PGP key fingerprint">{{ team.fingerprint }}</div>
         {% endif %}
       </div>
     {% endif %}
@@ -73,30 +69,20 @@
           </a>
           <em class="role half-bottom">{{ team.role }}</em>
           {% if team.fingerprint %}
-            <a href="http://keys.gnupg.net/pks/lookup?search=0x{{ team.fingerprint | remove: ' ' }}&fingerprint=on&exact=on&op=get&options=mr" title="Download PGP public key" class="black-link add-right">
-              <i class="fa fa-fw fa-lock"></i>PGP Key
-            </a>
+            {% include team-pgp.html %}
           {% endif %}
           {% if team.email %}
-            <a href="mailto:{{team.email}}" class="black-link add-right" title="{{ coreteam.email }}">
-              <i class="fa fa-fw fa-envelope"></i>{{ coreteam.email }}
-            </a>
+            <a href="mailto:{{team.email}}" class="black-link add-right" title="{{ coreteam.email }}">{{ coreteam.email }}</a>
           {% endif %}
           {% if team.github %}
-            <a href="https://github.com/{{team.github}}" target="blank" class="black-link add-right" title="GitHub">
-              <i class="fa fa-fw fa-github"></i>GitHub
-            </a>
+            <a href="https://github.com/{{team.github}}" target="blank" class="black-link add-right" title="GitHub">GitHub</a>
           {% endif %}
           {% if team.website %}
-            <a href="{{team.website}}" target="blank" class="black-link" title="{{ coreteam.website }}">
-              <i class="fa fa-fw fa-globe"></i>{{ coreteam.website }}
-            </a>
+            <a href="{{team.website}}" target="blank" class="black-link" title="{{ coreteam.website }}">{{ coreteam.website }}</a>
           {% endif %}
         </div>
         {% if team.fingerprint %}
-          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 more-bottom fingerprint" title="{{ team.name }}'s PGP fingerprint">
-            {{ team.fingerprint }}
-          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 more-bottom fingerprint" title="{{ team.name }}'s email PGP key fingerprint">{{ team.fingerprint }}</div>
         {% endif %}
       </div>
     {% endif %}
@@ -152,7 +138,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
           {% if team.fingerprint %}
-            <span class="fingerprint" title="{{team.name}}'s PGP Key Fingerprint">{{team.fingerprint}}</span>
+            <span class="fingerprint" title="{{team.name}}'s email PGP key fingerprint">{{team.fingerprint}}</span>
           {% endif %}
         </div>
       </div>

@@ -12,7 +12,7 @@
       <div class="col-lg-9 col-md-9 text-left">
         <form action="https://duckduckgo.com/" method="get">
           <div class="input-group">
-            <input type="hidden" name="sites" value="https://www.qubes-os.org">
+            <input type="hidden" name="sites" value="qubes-os.org  -site:forum.qubes-os.org">
             <input type="text" class="form-control" name="q" placeholder="{{ foot.ddg }}&hellip;">
             <span class="input-group-btn">
               <button class="btn btn-primary" type="submit">{{ foot.go }}</button>
@@ -25,7 +25,7 @@
   <!-- Navigation links -->
   <div class="row footer-nav">
     {% for section in architecture %}
-    <div class="col-lg-2 col-md-2">
+    <div class="col-xs-12 col-sm-4 col-md-2">
       <a href="{{section.url}}">
         <h5 class="text-left add-bottom">
           {{section.title}}
@@ -74,27 +74,31 @@
 <!-- JavaScript -->
 <script src="/js/jquery-2.2.2.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-{% if page.permalink == '/hcl/' %}
   <!-- Make HCL table sortable -->
-  <script src="/js/sorttable.js"></script>
-{% endif %}
-{% if page.path contains '_doc/' %}
+  {% if page.permalink == '/hcl/' %}
+    <script src="/js/sorttable.js"></script>
+  {% endif %}
   <!-- Doc page table of contents -->
-  <script src="/js/jquery.toc.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#doc-content').toc({
-        renderIn: '#page-toc',
-        anchorPrefix: 'tocAnchor-', // the default prefix used for generated TOC elements IDs
-        showAlways: true, //Show TOC also if only one H1 is present on page, the TOC is never show if no H1s are found on page
-        saveShowStatus: false, // Save the collapse status using a cookie (see dependecies for further details)
-        contentsText: 'Contents', // The label text shown for Content, you can localize passing another string
-        hideText: 'hide', // The label text shown for hide button, you can localize passing another string
-        showText: 'show' // The label text shown for show button, you can localize passing another string
+  {% if page.path contains '_doc/' %}
+    <script src="/js/jquery.toc.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#doc-content').toc({
+          renderIn: '#page-toc',
+          anchorPrefix: 'tocAnchor-', // the default prefix used for generated TOC elements IDs
+          showAlways: true, //Show TOC also if only one H1 is present on page, the TOC is never show if no H1s are found on page
+          saveShowStatus: false, // Save the collapse status using a cookie (see dependecies for further details)
+          contentsText: 'Contents', // The label text shown for Content, you can localize passing another string
+          hideText: 'hide', // The label text shown for hide button, you can localize passing another string
+          showText: 'show' // The label text shown for show button, you can localize passing another string
+        })
       })
-    })
-  </script>
-{% endif %}
+    </script>
+  {% endif %}
 <!-- Heading anchor links -->
 <script src="/js/anchor.min.js"></script>
 <script>anchors.add();</script>
+  <!-- Remove anchors on team page -->
+  {% if page.permalink == '/team/' %}
+    <script>anchors.removeAll();</script>
+  {% endif %}

@@ -7,13 +7,9 @@
   </a>
   <em class="role">{{team.role}}</em>
   {% if team.fingerprint %}
-    <a href="http://keys.gnupg.net/pks/lookup?search=0x{{ team.fingerprint | remove: ' ' }}&fingerprint=on&exact=on&op=get&options=mr" title="Download PGP public key" class="black-link add-right">
-      <i class="fa fa-fw fa-lock"></i>PGP Key
-    </a>
+    {% include team-pgp.html %}
   {% endif %}
   {% if team.email %}
-    <a href="mailto:{{team.email}}" class="black-link">
-      <i class="fa fa-fw fa-envelope"></i>Email
-    </a>
+    <a href="mailto:{{team.email}}" class="black-link">Email</a>
   {% endif %}
 </div>
